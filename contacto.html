@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Luis Romera Consultoría</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">Luis Romera</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="sobremi.html">Sobre mí</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contacto</h1>
+            <p>Estoy aquí para ayudarte a potenciar tu organización</p>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-info-icon">
+                        <span>📱</span>
+                    </div>
+                    <h3>Teléfono</h3>
+                    <p>+34 XXX XXX XXX</p>
+                    <p>Disponible de lunes a viernes<br>de 9:00 a 18:00</p>
+                </div>
+                
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-info-icon">
+                        <span>✉️</span>
+                    </div>
+                    <h3>Email</h3>
+                    <p>info@luisromera.com</p>
+                    <p>Te responderé en menos de 24 horas<br>en días laborables</p>
+                </div>
+                
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-info-icon">
+                        <span>🏢</span>
+                    </div>
+                    <h3>Oficina</h3>
+                    <p>Madrid, España</p>
+                    <p>Concerta una cita previa<br>para reuniones presenciales</p>
+                </div>
+                
+                <div class="contact-info-card animate-on-scroll">
+                    <div class="contact-info-icon">
+                        <span>💬</span>
+                    </div>
+                    <h3>Redes Sociales</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="contact-form-container">
+                <div class="contact-form-left animate-on-scroll">
+                    <h2>Envíame un mensaje</h2>
+                    <p>Completa el formulario y te responderé lo antes posible. También puedes contactarme directamente a través de los canales mencionados anteriormente.</p>
+                    <div class="contact-expectations">
+                        <div class="expectation-item">
+                            <h4>¿Qué sucede después?</h4>
+                            <p>Una vez reciba tu mensaje, me pondré en contacto contigo dentro de las próximas 24 horas laborables para concertar una llamada inicial donde podremos hablar de tus necesidades con más detalle.</p>
+                        </div>
+                        <div class="expectation-item">
+                            <h4>Consulta Inicial</h4>
+                            <p>La primera consulta es sin compromiso y tiene como objetivo entender tu situación actual, identificar posibles áreas de mejora y explorar cómo puedo ayudarte a alcanzar tus objetivos.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-right animate-on-scroll">
+                    <form id="contactFormExtended" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Servicio de interés</label>
+                            <select id="service" name="service" class="form-control">
+                                <option value="">Selecciona un servicio</option>
+                                <option value="coaching">Coaching Ejecutivo</option>
+                                <option value="asesoria">Asesoría Organizacional</option>
+                                <option value="formacion">Formación para Managers</option>
+                                <option value="kpis">Definición de KPIs</option>
+                                <option value="ventas">Formación en Técnicas de Ventas</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
+                            <label for="privacy" class="form-check-label">Acepto la <a href="#">política de privacidad</a> *</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section map-section">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Ubicación</h2>
+                <p>Encuentra mi oficina en Madrid</p>
+            </div>
+            <div class="map-container animate-on-scroll">
+                <!-- Placeholder for Google Maps -->
+                <div class="map-placeholder">
+                    <img src="/api/placeholder/1200/400" alt="Mapa de ubicación">
+                    <div class="map-overlay">
+                        <p>Ubicado en una zona céntrica de Madrid<br>con fácil acceso por transporte público</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Respuestas a las dudas más comunes sobre mis servicios</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>¿Realizas servicios a distancia o solo presenciales?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ofrezco mis servicios tanto de forma presencial como a distancia. Las sesiones virtuales están diseñadas para ser igualmente efectivas, utilizando herramientas digitales que facilitan la interacción y el seguimiento. La modalidad se acuerda siempre en función de las necesidades y preferencias del cliente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>¿Cuánto cuesta contratar tus servicios?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>El coste varía según el tipo de servicio, la duración y el alcance del proyecto. Cada propuesta se personaliza en función de las necesidades específicas del cliente. Tras la consulta inicial, presento un presupuesto detallado que incluye todas las fases y entregables del proyecto.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>¿Trabajas con empresas de cualquier sector?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, mi metodología es adaptable a organizaciones de diversos sectores. He trabajado con empresas de tecnología, servicios profesionales, retail, industria, salud, educación, entre otros. La clave está en comprender las particularidades de cada sector y adaptar las estrategias a su contexto específico.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question">
+                        <h3>¿Cuánto tiempo se tarda en ver resultados?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>El tiempo para obtener resultados varía según el tipo de intervención y la situación inicial de la organización. En general, es posible observar mejoras iniciales en un plazo de 1-3 meses, mientras que los resultados más significativos suelen manifestarse a partir de los 3-6 meses de trabajo continuo. Cada proyecto incluye indicadores de progreso que permiten monitorear la evolución desde el inicio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-container animate-on-scroll">
+                <h2>¿Preparado para dar el siguiente paso?</h2>
+                <p>Contacta conmigo hoy mismo y comencemos a trabajar juntos para potenciar tu organización.</p>
+                <div class="cta-buttons">
+                    <a href="tel:+34XXXXXXXXX" class="btn btn-primary">Llamar Ahora</a>
+                    <a href="mailto:info@luisromera.com" class="btn btn-secondary">Enviar Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>Luis Romera</h4>
+                    <p>Consultoría Organizacional especializada en marketing digital y ventas. Potencio el rendimiento de tu empresa a través de metodologías efectivas.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="sobremi.html">Sobre mí</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="servicios.html#coaching">Coaching Ejecutivo</a></li>
+                        <li><a href="servicios.html#asesoria">Asesoría Organizacional</a></li>
+                        <li><a href="servicios.html#formacion">Formación para Managers</a></li>
+                        <li><a href="servicios.html#kpis">Definición de KPIs</a></li>
+                        <li><a href="servicios.html#ventas">Técnicas de Ventas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li>📱 +34 XXX XXX XXX</li>
+                        <li>✉️ info@luisromera.com</li>
+                        <li>🏢 Madrid, España</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luis Romera Consultoría. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
