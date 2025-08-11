@@ -5,16 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios | Luis Romera - Consultoría Organizacional con Base Psicológica</title>
     <meta name="description" content="Servicios de consultoría organizacional: Coaching Ejecutivo, Eficacia Comercial, Formación para Managers, KPIs y Técnicas de Ventas. Soluciones 100% personalizadas.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luisromera.com/servicios">
+    <meta property="og:title" content="Servicios de Consultoría | Luis Romera">
+    <meta property="og:description" content="Transformamos equipos comerciales con coaching ejecutivo, eficacia comercial y formación personalizada.">
+    <meta property="og:image" content="https://luisromera.com/assets/images/og-servicios.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://luisromera.com/servicios">
+    <meta property="twitter:title" content="Servicios de Consultoría | Luis Romera">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://luisromera.com/servicios">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/effects.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Consultoría Organizacional",
+        "provider": {
+            "@type": "Person",
+            "name": "Luis Romera Navarro"
+        },
+        "areaServed": "ES",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios de Consultoría",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Coaching Ejecutivo",
+                        "description": "Desarrollo de líderes con base psicológica y resultados medibles"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Eficacia Comercial",
+                        "description": "Sales Force Effectiveness para transformar equipos de ventas"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Formación para Managers",
+                        "description": "Desarrollo de liderazgo y competencias directivas"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Cuánto tiempo dura un proceso de coaching ejecutivo?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un proceso de coaching ejecutivo típicamente dura entre 3 y 6 meses, con sesiones quincenales o mensuales. La duración exacta se adapta a los objetivos específicos y al ritmo de desarrollo del ejecutivo."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Los servicios son presenciales u online?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ofrezco ambas modalidades. Las sesiones pueden ser presenciales en Madrid o virtuales para clientes de toda España. La metodología está adaptada para garantizar la misma efectividad en ambos formatos."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué ROI puedo esperar de la consultoría?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Según estudios sectoriales, el coaching ejecutivo genera un ROI de 5-7x la inversión. En eficacia comercial, típicamente logramos mejoras del 30% en conversión. Cada proyecto incluye KPIs específicos para medir el retorno."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Skip Link para Accesibilidad -->
+    <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Header con Sticky -->
     <header class="header" id="header">
         <div class="container">
-            <nav class="nav">
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
                 <a href="index.html" class="logo">Luis Romera</a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -23,7 +124,7 @@
                     <li><a href="contacto.html" class="nav-link">Contacto</a></li>
                     <li><a href="contacto.html" class="btn btn-primary">Consulta Gratuita</a></li>
                 </ul>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú móvil" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -32,341 +133,346 @@
         </div>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <div class="container">
-            <div class="page-hero-content animate-on-scroll">
-                <h1 class="page-hero-title">Mis Servicios</h1>
-                <p class="page-hero-subtitle">
-                    Soluciones integrales que transforman equipos comerciales desde la comprensión profunda de las personas, la cultura organizacional y los objetivos de negocio.
-                </p>
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section con Parallax -->
+        <section class="hero" id="hero-servicios" data-spy style="padding: 6rem 0 4rem;">
+            <div class="hero__bg" data-parallax data-speed="0.2">
+                <div class="hero__bg-gradient"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Coaching Ejecutivo -->
-    <section class="section service-detail" id="coaching-ejecutivo">
-        <div class="container">
-            <div class="service-detail-grid">
-                <div class="service-detail-content animate-on-scroll">
-                    <div class="section-badge">Desarrollo de Líderes</div>
-                    <h2 class="service-detail-title">🧠 Coaching Ejecutivo basado en Psicología y Fortalezas</h2>
-                    <p class="service-detail-intro">
-                        <strong>No se trata solo de lograr resultados... sino de lograr resultados que duren, que te representen y que te hagan crecer como líder y como persona.</strong>
+            <div class="container">
+                <div class="hero-content" data-reveal>
+                    <h1 class="hero-title">Servicios de Consultoría Organizacional</h1>
+                    <p class="hero-subtitle" data-reveal data-delay="100">
+                        Soluciones integrales que transforman equipos comerciales desde la comprensión 
+                        profunda de las personas, la cultura organizacional y los objetivos de negocio.
                     </p>
-                    <p>
-                        Mi metodología de coaching ejecutivo está diseñada específicamente para profesionales y empresas que buscan un desarrollo real, medible y humano. Se basa en tres pilares fundamentales:
-                    </p>
-                    <div class="methodology-grid">
-                        <div class="methodology-item">
-                            <h4>🔬 Fundamento psicológico</h4>
-                            <p>Enfoque riguroso basado en el conocimiento científico del comportamiento humano.</p>
-                        </div>
-                        <div class="methodology-item">
-                            <h4>💪 Psicología Positiva</h4>
-                            <p>Trabajo desde tus fortalezas personales para un liderazgo auténtico y energético.</p>
-                        </div>
-                        <div class="methodology-item">
-                            <h4>📊 Resultados medibles</h4>
-                            <p>Orientación a resultados reales, alineados con objetivos estratégicos.</p>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <h3>🎯 Objetivos que trabajamos</h3>
-                    <ul class="service-objectives">
-                        <li>
-                            <strong>Desarrollo de liderazgo y competencias directivas:</strong> 
-                            Para liderar con más claridad, confianza y coherencia. Equipos más comprometidos y mayor influencia positiva.
-                        </li>
-                        <li>
-                            <strong>Mejora de la comunicación y las relaciones:</strong> 
-                            Para conectar, influir y generar confianza. Reducción de conflictos y mensajes más claros.
-                        </li>
-                        <li>
-                            <strong>Toma de decisiones con visión y foco:</strong> 
-                            Para decidir sin parálisis, con estrategia y sentido. Menos errores, más velocidad.
-                        </li>
-                        <li>
-                            <strong>Inteligencia emocional y autoconocimiento:</strong> 
-                            Para gestionar mejor las emociones, el estrés y el impacto que generas.
-                        </li>
-                        <li>
-                            <strong>Gestión del cambio y adaptación:</strong> 
-                            Para transiciones de rol, contextos de incertidumbre o crecimiento acelerado.
-                        </li>
-                    </ul>
+        <!-- Services Grid Principal -->
+        <section class="section" id="servicios-principales" data-spy>
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Servicios principales</div>
+                    <h2 class="section-title">Transformación integral para tu organización</h2>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Coaching Ejecutivo -->
+                    <article class="service-card" id="coaching" data-reveal data-delay="100">
+                        <div class="service-header">
+                            <h2 class="service-title">Coaching Ejecutivo</h2>
+                            <p class="service-subtitle">Desarrollo de líderes con base psicológica</p>
+                        </div>
+                        <div class="service-content">
+                            <p class="service-description">
+                                Procesos personalizados de acompañamiento para directivos y líderes que 
+                                buscan potenciar sus habilidades y alcanzar un mayor rendimiento profesional 
+                                y personal.
+                            </p>
+                            <ul class="service-features">
+                                <li>Enfoque basado en psicología positiva y fortalezas</li>
+                                <li>Mejora del liderazgo y toma de decisiones</li>
+                                <li>Desarrollo de inteligencia emocional</li>
+                                <li>Gestión del cambio y adaptación</li>
+                                <li>ROI demostrado de 5-7x la inversión</li>
+                            </ul>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="150" data-suffix="+">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Procesos completados</p>
+                            </div>
+                            <a href="contacto.html?servicio=coaching" class="btn btn-primary">Solicitar información</a>
+                        </div>
+                    </article>
 
-                    <div class="service-cta-box">
-                        <h3>💰 Retorno de inversión comprobado</h3>
-                        <p>
-                            Según PriceWaterhouseCoopers y la ICF, el 86% de las empresas que invirtieron en coaching afirmaron haber recuperado el 100% de la inversión o más. Y 1 de cada 4, entre 10 y 49 veces.
+                    <!-- Eficacia Comercial -->
+                    <article class="service-card" id="eficacia" data-reveal data-delay="200">
+                        <div class="service-header">
+                            <h2 class="service-title">Eficacia Comercial</h2>
+                            <p class="service-subtitle">Sales Force Effectiveness</p>
+                        </div>
+                        <div class="service-content">
+                            <p class="service-description">
+                                Metodología integral que alinea personas, procesos y herramientas para 
+                                convertir la acción comercial en resultados medibles, sostenibles y escalables.
+                            </p>
+                            <ul class="service-features">
+                                <li>Optimización de fichero de clientes y prospección</li>
+                                <li>Planificación comercial por potencial</li>
+                                <li>Formación + coaching comercial en terreno</li>
+                                <li>Cuadros de mando y KPIs comerciales</li>
+                                <li>Mejoras de hasta 30% en conversión</li>
+                            </ul>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="30" data-suffix="% mejora">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">En conversión típica</p>
+                            </div>
+                            <a href="contacto.html?servicio=eficacia" class="btn btn-primary">Solicitar información</a>
+                        </div>
+                    </article>
+
+                    <!-- Formación para Managers -->
+                    <article class="service-card" id="formacion" data-reveal data-delay="300">
+                        <div class="service-header">
+                            <h2 class="service-title">Formación para Managers</h2>
+                            <p class="service-subtitle">Liderazgo y desarrollo de equipos</p>
+                        </div>
+                        <div class="service-content">
+                            <p class="service-description">
+                                Transformo mandos intermedios en líderes conscientes y efectivos, capaces 
+                                de influir positivamente y generar resultados sostenibles.
+                            </p>
+                            <ul class="service-features">
+                                <li>Liderazgo situacional y adaptativo</li>
+                                <li>Autoconocimiento y fortalezas personales</li>
+                                <li>Psicología positiva aplicada al liderazgo</li>
+                                <li>Coaching integrado para consolidar cambios</li>
+                                <li>Formato teórico-práctico con seguimiento</li>
+                            </ul>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="500" data-suffix="+">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Managers formados</p>
+                            </div>
+                            <a href="contacto.html?servicio=formacion" class="btn btn-primary">Solicitar información</a>
+                        </div>
+                    </article>
+
+                    <!-- Definición de KPIs -->
+                    <article class="service-card" id="kpis" data-reveal data-delay="400">
+                        <div class="service-header">
+                            <h2 class="service-title">Definición de KPIs</h2>
+                            <p class="service-subtitle">Métricas que impulsan resultados</p>
+                        </div>
+                        <div class="service-content">
+                            <p class="service-description">
+                                Diseño sistemas de indicadores clave adaptados a tu realidad comercial, 
+                                conectando actividad, eficiencia y resultados.
+                            </p>
+                            <ul class="service-features">
+                                <li>KPIs de actividad, resultados y eficiencia</li>
+                                <li>Cuadros de mando visuales y accionables</li>
+                                <li>Formación en interpretación de datos</li>
+                                <li>Alineación con objetivos estratégicos</li>
+                                <li>Sistema de mejora continua</li>
+                            </ul>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="100" data-suffix="+ KPIs">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Implementados</p>
+                            </div>
+                            <a href="contacto.html?servicio=kpis" class="btn btn-primary">Solicitar información</a>
+                        </div>
+                    </article>
+
+                    <!-- Técnicas de Ventas -->
+                    <article class="service-card" id="ventas" data-reveal data-delay="500">
+                        <div class="service-header">
+                            <h2 class="service-title">Técnicas de Ventas</h2>
+                            <p class="service-subtitle">Formación comercial avanzada</p>
+                        </div>
+                        <div class="service-content">
+                            <p class="service-description">
+                                Formación práctica que transforma tu red comercial en un equipo que 
+                                no solo visita, sino que impacta, convence y fideliza.
+                            </p>
+                            <ul class="service-features">
+                                <li>Metodología adaptada a tu sector</li>
+                                <li>Role-play y casos prácticos reales</li>
+                                <li>Coaching comercial en terreno</li>
+                                <li>Alineación marketing-ventas</li>
+                                <li>Seguimiento y consolidación de hábitos</li>
+                            </ul>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="1000" data-suffix="+">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Comerciales formados</p>
+                            </div>
+                            <a href="contacto.html?servicio=ventas" class="btn btn-primary">Solicitar información</a>
+                        </div>
+                    </article>
+
+                    <!-- Solución Integral -->
+                    <article class="service-card" data-reveal data-delay="600">
+                        <div class="service-header">
+                            <h2 class="service-title">Solución Integral</h2>
+                            <p class="service-subtitle">Transformación completa</p>
+                        </div>
+                        <div class="service-content">
+                            <p class="service-description">
+                                Combinación personalizada de todos mis servicios para una transformación 
+                                organizacional completa y sostenible.
+                            </p>
+                            <ul class="service-features">
+                                <li>Diagnóstico organizacional profundo</li>
+                                <li>Plan estratégico a medida</li>
+                                <li>Implementación por fases</li>
+                                <li>Acompañamiento continuo</li>
+                                <li>Transferencia de conocimiento</li>
+                            </ul>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="100" data-suffix="%">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Personalización</p>
+                            </div>
+                            <a href="contacto.html?servicio=integral" class="btn btn-primary">Solicitar diagnóstico</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section con Timeline Animado -->
+        <section class="section" id="proceso" data-spy style="background: var(--background-light);">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Metodología de trabajo</div>
+                    <h2 class="section-title">Mi proceso de transformación organizacional</h2>
+                </div>
+                
+                <div class="results-grid">
+                    <div class="result-item" data-reveal data-delay="100">
+                        <span class="result-number">1</span>
+                        <span class="result-label">Diagnóstico</span>
+                        <p style="margin-top: 1rem; font-size: 0.875rem;">
+                            Análisis profundo de tu situación actual, cultura y objetivos
                         </p>
+                    </div>
+                    <div class="result-item" data-reveal data-delay="200">
+                        <span class="result-number">2</span>
+                        <span class="result-label">Diseño</span>
+                        <p style="margin-top: 1rem; font-size: 0.875rem;">
+                            Plan de acción 100% personalizado y alineado con tu realidad
+                        </p>
+                    </div>
+                    <div class="result-item" data-reveal data-delay="300">
+                        <span class="result-number">3</span>
+                        <span class="result-label">Implementación</span>
+                        <p style="margin-top: 1rem; font-size: 0.875rem;">
+                            Ejecución acompañada con formación y coaching continuo
+                        </p>
+                    </div>
+                    <div class="result-item" data-reveal data-delay="400">
+                        <span class="result-number">4</span>
+                        <span class="result-label">Medición</span>
+                        <p style="margin-top: 1rem; font-size: 0.875rem;">
+                            Seguimiento con KPIs y ajustes ágiles según resultados
+                        </p>
+                    </div>
+                    <div class="result-item" data-reveal data-delay="500">
+                        <span class="result-number">5</span>
+                        <span class="result-label">Consolidación</span>
+                        <p style="margin-top: 1rem; font-size: 0.875rem;">
+                            Transferencia de conocimiento para autonomía futura
+                        </p>
+                    </div>
+                    <div class="result-item" data-reveal data-delay="600">
+                        <span class="result-number">6</span>
+                        <span class="result-label">Seguimiento</span>
+                        <p style="margin-top: 1rem; font-size: 0.875rem;">
+                            Acompañamiento post-proyecto para asegurar sostenibilidad
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section con Acordeón -->
+        <section class="section" id="faq" data-spy>
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Preguntas frecuentes</div>
+                    <h2 class="section-title">Resolvemos tus dudas</h2>
+                </div>
+                
+                <div class="faq-accordion" data-multi-expand="false" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item" data-reveal data-delay="100">
+                        <button class="faq-trigger">
+                            <span>¿Cuánto tiempo dura un proceso de coaching ejecutivo?</span>
+                            <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-panel" hidden>
+                            <div class="faq-content">
+                                <p>Un proceso de coaching ejecutivo típicamente dura entre 3 y 6 meses, con sesiones quincenales o mensuales. La duración exacta se adapta a los objetivos específicos y al ritmo de desarrollo del ejecutivo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-reveal data-delay="200">
+                        <button class="faq-trigger">
+                            <span>¿Los servicios son presenciales u online?</span>
+                            <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-panel" hidden>
+                            <div class="faq-content">
+                                <p>Ofrezco ambas modalidades. Las sesiones pueden ser presenciales en Madrid o virtuales para clientes de toda España. La metodología está adaptada para garantizar la misma efectividad en ambos formatos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-reveal data-delay="300">
+                        <button class="faq-trigger">
+                            <span>¿Qué ROI puedo esperar de la consultoría?</span>
+                            <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-panel" hidden>
+                            <div class="faq-content">
+                                <p>Según estudios sectoriales (PWC-ICF), el coaching ejecutivo genera un ROI de 5-7x la inversión. En eficacia comercial, típicamente logramos mejoras del 30% en conversión. Cada proyecto incluye KPIs específicos para medir el retorno.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-reveal data-delay="400">
+                        <button class="faq-trigger">
+                            <span>¿Trabajas con pymes o solo grandes empresas?</span>
+                            <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-panel" hidden>
+                            <div class="faq-content">
+                                <p>Me especializo en pymes y empresas medianas que buscan profesionalizar su función comercial. Mi metodología está específicamente adaptada para organizaciones que necesitan resultados claros con recursos optimizados.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-reveal data-delay="500">
+                        <button class="faq-trigger">
+                            <span>¿Incluyes formación del equipo en tus servicios?</span>
+                            <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div class="faq-panel" hidden>
+                            <div class="faq-content">
+                                <p>Sí, mi enfoque integral combina consultoría, formación y coaching. Trabajo tanto con directivos como con equipos completos, asegurando que los cambios se implementen en todos los niveles de la organización.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta" id="solicitar" data-spy>
+            <div class="container">
+                <div class="cta-content" data-reveal>
+                    <h2 class="cta-title">¿Qué servicio necesita tu empresa?</h2>
+                    <p class="cta-description">
+                        Empiezo con un diagnóstico gratuito para entender tu situación y diseñar la mejor estrategia.
+                    </p>
+                    <div class="cta-buttons">
                         <a href="contacto.html" class="btn btn-primary">Solicitar Diagnóstico Gratuito</a>
+                        <a href="tel:+34609430403" class="btn btn-secondary">Llamar: +34 609 430 403</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Eficacia Comercial -->
-    <section class="section service-detail-alt" id="eficacia-comercial">
-        <div class="container">
-            <div class="service-detail-grid">
-                <div class="service-detail-content animate-on-scroll">
-                    <div class="section-badge">Sales Force Effectiveness</div>
-                    <h2 class="service-detail-title">📊 Consultoría en Eficacia Comercial</h2>
-                    <p class="service-detail-intro">
-                        <strong>Una red de ventas eficaz no es fruto del azar. Es el resultado de una estrategia bien diseñada, datos bien analizados y equipos bien acompañados.</strong>
-                    </p>
-                    <p>
-                        Trabajo codo a codo con empresas que desean dar un salto cualitativo en su rendimiento comercial a través de una metodología probada que alinea personas, procesos y herramientas.
-                    </p>
-
-                    <h3>🧱 Los 5 pilares de mi metodología</h3>
-                    <div class="pillars-grid">
-                        <div class="pillar-card">
-                            <h4>1️⃣ Fichero de clientes y prospección estratégica</h4>
-                            <p>Construimos un fichero de clientes potenciales de calidad, bien segmentado y enfocado en el perfil ideal. Implementamos estrategias de prospección activa con criterio.</p>
-                        </div>
-                        <div class="pillar-card">
-                            <h4>2️⃣ Actividad comercial planificada</h4>
-                            <p>Diseñamos una planificación basada en el potencial real de cada cliente, definiendo tipo de contacto, frecuencia y canal óptimo.</p>
-                        </div>
-                        <div class="pillar-card">
-                            <h4>3️⃣ Formación + Calidad de la visita</h4>
-                            <p>Trabajamos técnicas de venta actualizadas y la calidad de cada interacción: escucha activa, detección de necesidades y aportación de valor real.</p>
-                        </div>
-                        <div class="pillar-card">
-                            <h4>4️⃣ Coaching comercial en terreno</h4>
-                            <p>Formación de managers como coaches comerciales. Acompañamiento en visitas reales, feedback y refuerzo de buenas prácticas.</p>
-                        </div>
-                        <div class="pillar-card">
-                            <h4>5️⃣ Cuadros de mando y KPIs</h4>
-                            <p>Diseñamos un cuadro de mando adaptado con indicadores claros de actividad y resultado para decisiones basadas en datos.</p>
-                        </div>
-                    </div>
-
-                    <div class="results-box">
-                        <h3>📈 Resultados típicos conseguidos</h3>
-                        <div class="results-grid">
-                            <div class="result-stat">
-                                <span class="result-number">30%</span>
-                                <span class="result-label">Mejora en conversión</span>
-                            </div>
-                            <div class="result-stat">
-                                <span class="result-number">-25%</span>
-                                <span class="result-label">Reducción tiempo improductivo</span>
-                            </div>
-                            <div class="result-stat">
-                                <span class="result-number">+40%</span>
-                                <span class="result-label">Incremento compromiso</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="service-cta-box">
-                        <p><strong>Cuando alineas método, datos y personas, la venta deja de ser una lucha y se convierte en una consecuencia natural del buen trabajo.</strong></p>
-                        <a href="contacto.html" class="btn btn-primary">Diseñemos tu Plan de Eficacia Comercial</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formación para Managers -->
-    <section class="section service-detail" id="formacion-managers">
-        <div class="container">
-            <div class="service-detail-grid">
-                <div class="service-detail-content animate-on-scroll">
-                    <div class="section-badge">Liderazgo Transformador</div>
-                    <h2 class="service-detail-title">🧭 Formación para Managers: Liderar con propósito, personas y resultados</h2>
-                    <p class="service-detail-intro">
-                        <strong>Un manager no solo dirige. Un buen manager inspira, escucha, toma decisiones con claridad y hace crecer a las personas a su alrededor.</strong>
-                    </p>
-                    <p>
-                        Esta formación está diseñada para transformar a los mandos intermedios y responsables de equipo en líderes conscientes, adaptativos y efectivos.
-                    </p>
-
-                    <h3>👥 Contenidos del programa</h3>
-                    <div class="program-modules">
-                        <div class="module-card">
-                            <h4>Módulo 1: Liderazgo como proceso</h4>
-                            <p>Liderazgo dinámico en entornos de alta complejidad. Adaptación según características del líder, equipo y contexto. Liderazgo situacional y estratégico.</p>
-                        </div>
-                        <div class="module-card">
-                            <h4>Módulo 2: Autoconocimiento y fortalezas</h4>
-                            <p>Identificación de rasgos de personalidad y estilo natural de liderazgo. Cómo usar tus fortalezas como motor de influencia auténtica.</p>
-                        </div>
-                        <div class="module-card">
-                            <h4>Módulo 3: Liderazgo positivo</h4>
-                            <p>Herramientas de Psicología Positiva para generar confianza, motivación y conexión. Construcción de propósito compartido y cultura de compromiso.</p>
-                        </div>
-                        <div class="module-card">
-                            <h4>Módulo 4: Conductas concretas de liderazgo</h4>
-                            <p>Comunicación clara, delegación efectiva, feedback constructivo, gestión de prioridades. Comportamiento consciente y alineado.</p>
-                        </div>
-                        <div class="module-card">
-                            <h4>Módulo 5: Coaching integrado</h4>
-                            <p>Dinámicas individuales y grupales para consolidar el nuevo estilo. Trabajo sobre creencias limitantes y experimentación práctica.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-cta-box">
-                        <h3>✅ Beneficios para los participantes</h3>
-                        <ul>
-                            <li>Mayor seguridad, visión y capacidad de adaptación</li>
-                            <li>Mejores relaciones con equipos: confianza y colaboración</li>
-                            <li>Herramientas concretas para entornos complejos</li>
-                            <li>Estilo de liderazgo más humano y eficaz</li>
-                            <li>Mayor impacto en motivación y rendimiento del equipo</li>
-                        </ul>
-                        <a href="contacto.html" class="btn btn-primary">Solicitar Programa Detallado</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KPIs y Técnicas de Ventas -->
-    <section class="section service-detail-alt">
-        <div class="container">
-            <div class="two-services-grid">
-                <!-- KPIs -->
-                <div class="service-compact animate-on-scroll">
-                    <div class="section-badge">Métricas que Importan</div>
-                    <h2>📊 Definición de KPIs Comerciales</h2>
-                    <p class="service-intro">
-                        <strong>Lo que no se mide, no se puede mejorar. Y lo que se mide bien, impulsa decisiones que generan resultados.</strong>
-                    </p>
-                    
-                    <h3>🎯 KPIs que implementamos</h3>
-                    <div class="kpi-categories">
-                        <div class="kpi-category">
-                            <h4>KPIs de Actividad</h4>
-                            <ul>
-                                <li>Número de llamadas y contactos</li>
-                                <li>Visitas comerciales</li>
-                                <li>Propuestas enviadas</li>
-                                <li>Nuevos leads en CRM</li>
-                            </ul>
-                        </div>
-                        <div class="kpi-category">
-                            <h4>KPIs de Resultados</h4>
-                            <ul>
-                                <li>Ventas cerradas</li>
-                                <li>Facturación por vendedor</li>
-                                <li>Margen de beneficio</li>
-                                <li>% objetivos alcanzados</li>
-                            </ul>
-                        </div>
-                        <div class="kpi-category">
-                            <h4>KPIs de Eficiencia</h4>
-                            <ul>
-                                <li>% conversión por fase</li>
-                                <li>Ratio propuestas ganadas</li>
-                                <li>Ciclo medio de ventas</li>
-                                <li>Tasa de retención</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="service-benefit">
-                        <p><strong>📍 Los datos no sustituyen al criterio. Lo multiplican.</strong></p>
-                        <a href="contacto.html" class="btn btn-primary">Diseñar Sistema de KPIs</a>
-                    </div>
-                </div>
-
-                <!-- Técnicas de Ventas -->
-                <div class="service-compact animate-on-scroll">
-                    <div class="section-badge">Ventas Profesionales</div>
-                    <h2>💼 Formación en Técnicas de Ventas</h2>
-                    <p class="service-intro">
-                        <strong>Vender no es solo ofrecer un producto. Es influir, conectar, generar confianza y aportar valor real al cliente.</strong>
-                    </p>
-                    
-                    <h3>📌 Prerrequisitos que trabajamos</h3>
-                    <ul class="prerequisites-list">
-                        <li><strong>Posicionamiento claro:</strong> Diagnóstico y mejora del posicionamiento del producto/servicio</li>
-                        <li><strong>Mentalidad comercial:</strong> Trabajo sobre creencias limitadoras y autoconfianza</li>
-                        <li><strong>Alineación Marketing-Ventas:</strong> Creación de puentes reales entre equipos</li>
-                        <li><strong>Conocimiento profundo:</strong> Dominio del producto y beneficios clave</li>
-                    </ul>
-
-                    <h3>🎯 Metodología de formación</h3>
-                    <div class="training-phases">
-                        <div class="phase">Preparación</div>
-                        <div class="phase">Toma de contacto</div>
-                        <div class="phase">Sondeo</div>
-                        <div class="phase">Argumentación</div>
-                        <div class="phase">Cierre</div>
-                    </div>
-                    
-                    <p>Cada fase se entrena con role-play, casos prácticos y simulaciones adaptadas a tu sector. Incluye formación continua con coaching comercial en terreno.</p>
-                    
-                    <div class="service-benefit">
-                        <p><strong>✅ Una red bien formada vende con confianza, coherencia y resultados.</strong></p>
-                        <a href="contacto.html" class="btn btn-primary">Solicitar Plan de Formación</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="section process-section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Mi Metodología</div>
-                <h2 class="section-title">Proceso de trabajo estructurado</h2>
-                <p class="section-description">
-                    Un enfoque sistemático que garantiza resultados medibles y sostenibles
-                </p>
-            </div>
-            <div class="process-timeline">
-                <div class="process-step animate-on-scroll">
-                    <div class="process-number">1</div>
-                    <h3>Diagnóstico Profundo</h3>
-                    <p>Análisis exhaustivo de tu situación actual, cultura organizacional y objetivos. Identificación de áreas de mejora y oportunidades.</p>
-                </div>
-                <div class="process-step animate-on-scroll">
-                    <div class="process-number">2</div>
-                    <h3>Diseño Personalizado</h3>
-                    <p>Desarrollo de un plan de acción 100% adaptado a tus necesidades, recursos y momento empresarial.</p>
-                </div>
-                <div class="process-step animate-on-scroll">
-                    <div class="process-number">3</div>
-                    <h3>Implementación Acompañada</h3>
-                    <p>Puesta en marcha con seguimiento cercano, formación práctica y coaching para asegurar la adopción.</p>
-                </div>
-                <div class="process-step animate-on-scroll">
-                    <div class="process-number">4</div>
-                    <h3>Medición y Ajuste</h3>
-                    <p>Monitoreo continuo con KPIs claros. Ajustes ágiles según resultados y feedback.</p>
-                </div>
-                <div class="process-step animate-on-scroll">
-                    <div class="process-number">5</div>
-                    <h3>Autonomía y Sostenibilidad</h3>
-                    <p>Transferencia de conocimiento para que tu equipo mantenga y mejore los resultados de forma autónoma.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content animate-on-scroll">
-                <h2 class="cta-title">¿Qué servicio necesita tu empresa?</h2>
-                <p class="cta-description">
-                    Empiezo con un diagnóstico gratuito para entender tu situación y diseñar la mejor estrategia.
-                </p>
-                <div class="cta-buttons">
-                    <a href="contacto.html" class="btn btn-primary">Solicitar Diagnóstico Gratuito</a>
-                    <a href="tel:+34609430403" class="btn btn-secondary">Llamar: +34 609 430 403</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -374,14 +480,15 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Luis Romera</h3>
-                    <p>Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales desde la integración de estrategia, desarrollo humano y resultados medibles.</p>
+                    <p>Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales 
+                    desde la integración de estrategia, desarrollo humano y resultados medibles.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Servicios</h3>
                     <ul>
-                        <li><a href="#coaching-ejecutivo">Coaching Ejecutivo</a></li>
-                        <li><a href="#eficacia-comercial">Eficacia Comercial</a></li>
-                        <li><a href="#formacion-managers">Formación para Managers</a></li>
+                        <li><a href="#coaching">Coaching Ejecutivo</a></li>
+                        <li><a href="#eficacia">Eficacia Comercial</a></li>
+                        <li><a href="#formacion">Formación para Managers</a></li>
                         <li><a href="#kpis">Definición de KPIs</a></li>
                         <li><a href="#ventas">Técnicas de Ventas</a></li>
                     </ul>
@@ -398,10 +505,10 @@
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
-                        <li>📱 +34 609 430 403</li>
-                        <li>✉️ luisromeranavarro@gmail.com</li>
-                        <li>📍 Madrid, España</li>
-                        <li>🕒 Lunes - Viernes: 9:00 - 18:00</li>
+                        <li>+34 609 430 403</li>
+                        <li>luisromeranavarro@gmail.com</li>
+                        <li>Madrid, España</li>
+                        <li>Lunes - Viernes: 9:00 - 18:00</li>
                     </ul>
                 </div>
             </div>
@@ -411,6 +518,12 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/effects.js" defer></script>
+    <script src="assets/js/scrollspy.js" defer></script>
+    <script src="assets/js/accordion.js" defer></script>
+    <script src="assets/js/counters.js" defer></script>
+    <script src="assets/js/backtotop.js" defer></script>
 </body>
 </html>

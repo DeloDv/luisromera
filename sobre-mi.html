@@ -1,20 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Mí | Luis Romera - Psicólogo y Consultor Organizacional</title>
-    <meta name="description" content="Conoce a Luis Romera: 24 años de experiencia integrando psicología, estrategia y resultados. Psicólogo colegiado, experto en coaching y Sales Force Effectiveness.">
+    <meta name="description"
+        content="Conoce a Luis Romera: 24 años de experiencia integrando psicología, estrategia y resultados. Psicólogo colegiado, experto en coaching y Sales Force Effectiveness.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://luisromera.com/sobre-mi">
+    <meta property="og:title" content="Luis Romera - Psicólogo y Consultor Organizacional">
+    <meta property="og:description"
+        content="24 años transformando organizaciones desde la psicología y los resultados medibles.">
+    <meta property="og:image" content="https://luisromera.com/assets/images/luis-romera.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://luisromera.com/sobre-mi">
+    <meta property="twitter:title" content="Luis Romera - Consultor Organizacional">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://luisromera.com/sobre-mi">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/effects.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Luis Romera Navarro",
+        "jobTitle": "Psicólogo y Consultor Organizacional",
+        "description": "Especialista en transformación de equipos comerciales con 24 años de experiencia",
+        "url": "https://luisromera.com",
+        "image": "https://luisromera.com/assets/images/luis-romera.jpg",
+        "email": "luisromeranavarro@gmail.com",
+        "telephone": "+34609430403",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Madrid",
+            "addressCountry": "ES"
+        },
+        "alumniOf": [
+            {
+                "@type": "EducationalOrganization",
+                "name": "UNED"
+            },
+            {
+                "@type": "EducationalOrganization",
+                "name": "Universidad de La Salle"
+            }
+        ],
+        "knowsAbout": ["Coaching Ejecutivo", "Sales Force Effectiveness", "Psicología Organizacional", "Liderazgo", "Formación Comercial"]
+    }
+    </script>
 </head>
+
 <body>
-    <!-- Header -->
+    <!-- Skip Link para Accesibilidad -->
+    <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- Header con Sticky -->
     <header class="header" id="header">
         <div class="container">
-            <nav class="nav">
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
                 <a href="index.html" class="logo">Luis Romera</a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -23,7 +83,7 @@
                     <li><a href="contacto.html" class="nav-link">Contacto</a></li>
                     <li><a href="contacto.html" class="btn btn-primary">Consulta Gratuita</a></li>
                 </ul>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú móvil" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -32,370 +92,472 @@
         </div>
     </header>
 
-    <!-- Page Hero with Photo -->
-    <section class="about-hero">
-        <div class="container">
-            <div class="about-hero-grid">
-                <div class="about-hero-content animate-on-scroll">
-                    <h1 class="about-hero-title">Luis Romera Navarro</h1>
-                    <p class="about-hero-subtitle">Psicólogo y Consultor Organizacional</p>
-                    <p class="about-hero-description">
-                        24 años integrando estrategia, personas y resultados para transformar organizaciones desde su esencia más humana hasta sus objetivos más ambiciosos.
+    <!-- Main Content -->
+    <main id="main">
+        <!-- About Hero Section con Parallax -->
+        <section class="section about" id="presentacion" data-spy style="padding-top: 6rem;">
+            <div class="hero__bg" data-parallax data-speed="0.2"
+                style="position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: -1; opacity: 0.05;">
+                <div class="hero__bg-gradient"></div>
+            </div>
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image" data-reveal>
+                        <img src="assets/images/personal/Luis-Romera.jpg"
+                            alt="Luis Romera - Psicólogo y Consultor Organizacional" loading="lazy" width="500"
+                            height="600">
+                    </div>
+                    <div class="about-content" data-reveal data-delay="200">
+                        <h1 class="about-title">Luis Romera Navarro</h1>
+                        <p class="about-text">
+                            <strong>Psicólogo y Consultor Organizacional</strong> con <span class="counter"
+                                data-target="24" data-suffix=" años">0</span> de experiencia
+                            integrando estrategia, personas y resultados en el mundo empresarial.
+                        </p>
+                        <p class="about-text">
+                            A lo largo de mi carrera he tenido la oportunidad de vivir la empresa desde dentro,
+                            en casi todas sus dimensiones. He crecido profesionalmente desde la visita comercial
+                            en el terreno, hasta la dirección de equipos de ventas, la formación de talento y el
+                            diseño de estrategias de alto impacto como <strong>Sales Force Effectiveness
+                                Manager</strong>.
+                        </p>
+                        <p class="about-text">
+                            Mi experiencia principal se ha desarrollado en <strong>Laboratorios BOIRON</strong> durante
+                            23 años, donde he evolucionado a través de diferentes roles: Director de Sucursal,
+                            Gerente de Ventas, Sales Force Effectiveness Manager y co-creador de la Escuela de
+                            Ventas (Boiron Academy), un proyecto internacional de formación continua.
+                        </p>
+                        <div class="about-credentials">
+                            <div class="credential" data-reveal data-delay="300">Psicólogo Colegiado</div>
+                            <div class="credential" data-reveal data-delay="400">Experto en Psicología Positiva</div>
+                            <div class="credential" data-reveal data-delay="500">Experto en Coaching</div>
+                            <div class="credential" data-reveal data-delay="600">Sales Force Effectiveness</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="section" id="trayectoria" data-spy style="background: var(--background-light);">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Mi trayectoria</div>
+                    <h2 class="section-title">Más de 20 años integrando estrategia, personas y resultados</h2>
+                </div>
+
+                <div class="timeline" style="max-width: 800px; margin: 0 auto; position: relative;">
+                    <!-- Timeline Line -->
+                    <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--accent-color);"
+                        data-reveal></div>
+
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item" data-reveal data-delay="100"
+                        style="display: flex; margin-bottom: 3rem; position: relative;">
+                        <div style="flex: 1; text-align: right; padding-right: 2rem;">
+                            <h3 style="color: var(--primary-color);">2002 - 2010</h3>
+                            <h4 style="margin: 0.5rem 0;">Director de Sucursal</h4>
+                            <p style="color: var(--text-light);">Laboratorios BOIRON</p>
+                            <p style="font-size: 0.875rem;">Liderazgo de equipos comerciales, gestión de territorio
+                                y desarrollo de estrategias locales de ventas.</p>
+                            <div class="counter" data-target="8" data-suffix=" años">0</div>
+                        </div>
+                        <div
+                            style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                        </div>
+                        <div style="flex: 1;"></div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item" data-reveal data-delay="200"
+                        style="display: flex; margin-bottom: 3rem; position: relative;">
+                        <div style="flex: 1;"></div>
+                        <div
+                            style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                        </div>
+                        <div style="flex: 1; text-align: left; padding-left: 2rem;">
+                            <h3 style="color: var(--primary-color);">2010 - 2018</h3>
+                            <h4 style="margin: 0.5rem 0;">Gerente de Ventas</h4>
+                            <p style="color: var(--text-light);">Laboratorios BOIRON</p>
+                            <p style="font-size: 0.875rem;">Gestión de equipos comerciales a nivel nacional,
+                                implementación de estrategias de ventas y desarrollo de talento.</p>
+                            <div class="counter" data-target="30" data-suffix="+ profesionales">0</div>
+                            <p style="font-size: 0.75rem; color: var(--text-light);">Equipo gestionado</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item" data-reveal data-delay="300"
+                        style="display: flex; margin-bottom: 3rem; position: relative;">
+                        <div style="flex: 1; text-align: right; padding-right: 2rem;">
+                            <h3 style="color: var(--primary-color);">2018 - Presente</h3>
+                            <h4 style="margin: 0.5rem 0;">Sales Force Effectiveness Manager</h4>
+                            <p style="color: var(--text-light);">Laboratorios BOIRON</p>
+                            <p style="font-size: 0.875rem;">Diseño de cuadros de mando que vinculan competencias
+                                con resultados reales. Co-creador de Boiron Academy.</p>
+                            <div class="counter" data-target="100" data-suffix="+ KPIs">0</div>
+                            <p style="font-size: 0.75rem; color: var(--text-light);">Implementados</p>
+                        </div>
+                        <div
+                            style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                        </div>
+                        <div style="flex: 1;"></div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item" data-reveal data-delay="400"
+                        style="display: flex; margin-bottom: 3rem; position: relative;">
+                        <div style="flex: 1;"></div>
+                        <div
+                            style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                        </div>
+                        <div style="flex: 1; text-align: left; padding-left: 2rem;">
+                            <h3 style="color: var(--primary-color);">2020 - Presente</h3>
+                            <h4 style="margin: 0.5rem 0;">Psicólogo Coach</h4>
+                            <p style="color: var(--text-light);">Clínica MindUp</p>
+                            <p style="font-size: 0.875rem;">Acompañamiento de procesos individuales de cambio,
+                                desarrollo y bienestar con enfoque integrador.</p>
+                            <div class="counter" data-target="150" data-suffix="+ procesos">0</div>
+                            <p style="font-size: 0.75rem; color: var(--text-light);">De coaching completados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Highlight -->
+        <section class="section" id="logros" data-spy>
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Logro destacado</div>
+                    <h2 class="section-title">Cuando un cuadro de mando se convierte en una brújula del talento</h2>
+                </div>
+
+                <div class="value-card" data-reveal style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+                    <p style="font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Uno de los logros que más me ha marcado profesional y personalmente fue diseñar una
+                        herramienta capaz de ir más allá de los números. Un cuadro de mando que no solo medía
+                        la actividad comercial, sino que <strong>revelaba lo invisible: las competencias que
+                            verdaderamente impulsan —o frenan— el rendimiento de un equipo</strong>.
                     </p>
-                    <div class="about-credentials-badges">
-                        <span class="credential-badge">Psicólogo Colegiado</span>
-                        <span class="credential-badge">Experto en Coaching</span>
-                        <span class="credential-badge">Sales Force Effectiveness</span>
-                    </div>
-                </div>
-                <div class="about-hero-image animate-on-scroll">
-                    <img src="./images/personal/Luis-Romera.jpg" alt="Luis Romera - Psicólogo y Consultor Organizacional">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Mi Historia -->
-    <section class="section about-story">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Mi Trayectoria</div>
-                <h2 class="section-title">Más de 20 años integrando estrategia, personas y resultados</h2>
-            </div>
-            
-            <div class="story-content animate-on-scroll">
-                <p class="story-text">
-                    A lo largo de mi carrera he tenido la oportunidad de vivir la empresa desde dentro, en casi todas sus dimensiones. He crecido profesionalmente desde la visita comercial en el terreno, hasta la dirección de equipos de ventas, la formación de talento y el diseño de estrategias de alto impacto como <strong>Sales Force Effectiveness Manager</strong>.
-                </p>
-                
-                <p class="story-text">
-                    Mi experiencia principal se ha desarrollado en <strong>Laboratorios BOIRON</strong> durante 23 años, donde he evolucionado a través de diferentes roles: Director de Sucursal, Gerente de Ventas, Sales Force Effectiveness Manager y co-creador de la Escuela de Ventas (Boiron Academy), un proyecto internacional de formación continua.
-                </p>
-                
-                <p class="story-text">
-                    He liderado equipos, formado a profesionales, acompañado procesos de transformación comercial y creado herramientas que hoy marcan la diferencia, como <strong>cuadros de mando que vinculan competencias con resultados reales</strong>.
-                </p>
-                
-                <blockquote class="story-quote">
-                    "Cada rol que he ocupado me ha permitido entender mejor cómo piensan, sienten y actúan las personas dentro de una organización, y cómo traducir ese conocimiento en decisiones estratégicas, motivación sostenida y crecimiento medible."
-                </blockquote>
-                
-                <p class="story-text">
-                    A esta trayectoria se suma mi experiencia desde 2020 como <strong>Psicólogo Coach en la Clínica de Psicología MindUp</strong>, donde acompaño procesos individuales de cambio, desarrollo y bienestar. Este enfoque me permite abordar los retos organizacionales con una mirada integradora: estratégica, emocional y profundamente humana.
-                </p>
-                
-                <p class="story-text">
-                    Mi experiencia no solo se basa en lo que he hecho, sino en cómo lo he hecho: <strong>conectando siempre el desarrollo de las personas con los objetivos del negocio</strong>, con foco en el retorno real de cada intervención y la creación de entornos donde el talento pueda florecer.
-                </p>
-                
-                <p class="story-text highlight">
-                    Hoy, como consultor independiente, pongo toda esa experiencia al servicio de empresas que quieren evolucionar con propósito, con humanidad y con impacto.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Logros Destacados -->
-    <section class="section achievements">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Logros Significativos</div>
-                <h2 class="section-title">Cuando un cuadro de mando deja de ser un informe... y se convierte en una brújula del talento</h2>
-            </div>
-            
-            <div class="achievement-story animate-on-scroll">
-                <p>
-                    Uno de los logros que más me ha marcado profesional y personalmente fue diseñar una herramienta capaz de ir más allá de los números. Un cuadro de mando que no solo medía la actividad comercial, sino que <strong>revelaba lo invisible: las competencias que verdaderamente impulsan —o frenan— el rendimiento de un equipo</strong>.
-                </p>
-                
-                <p>
-                    No se trataba simplemente de registrar datos. Este sistema conectaba de forma directa la acción diaria con las habilidades reales de cada profesional, y con los resultados que la organización necesitaba alcanzar. Por primera vez, podíamos ver con claridad qué competencias necesitaban desarrollarse, qué obstáculos estaban bloqueando el avance... y qué decisiones debíamos tomar.
-                </p>
-                
-                <div class="achievement-results">
-                    <h3>El impacto fue profundo:</h3>
-                    <ul>
-                        <li>Dejamos de reaccionar ante los resultados y empezamos a anticiparlos</li>
-                        <li>Abandonamos la formación genérica para dar paso a un desarrollo con propósito</li>
-                        <li>Cada persona comenzó a comprender su verdadero valor dentro del equipo</li>
-                        <li>Se creó un sistema de mejora continua basado en datos y personas</li>
-                    </ul>
-                </div>
-                
-                <blockquote class="achievement-quote">
-                    "Porque al final, lo más importante no es solo alcanzar los objetivos... Es liberar el talento que los hace posibles."
-                </blockquote>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formación y Credenciales -->
-    <section class="section credentials">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Formación Académica</div>
-                <h2 class="section-title">Base sólida para transformaciones reales</h2>
-            </div>
-            
-            <div class="credentials-grid">
-                <div class="credential-card animate-on-scroll">
-                    <div class="credential-icon">🎓</div>
-                    <h3>Psicología</h3>
-                    <p class="credential-title">Licenciado en Psicología</p>
-                    <p class="credential-institution">UNED</p>
-                    <p class="credential-detail">Especialización en Psicología del Trabajo y de las Organizaciones</p>
-                </div>
-                
-                <div class="credential-card animate-on-scroll">
-                    <div class="credential-icon">🧠</div>
-                    <h3>Psicología Positiva</h3>
-                    <p class="credential-title">Experto Universitario</p>
-                    <p class="credential-institution">Universidad de La Salle</p>
-                    <p class="credential-detail">Aplicación de fortalezas y bienestar en contextos organizacionales</p>
-                </div>
-                
-                <div class="credential-card animate-on-scroll">
-                    <div class="credential-icon">💼</div>
-                    <h3>Coaching Ejecutivo</h3>
-                    <p class="credential-title">Experto Universitario en Psicología Coaching</p>
-                    <p class="credential-institution">Cardenal Cisneros</p>
-                    <p class="credential-detail">Certificado como Psicólogo Experto en Coaching por el Colegio de Psicología de Madrid</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mi Filosofía -->
-    <section class="section philosophy">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Mi Filosofía</div>
-                <h2 class="section-title">Una forma distinta de hacer consultoría: con humanidad, propósito y visión integradora</h2>
-            </div>
-            
-            <div class="philosophy-content">
-                <div class="philosophy-intro animate-on-scroll">
-                    <p>
-                        Lo que me diferencia como consultor no es solo lo que hago, sino <strong>desde dónde lo hago</strong>. Mi propuesta se basa en un enfoque profundamente humano, donde cada intervención está diseñada no solo para mejorar procesos o alcanzar objetivos, sino para fortalecer a las personas que los hacen posibles.
-                    </p>
-                </div>
-                
-                <div class="philosophy-pillars">
-                    <div class="philosophy-pillar animate-on-scroll">
-                        <h3>🌟 Trabajo desde las fortalezas</h3>
-                        <p>
-                            Apoyo mi trabajo en los puntos fuertes: los talentos que ya existen en las personas, las estrategias que ya funcionan, la cultura que ya vibra dentro de la organización. No se trata de empezar de cero, sino de reconocer lo valioso, amplificarlo y usarlo como palanca para el cambio.
-                        </p>
-                    </div>
-                    
-                    <div class="philosophy-pillar animate-on-scroll">
-                        <h3>🔄 Visión integradora</h3>
-                        <p>
-                            No entiendo una organización como silos desconectados, sino como un sistema interdependiente que necesita coherencia, diálogo y colaboración. Mi mirada conecta lo estratégico con lo humano, lo emocional con lo operativo, lo individual con lo colectivo.
-                        </p>
-                    </div>
-                    
-                    <div class="philosophy-pillar animate-on-scroll">
-                        <h3>🤝 El poder del equipo</h3>
-                        <p>
-                            Creo en el trabajo en equipo como motor de transformación. Cuento con una formación sólida y una experiencia profunda en comprender cómo pensamos, sentimos y actuamos como seres humanos. Esa comprensión me permite diseñar soluciones que no solo funcionan en papel... sino que se viven, se sienten y generan impacto real.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="philosophy-conclusion animate-on-scroll">
-                    <blockquote>
-                        "No ayudo solo a resolver problemas. Ayudo a construir culturas de confianza, rendimiento y bienestar duradero. Ese es mi valor diferencial."
+                    <blockquote
+                        style="border-left: 4px solid var(--accent-color); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: var(--primary-color);">
+                        "Porque al final, lo más importante no es solo alcanzar los objetivos...
+                        Es liberar el talento que los hace posibles."
                     </blockquote>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Mi Motivación -->
-    <section class="section motivation">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Mi Motivación</div>
-                <h2 class="section-title">Consultoría independiente: un camino para dejar huella con sentido</h2>
-            </div>
-            
-            <div class="motivation-content animate-on-scroll">
-                <p>
-                    Lo que me impulsa a dedicarme a la consultoría independiente es una pasión profunda por explorar nuevos horizontes, por abrir caminos donde otros ven límites, y por asumir retos que exigen lo mejor de uno mismo.
-                </p>
-                
-                <p>
-                    Cada proyecto, cada cliente, cada equipo es una oportunidad única para construir algo valioso y duradero. Lo que realmente me mueve no es solo alcanzar resultados —que son esenciales—, sino <strong>ayudar a que esos resultados estén ligados al bienestar emocional, al crecimiento personal y a la realización de quienes los hacen posibles</strong>.
-                </p>
-                
-                <p>
-                    Me motiva profundamente contribuir a un nuevo modelo de éxito profesional: uno en el que las personas no tengan que elegir entre rendir y sentirse bien, entre cumplir objetivos y vivir con propósito. Quiero dejar un legado que inspire a las nuevas generaciones a trabajar con pasión, con equilibrio, y con orgullo por lo que construyen.
-                </p>
-                
-                <p class="motivation-highlight">
-                    Hoy, más que nunca, creo que el verdadero impacto no está solo en lo que logramos... sino en cómo lo logramos y a quién transformamos por el camino.
-                </p>
-            </div>
-        </div>
-    </section>
+        <!-- Skills Section con Progress Bars -->
+        <section class="section" id="competencias" data-spy style="background: var(--background-light);">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Competencias clave</div>
+                    <h2 class="section-title">Áreas de especialización</h2>
+                </div>
 
-    <!-- Testimonios -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Testimonios</div>
-                <h2 class="section-title">Lo que dicen quienes han trabajado conmigo</h2>
+                <div class="value-grid">
+                    <div class="value-card" data-reveal data-delay="100">
+                        <h3 class="value-title">🧠 Psicología Organizacional</h3>
+                        <div
+                            style="background: #e5e7eb; border-radius: 0.5rem; height: 8px; margin: 1rem 0; overflow: hidden;">
+                            <div class="skill-bar" data-skill="100"
+                                style="background: var(--gradient-primary); width: 0%; height: 100%; border-radius: 0.5rem; transition: width 2s ease;">
+                            </div>
+                        </div>
+                        <p class="value-description">Comprensión profunda del comportamiento humano en las
+                            organizaciones</p>
+                    </div>
+
+                    <div class="value-card" data-reveal data-delay="200">
+                        <h3 class="value-title">📊 Sales Force Effectiveness</h3>
+                        <div
+                            style="background: #e5e7eb; border-radius: 0.5rem; height: 8px; margin: 1rem 0; overflow: hidden;">
+                            <div class="skill-bar" data-skill="100"
+                                style="background: var(--gradient-primary); width: 0%; height: 100%; border-radius: 0.5rem; transition: width 2s ease;">
+                            </div>
+                        </div>
+                        <p class="value-description">Optimización de fuerzas de ventas y diseño de KPIs comerciales</p>
+                    </div>
+
+                    <div class="value-card" data-reveal data-delay="300">
+                        <h3 class="value-title">🎯 Coaching Ejecutivo</h3>
+                        <div
+                            style="background: #e5e7eb; border-radius: 0.5rem; height: 8px; margin: 1rem 0; overflow: hidden;">
+                            <div class="skill-bar" data-skill="100"
+                                style="background: var(--gradient-primary); width: 0%; height: 100%; border-radius: 0.5rem; transition: width 2s ease;">
+                            </div>
+                        </div>
+                        <p class="value-description">Desarrollo de líderes y directivos con base psicológica</p>
+                    </div>
+
+                    <div class="value-card" data-reveal data-delay="400">
+                        <h3 class="value-title">👥 Liderazgo de Equipos</h3>
+                        <div
+                            style="background: #e5e7eb; border-radius: 0.5rem; height: 8px; margin: 1rem 0; overflow: hidden;">
+                            <div class="skill-bar" data-skill="100"
+                                style="background: var(--gradient-primary); width: 0%; height: 100%; border-radius: 0.5rem; transition: width 2s ease;">
+                            </div>
+                        </div>
+                        <p class="value-description">Gestión y desarrollo de equipos de alto rendimiento</p>
+                    </div>
+
+                    <div class="value-card" data-reveal data-delay="500">
+                        <h3 class="value-title">📈 Formación Comercial</h3>
+                        <div
+                            style="background: #e5e7eb; border-radius: 0.5rem; height: 8px; margin: 1rem 0; overflow: hidden;">
+                            <div class="skill-bar" data-skill="100"
+                                style="background: var(--gradient-primary); width: 0%; height: 100%; border-radius: 0.5rem; transition: width 2s ease;">
+                            </div>
+                        </div>
+                        <p class="value-description">Diseño e impartición de programas de formación en ventas</p>
+                    </div>
+
+                    <div class="value-card" data-reveal data-delay="600">
+                        <h3 class="value-title">💡 Psicología Positiva</h3>
+                        <div
+                            style="background: #e5e7eb; border-radius: 0.5rem; height: 8px; margin: 1rem 0; overflow: hidden;">
+                            <div class="skill-bar" data-skill="100"
+                                style="background: var(--gradient-primary); width: 0%; height: 100%; border-radius: 0.5rem; transition: width 2s ease;">
+                            </div>
+                        </div>
+                        <p class="value-description">Aplicación de fortalezas y bienestar en contextos organizacionales
+                        </p>
+                    </div>
+                </div>
             </div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial animate-on-scroll">
-                    <p class="testimonial-quote">
-                        "Desde que comencé a trabajar con el coach y psicólogo Luis Romera debo decir que he crecido exponencialmente en lo profesional. Descubrí mis habilidades, mis limitaciones, superé mis miedos y entendí que tenía potencial en mi tarea social y en la conducción de equipos de trabajo. Hoy ocupo un rol de liderazgo con mayores responsabilidades y con un equipo mucho más grande. Desde España él y yo en Argentina, pudimos compartir un trabajo de mucha cercanía en la distancia. ¡Gran profesional!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">G.A.</div>
-                        <div class="testimonial-info">
-                            <h4>Gerente Regional</h4>
-                            <p>Empresa Farmacéutica - Argentina</p>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section class="section" id="formacion" data-spy>
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Formación académica</div>
+                    <h2 class="section-title">Base sólida para transformaciones reales</h2>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card" data-reveal data-delay="100">
+                        <div class="service-header" style="min-height: 120px;">
+                            <h3 class="service-title">Psicología</h3>
+                        </div>
+                        <div class="service-content">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Licenciado en Psicología
+                            </h4>
+                            <p style="color: var(--text-light); margin-bottom: 1rem;">UNED</p>
+                            <p class="service-description">
+                                Especialización en Psicología del Trabajo y de las Organizaciones
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-reveal data-delay="200">
+                        <div class="service-header" style="min-height: 120px;">
+                            <h3 class="service-title">Psicología Positiva</h3>
+                        </div>
+                        <div class="service-content">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Experto Universitario</h4>
+                            <p style="color: var(--text-light); margin-bottom: 1rem;">Universidad de La Salle</p>
+                            <p class="service-description">
+                                Aplicación de fortalezas y bienestar en contextos organizacionales
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-reveal data-delay="300">
+                        <div class="service-header" style="min-height: 120px;">
+                            <h3 class="service-title">Coaching</h3>
+                        </div>
+                        <div class="service-content">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Experto en Psicología
+                                Coaching</h4>
+                            <p style="color: var(--text-light); margin-bottom: 1rem;">Cardenal Cisneros</p>
+                            <p class="service-description">
+                                Certificado como Psicólogo Experto en Coaching por el Colegio de Psicología de Madrid
+                            </p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="testimonial animate-on-scroll">
-                    <p class="testimonial-quote">
-                        "Luis se convirtió con el tiempo en alguien en quien deposito confianza y que suscita siempre un interés sincero. Su trayectoria académica y su tesón en la proyección profesional merecen mi admiración y respeto. Me brindó la oportunidad de obtener un claro beneficio para la gestión de mis asuntos profesionales desde el punto de vista de la comprensión y conciencia de cómo hacía yo determinadas cosas en relación a mis colaboradores más cercanos. Me sentí en todo momento atendido con una entrega y compromiso profesional excepcional."
+            </div>
+        </section>
+
+        <!-- Philosophy Section con Parallax -->
+        <section class="section" id="filosofia" data-spy
+            style="background: var(--gradient-primary); color: var(--white); position: relative; overflow: hidden;">
+            <div class="hero__bg" data-parallax data-speed="0.3"
+                style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1;">
+                <img src="assets/images/pattern.svg" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="container" style="position: relative; z-index: 1;">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge" style="background: rgba(255,255,255,0.2); color: var(--white);">Mi
+                        filosofía</div>
+                    <h2 class="section-title" style="color: var(--white);">Una forma distinta de hacer consultoría</h2>
+                </div>
+
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.25rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95;" data-reveal>
+                        Lo que me diferencia como consultor no es solo lo que hago, sino <strong>desde dónde lo
+                            hago</strong>.
+                        Mi propuesta se basa en un enfoque profundamente humano, donde cada intervención está diseñada
+                        no solo para mejorar procesos o alcanzar objetivos, sino para fortalecer a las personas que
+                        los hacen posibles.
                     </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">Dr.M</div>
-                        <div class="testimonial-info">
-                            <h4>CEO</h4>
-                            <p>Centro Sanitario Privado</p>
+
+                    <div class="value-grid" style="margin-top: 3rem;">
+                        <div data-reveal data-delay="100"
+                            style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 0.5rem;">
+                            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Trabajo desde las fortalezas
+                            </h3>
+                            <p style="opacity: 0.9;">No se trata de empezar de cero, sino de reconocer lo valioso,
+                                amplificarlo y usarlo como palanca para el cambio.</p>
+                        </div>
+
+                        <div data-reveal data-delay="200"
+                            style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 0.5rem;">
+                            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Visión integradora</h3>
+                            <p style="opacity: 0.9;">Conecto lo estratégico con lo humano, lo emocional con lo
+                                operativo,
+                                lo individual con lo colectivo.</p>
+                        </div>
+
+                        <div data-reveal data-delay="300"
+                            style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 0.5rem;">
+                            <h3 style="color: var(--accent-color); margin-bottom: 1rem;">El poder del equipo</h3>
+                            <p style="opacity: 0.9;">Diseño soluciones que no solo funcionan en papel... sino que se
+                                viven,
+                                se sienten y generan impacto real.</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="testimonial animate-on-scroll">
-                    <p class="testimonial-quote">
-                        "Mi experiencia con Luis ha sido transformadora. Su enfoque profesional y empático me ayudó a establecer límites saludables en el trabajo, mejorando tanto mi bienestar como mi rendimiento laboral. Me brindó herramientas prácticas y un apoyo continuo. Sin duda, recomiendo sus servicios a cualquiera que busque crecimiento personal y equilibrio. ¡Un coach excepcional!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">A.R.</div>
-                        <div class="testimonial-info">
-                            <h4>Directiva</h4>
-                            <p>Empresa de Servicios</p>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonios" data-spy>
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Testimonios</div>
+                    <h2 class="section-title">Lo que dicen quienes han trabajado conmigo</h2>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial" data-reveal data-delay="100">
+                        <p class="testimonial-quote">
+                            "Desde que comencé a trabajar con Luis he crecido exponencialmente en lo profesional.
+                            Descubrí mis habilidades, superé mis miedos y entendí que tenía potencial en la
+                            conducción de equipos. Hoy ocupo un rol de liderazgo con mayores responsabilidades."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">VT</div>
+                            <div class="testimonial-info">
+                                <h4>Vane Toranzo</h4>
+                                <p>Líder de Equipo - Argentina</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial" data-reveal data-delay="200">
+                        <p class="testimonial-quote">
+                            "Luis me brindó la oportunidad de obtener un claro beneficio para la gestión de mis
+                            asuntos profesionales. Su entrega y compromiso profesional es excepcional. Me ayudó
+                            a comprender cómo dirigía a mis colaboradores de forma más consciente."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">Dr</div>
+                            <div class="testimonial-info">
+                                <h4>CEO</h4>
+                                <p>Centro Sanitario Privado</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial" data-reveal data-delay="300">
+                        <p class="testimonial-quote">
+                            "Su enfoque profesional y empático me ayudó a establecer límites saludables en el
+                            trabajo, mejorando tanto mi bienestar como mi rendimiento laboral. Me brindó
+                            herramientas prácticas y un apoyo continuo. ¡Un coach excepcional!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">AC</div>
+                            <div class="testimonial-info">
+                                <h4>Antonio Cortés Díaz</h4>
+                                <p>Profesional del Sector Empresarial</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Mi Metodología -->
-    <section class="section methodology">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Mi Metodología</div>
-                <h2 class="section-title">Un enfoque integrado para maximizar resultados</h2>
-            </div>
-            
-            <div class="methodology-grid">
-                <div class="methodology-step animate-on-scroll">
-                    <div class="methodology-icon">🔍</div>
-                    <h3>Diagnóstico</h3>
-                    <p>Comienzo con un análisis exhaustivo de la situación actual, identificando áreas de mejora y oportunidades específicas. Este diagnóstico permite establecer una línea base clara y objetivos medibles.</p>
+        <!-- Client Logos con animación -->
+        <section class="section" id="sectores" data-spy style="background: var(--background-light);">
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Confianza</div>
+                    <h2 class="section-title">Sectores con los que he trabajado</h2>
                 </div>
-                
-                <div class="methodology-step animate-on-scroll">
-                    <div class="methodology-icon">📝</div>
-                    <h3>Diseño</h3>
-                    <p>Desarrollo un plan de acción personalizado que responde directamente a las necesidades identificadas. Cada estrategia se diseña a medida, considerando los recursos, cultura y objetivos de la organización.</p>
-                </div>
-                
-                <div class="methodology-step animate-on-scroll">
-                    <div class="methodology-icon">🚀</div>
-                    <h3>Implementación</h3>
-                    <p>Acompaño a la organización en la puesta en marcha de las estrategias definidas, facilitando la transferencia de conocimiento y asegurando la correcta aplicación de las metodologías.</p>
-                </div>
-                
-                <div class="methodology-step animate-on-scroll">
-                    <div class="methodology-icon">📊</div>
-                    <h3>Seguimiento</h3>
-                    <p>Establezco sistemas de monitoreo y evaluación continua que permiten medir el progreso y realizar ajustes cuando sea necesario para optimizar los resultados.</p>
-                </div>
-                
-                <div class="methodology-step animate-on-scroll">
-                    <div class="methodology-icon">🎯</div>
-                    <h3>Resultados</h3>
-                    <p>Me enfoco en la obtención de resultados tangibles y medibles que generan un impacto positivo en la organización, tanto a nivel de rendimiento comercial como de desarrollo de equipos.</p>
-                </div>
-                
-                <div class="methodology-step animate-on-scroll">
-                    <div class="methodology-icon">📈</div>
-                    <h3>Continuidad</h3>
-                    <p>Trabajo para que los cambios implementados sean sostenibles en el tiempo, desarrollando las capacidades internas de la organización para mantener y mejorar los resultados alcanzados.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Valores -->
-    <section class="section values">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <div class="section-badge">Mis Valores</div>
-                <h2 class="section-title">Principios que guían mi trabajo</h2>
-            </div>
-            
-            <div class="values-grid">
-                <div class="value-item animate-on-scroll">
-                    <h3>🤝 Integridad</h3>
-                    <p>Actúo siempre con honestidad y transparencia, manteniendo los más altos estándares éticos en todas mis interacciones profesionales.</p>
-                </div>
-                
-                <div class="value-item animate-on-scroll">
-                    <h3>⭐ Excelencia</h3>
-                    <p>Me comprometo con la calidad y la mejora continua, buscando siempre ofrecer el mejor servicio posible y superar las expectativas de mis clientes.</p>
-                </div>
-                
-                <div class="value-item animate-on-scroll">
-                    <h3>🎨 Personalización</h3>
-                    <p>Reconozco que cada organización es única, por lo que adapto mis servicios a las necesidades específicas de cada cliente para maximizar el impacto.</p>
-                </div>
-                
-                <div class="value-item animate-on-scroll">
-                    <h3>💪 Compromiso</h3>
-                    <p>Me involucro plenamente en cada proyecto, asumiendo como propios los objetivos de mis clientes y trabajando incansablemente para alcanzarlos.</p>
-                </div>
-                
-                <div class="value-item animate-on-scroll">
-                    <h3>💡 Innovación</h3>
-                    <p>Mantengo una mentalidad abierta y actualizada, incorporando nuevas tendencias y metodologías que puedan aportar valor a las organizaciones con las que trabajo.</p>
-                </div>
-                
-                <div class="value-item animate-on-scroll">
-                    <h3>📊 Resultados</h3>
-                    <p>Me oriento a la consecución de objetivos concretos y medibles, valorando el impacto real de mis intervenciones en términos de resultados tangibles.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div
+                    style="display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem;">
+                    <div data-reveal data-delay="100" style="text-align: center;">
+                        <div
+                            style="width: 120px; height: 120px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: var(--shadow-md);">
+                            <span style="font-size: 3rem;">🏥</span>
+                        </div>
+                        <p style="font-weight: 600;">Farmacéutico</p>
+                        <div class="counter" data-target="15" data-suffix=" años">0</div>
+                    </div>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content animate-on-scroll">
-                <h2 class="cta-title">¿Quieres conocer más sobre cómo puedo ayudarte?</h2>
-                <p class="cta-description">
-                    Agenda una consulta inicial sin compromiso y descubramos juntos las oportunidades para tu organización.
-                </p>
-                <div class="cta-buttons">
-                    <a href="contacto.html" class="btn btn-primary">Solicitar Diagnóstico Gratuito</a>
-                    <a href="tel:+34609430403" class="btn btn-secondary">Llamar: +34 609 430 403</a>
+                    <div data-reveal data-delay="200" style="text-align: center;">
+                        <div
+                            style="width: 120px; height: 120px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: var(--shadow-md);">
+                            <span style="font-size: 3rem;">🏭</span>
+                        </div>
+                        <p style="font-weight: 600;">Industrial</p>
+                        <div class="counter" data-target="8" data-suffix=" años">0</div>
+                    </div>
+
+                    <div data-reveal data-delay="300" style="text-align: center;">
+                        <div
+                            style="width: 120px; height: 120px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: var(--shadow-md);">
+                            <span style="font-size: 3rem;">💼</span>
+                        </div>
+                        <p style="font-weight: 600;">Servicios</p>
+                        <div class="counter" data-target="10" data-suffix=" años">0</div>
+                    </div>
+
+                    <div data-reveal data-delay="400" style="text-align: center;">
+                        <div
+                            style="width: 120px; height: 120px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: var(--shadow-md);">
+                            <span style="font-size: 3rem;">🏢</span>
+                        </div>
+                        <p style="font-weight: 600;">Consultoría</p>
+                        <div class="counter" data-target="5" data-suffix=" años">0</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta" id="contactar" data-spy>
+            <div class="container">
+                <div class="cta-content" data-reveal>
+                    <h2 class="cta-title">¿Quieres conocer más sobre cómo puedo ayudarte?</h2>
+                    <p class="cta-description">
+                        Agenda una consulta inicial sin compromiso y descubramos juntos las
+                        oportunidades para tu organización.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="contacto.html" class="btn btn-primary">Solicitar diagnóstico gratuito</a>
+                        <a href="tel:+34609430403" class="btn btn-secondary">Llamar: +34 609 430 403</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -403,14 +565,15 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Luis Romera</h3>
-                    <p>Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales desde la integración de estrategia, desarrollo humano y resultados medibles.</p>
+                    <p>Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales
+                        desde la integración de estrategia, desarrollo humano y resultados medibles.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Servicios</h3>
                     <ul>
-                        <li><a href="servicios.html#coaching-ejecutivo">Coaching Ejecutivo</a></li>
-                        <li><a href="servicios.html#eficacia-comercial">Eficacia Comercial</a></li>
-                        <li><a href="servicios.html#formacion-managers">Formación para Managers</a></li>
+                        <li><a href="servicios.html#coaching">Coaching Ejecutivo</a></li>
+                        <li><a href="servicios.html#eficacia">Eficacia Comercial</a></li>
+                        <li><a href="servicios.html#formacion">Formación para Managers</a></li>
                         <li><a href="servicios.html#kpis">Definición de KPIs</a></li>
                         <li><a href="servicios.html#ventas">Técnicas de Ventas</a></li>
                     </ul>
@@ -427,19 +590,47 @@
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
-                        <li>📱 +34 609 430 403</li>
-                        <li>✉️ luisromeranavarro@gmail.com</li>
-                        <li>📍 Madrid, España</li>
-                        <li>🕒 Lunes - Viernes: 9:00 - 18:00</li>
+                        <li>+34 609 430 403</li>
+                        <li>luisromeranavarro@gmail.com</li>
+                        <li>Madrid, España</li>
+                        <li>Lunes - Viernes: 9:00 - 18:00</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Luis Romera Navarro. Todos los derechos reservados. | Psicólogo Colegiado - Experto en Coaching - Sales Force Effectiveness</p>
+                <p>&copy; 2025 Luis Romera Navarro. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/effects.js" defer></script>
+    <script src="assets/js/scrollspy.js" defer></script>
+    <script src="assets/js/counters.js" defer></script>
+    <script src="assets/js/backtotop.js" defer></script>
+
+    <!-- Script adicional para las barras de habilidades -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBar = entry.target;
+                        const skill = skillBar.dataset.skill;
+                        setTimeout(() => {
+                            skillBar.style.width = skill + '%';
+                        }, 200);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.skill-bar').forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+    </script>
 </body>
+
 </html>
