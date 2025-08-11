@@ -4,7 +4,7 @@
  * @description Animación de números al entrar en viewport
  */
 
-(function() {
+(function () {
     'use strict';
 
     const CONFIG = {
@@ -25,7 +25,7 @@
     function init() {
         counters = document.querySelectorAll('[data-counter], .counter');
         if (counters.length === 0) return;
-        
+
         setupObserver();
     }
 
@@ -40,13 +40,13 @@
         };
 
         const observer = new IntersectionObserver(handleIntersection, observerOptions);
-        
+
         counters.forEach(counter => {
             // Guardar valor inicial
             const target = parseFloat(counter.dataset.target || counter.textContent);
             counter.dataset.target = target;
             counter.textContent = '0';
-            
+
             observer.observe(counter);
         });
     }
@@ -58,7 +58,7 @@
         entries.forEach(entry => {
             if (entry.isIntersecting && !animated.has(entry.target)) {
                 animateCounter(entry.target);
-                
+
                 if (CONFIG.once) {
                     animated.add(entry.target);
                     observer.unobserve(entry.target);
@@ -70,35 +70,43 @@
     /**
      * Animar contador individual
      */
+    // Modificación en counters.js para contadores en línea
     function animateCounter(element) {
         const target = parseFloat(element.dataset.target);
         const duration = parseInt(element.dataset.duration) || CONFIG.duration;
         const prefix = element.dataset.prefix || CONFIG.prefix;
         const suffix = element.dataset.suffix || CONFIG.suffix;
         const decimals = parseInt(element.dataset.decimals) || 0;
-        
+
+        // Verificar si es un contador en línea
+        const isInline = element.classList.contains('counter-inline');
+
         let startTime = null;
         let startValue = 0;
 
         function animation(currentTime) {
             if (startTime === null) startTime = currentTime;
-            
+
             const timeElapsed = currentTime - startTime;
             const progress = Math.min(timeElapsed / duration, 1);
-            
+
             // Aplicar easing
             const easedProgress = easeOutQuart(progress);
             const currentValue = startValue + (target - startValue) * easedProgress;
-            
+
             // Formatear y mostrar
             element.textContent = formatNumber(currentValue, decimals, prefix, suffix);
-            
+
             if (progress < 1) {
                 requestAnimationFrame(animation);
             } else {
                 // Asegurar valor final exacto
                 element.textContent = formatNumber(target, decimals, prefix, suffix);
-                element.classList.add('is-animated');
+
+                // Solo añadir clase animated si no es inline
+                if (!isInline) {
+                    element.classList.add('is-animated');
+                }
             }
         }
 
@@ -118,16 +126,16 @@
     function formatNumber(num, decimals, prefix, suffix) {
         const fixed = num.toFixed(decimals);
         const parts = fixed.split('.');
-        
+
         // Añadir separadores de miles
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, CONFIG.separator);
-        
+
         let result = parts.join(',');
-        
+
         // Añadir prefijo y sufijo
         if (prefix) result = prefix + result;
         if (suffix) result = result + suffix;
-        
+
         return result;
     }
 
