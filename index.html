@@ -1,331 +1,446 @@
-<!DOCTYPE html>
+<p class="footer-disclaimer" style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); margin-top: 1rem;">
+                    *Los datos de ROI corresponden a estudios sectoriales de coaching ejecutivo (PWC-ICF). Los resultados pueden variar según cada caso específico.
+                </p><!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Romera | Consultoría Organizacional</title>
+    <title>Luis Romera | Psicólogo & Consultor Organizacional - Resultados Humanos y Sostenibles</title>
+    <meta name="description" content="Consultoría organizacional con base psicológica. Transformamos equipos comerciales integrando estrategia, personas y resultados. +20 años de experiencia. Soluciones 100% personalizadas para pymes.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader"></div>
-    </div>
-
     <!-- Header -->
-    <header>
+    <header class="header" id="header">
         <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <a href="index.html">Luis Romera</a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="sobremi.html">Sobre mí</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+            <nav class="nav">
+                <a href="#inicio" class="logo">Luis Romera</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="#" class="btn btn-primary">Consulta Gratuita</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
+    <section class="hero" id="inicio">
         <div class="container">
-            <div class="hero-content">
-                <h1>Consultoría Organizacional Especializada</h1>
-                <p>Potencio el rendimiento de tu empresa a través de estrategias efectivas y acompañamiento
-                    personalizado</p>
-                <a href="#contacto" class="btn btn-primary">Contactar Ahora</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Servicios Section -->
-    <section id="servicios" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mis Servicios</h2>
-                <p>Soluciones adaptadas a las necesidades específicas de tu organización</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img">
-                        <span>📈</span>
-                    </div>
-                    <div class="service-content">
-                        <h3>Coaching Ejecutivo</h3>
-                        <p>Potencia las habilidades de liderazgo y toma de decisiones de tus ejecutivos. Desarrollamos
-                            programas personalizados que impulsan el crecimiento profesional y personal.</p>
-                        <a href="#contacto" class="btn btn-primary">Más Información</a>
-                    </div>
+            <div class="hero-content animate-on-scroll">
+                <div class="hero-badge">
+                    Psicólogo & Consultor Organizacional
                 </div>
-
-                <div class="service-card">
-                    <div class="service-img">
-                        <span>🚀</span>
-                    </div>
-                    <div class="service-content">
-                        <h3>Asesoría Organizacional</h3>
-                        <p>Implementamos metodologías de eficacia comercial que garantizan la aplicación de aprendizajes
-                            teóricos en el entorno laboral, maximizando resultados.</p>
-                        <a href="#contacto" class="btn btn-primary">Más Información</a>
-                    </div>
+                <h1 class="hero-title">
+                    Transformamos equipos comerciales desde la <span style="color: var(--accent-color);">psicología</span> y los <span style="color: var(--accent-color);">resultados</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Consultoría 100% personalizada que integra estrategia, desarrollo humano y métricas para crear culturas comerciales de alto rendimiento. Porque los mejores resultados nacen de las mejores personas.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contacto" class="btn btn-accent">Diagnóstico Gratuito</a>
+                    <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-img">
-                        <span>👥</span>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">24</span>
+                        <span class="hero-stat-label">Años de experiencia</span>
                     </div>
-                    <div class="service-content">
-                        <h3>Formación para Managers</h3>
-                        <p>Capacitamos a tus managers en la gestión y acompañamiento eficaz de equipos comerciales.
-                            Desarrollamos habilidades clave para potenciar el rendimiento.</p>
-                        <a href="#contacto" class="btn btn-primary">Más Información</a>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">ROI 5-7x</span>
+                        <span class="hero-stat-label">Retorno promedio sector coaching*</span>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-img">
-                        <span>📊</span>
-                    </div>
-                    <div class="service-content">
-                        <h3>Definición de KPIs</h3>
-                        <p>Establecemos indicadores de desempeño clave que permiten medir y optimizar los resultados de
-                            tu equipo comercial de manera efectiva.</p>
-                        <a href="#contacto" class="btn btn-primary">Más Información</a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-img">
-                        <span>🎯</span>
-                    </div>
-                    <div class="service-content">
-                        <h3>Seguimiento de Objetivos</h3>
-                        <p>Implementamos estructuras de seguimiento que aseguran el cumplimiento de objetivos
-                            comerciales y mantienen a tu equipo enfocado y motivado.</p>
-                        <a href="#contacto" class="btn btn-primary">Más Información</a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-img">
-                        <span>💼</span>
-                    </div>
-                    <div class="service-content">
-                        <h3>Técnicas de Ventas</h3>
-                        <p>Formamos a tus equipos comerciales en técnicas de ventas avanzadas que incrementan la
-                            efectividad y mejoran los resultados del negocio.</p>
-                        <a href="#contacto" class="btn btn-primary">Más Información</a>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">100%</span>
+                        <span class="hero-stat-label">Soluciones personalizadas</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sobre mí Section -->
-    <section id="sobremi" class="section about-section">
+    <!-- Value Proposition -->
+    <section class="section value-prop">
         <div class="container">
-            <div class="about-container">
-                <div class="about-img">
-                    <img src="/api/placeholder/600/400" alt="Luis Romera"
-                        style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">Mi Enfoque Diferencial</div>
+                <h2 class="section-title">Lo que me hace único en el mercado</h2>
+                <p class="section-description">
+                    Mientras otros aplican fórmulas estándar, yo diseño soluciones desde la comprensión profunda de las personas y la cultura de tu empresa.
+                </p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card animate-on-scroll">
+                    <h3 class="value-title">Personalización extrema</h3>
+                    <p class="value-description">
+                        Cada intervención se diseña desde cero tras un diagnóstico profundo de tu cultura, momento empresarial y objetivos específicos. No hay dos proyectos iguales.
+                    </p>
                 </div>
-                <div class="about-content">
-                    <h2>Sobre Mí</h2>
-                    <p>Soy un consultor especializado en el desarrollo organizacional con enfoque en marketing digital y
-                        ventas. Me dedico a potenciar el rendimiento de las empresas a través de metodologías efectivas
-                        y personalizadas.</p>
-                    <p>En mi trabajo como consultor, entiendo que cada organización es única, por eso ofrezco soluciones
-                        adaptadas a las necesidades específicas de cada cliente, garantizando resultados medibles y
-                        sostenibles en el tiempo.</p>
-                    <p>Cuento con amplia experiencia en el sector, y estoy comprometido con el éxito de tu empresa y el
-                        desarrollo de tu equipo comercial.</p>
-                    <a href="#contacto" class="btn btn-primary">Contáctame</a>
+                <div class="value-card animate-on-scroll">
+                    <h3 class="value-title">Base psicológica científica</h3>
+                    <p class="value-description">
+                        Como psicólogo especialista, aplico metodologías validadas científicamente. Trabajo desde las fortalezas y la psicología positiva para generar cambios duraderos.
+                    </p>
+                </div>
+                <div class="value-card animate-on-scroll">
+                    <h3 class="value-title">Integración total</h3>
+                    <p class="value-description">
+                        Combino consultoría estratégica, formación práctica y coaching ejecutivo en un solo proceso coherente. Todo alineado hacia tus objetivos de negocio.
+                    </p>
+                </div>
+                <div class="value-card animate-on-scroll">
+                    <h3 class="value-title">Resultados medibles y sostenibles</h3>
+                    <p class="value-description">
+                        Implemento KPIs que conectan actividad con resultados. Pero más importante: creo cambios que perduran porque transforman mentalidades.
+                    </p>
+                </div>
+                <div class="value-card animate-on-scroll">
+                    <h3 class="value-title">Acompañamiento cercano</h3>
+                    <p class="value-description">
+                        No soy una gran consultora impersonal. Trabajo codo a codo contigo, adaptándome a tu ritmo y asegurando que cada cambio se integre naturalmente.
+                    </p>
+                </div>
+                <div class="value-card animate-on-scroll">
+                    <h3 class="value-title">Autonomía garantizada</h3>
+                    <p class="value-description">
+                        Mi objetivo es que no me necesites para siempre. Transfiero conocimiento y desarrollo capacidades internas para que el crecimiento sea autónomo.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contacto Section -->
-    <section id="contacto" class="section">
+    <!-- Services -->
+    <section class="section" id="servicios">
         <div class="container">
-            <div class="section-title">
-                <h2>Contacto</h2>
-                <p>Estoy aquí para ayudarte. Contáctame para una consulta personalizada.</p>
-            </div>
-
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Información de Contacto</h3>
-                    <div class="contact-detail">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <h4>Teléfono</h4>
-                            <p>+34 XXX XXX XXX</p>
-                        </div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@luisromera.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon">🏢</div>
-                        <div>
-                            <h4>Oficina</h4>
-                            <p>Madrid, España</p>
-                        </div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon">⏰</div>
-                        <div>
-                            <h4>Horario</h4>
-                            <p>Lunes - Viernes: 9:00 - 18:00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <h3>Envíame un Mensaje</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Asunto</label>
-                            <input type="text" id="subject" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section Placeholder -->
-    <section id="blog" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Blog</h2>
-                <p>Artículos y recursos sobre consultoría, coaching y desarrollo organizacional</p>
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">Mis Servicios</div>
+                <h2 class="section-title">Soluciones integrales para tu crecimiento</h2>
+                <p class="section-description">
+                    Metodologías probadas que combinan estrategia comercial, desarrollo de personas y resultados medibles.
+                </p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/200" alt="Artículo Blog"
-                            style="width:100%; height:100%; object-fit:cover;">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-header">
+                        <h3 class="service-title">Coaching Ejecutivo</h3>
+                        <p class="service-subtitle">Desarrollo de líderes con base psicológica</p>
                     </div>
                     <div class="service-content">
-                        <h3>¿Qué es el Coaching Ejecutivo?</h3>
-                        <p>El coaching ejecutivo se ha convertido en una herramienta fundamental para el desarrollo de
-                            líderes. Descubre sus beneficios y aplicaciones.</p>
-                        <a href="#" class="btn btn-primary">Leer Más</a>
+                        <p class="service-description">
+                            Procesos personalizados de acompañamiento para directivos y líderes que buscan potenciar sus habilidades y alcanzar un mayor rendimiento profesional y personal.
+                        </p>
+                        <ul class="service-features">
+                            <li>Enfoque basado en psicología positiva y fortalezas</li>
+                            <li>Mejora del liderazgo y toma de decisiones</li>
+                            <li>Desarrollo de inteligencia emocional</li>
+                            <li>Gestión del cambio y adaptación</li>
+                            <li>Resultados medibles en 3-6 meses</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary">Solicitar información</a>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/200" alt="Artículo Blog"
-                            style="width:100%; height:100%; object-fit:cover;">
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-header">
+                        <h3 class="service-title">Eficacia Comercial</h3>
+                        <p class="service-subtitle">Sales Force Effectiveness</p>
                     </div>
                     <div class="service-content">
-                        <h3>KPIs Efectivos para Equipos Comerciales</h3>
-                        <p>Aprende a definir indicadores de desempeño que realmente impulsen el rendimiento de tu equipo
-                            de ventas.</p>
-                        <a href="#" class="btn btn-primary">Leer Más</a>
+                        <p class="service-description">
+                            Metodología desarrollada a partir de mi experiencia en Sales Force Effectiveness, que integra personas, procesos y herramientas para convertir la acción comercial en resultados medibles.
+                        </p>
+                        <ul class="service-features">
+                            <li>Optimización de fichero de clientes y prospección</li>
+                            <li>Planificación comercial por potencial</li>
+                            <li>Formación + coaching comercial en terreno</li>
+                            <li>Cuadros de mando y KPIs comerciales</li>
+                            <li>Mejoras de hasta 30% en conversión</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary">Solicitar información</a>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="/api/placeholder/400/200" alt="Artículo Blog"
-                            style="width:100%; height:100%; object-fit:cover;">
+
+                <div class="service-card animate-on-scroll">
+                    <div class="service-header">
+                        <h3 class="service-title">Formación para Managers</h3>
+                        <p class="service-subtitle">Liderazgo y resultados efectivos</p>
                     </div>
                     <div class="service-content">
-                        <h3>Sinergia entre Marketing y Ventas</h3>
-                        <p>Descubre cómo alinear estos departamentos clave para maximizar resultados y eficiencia en tu
-                            organización.</p>
-                        <a href="#" class="btn btn-primary">Leer Más</a>
+                        <p class="service-description">
+                            Transformo mandos intermedios en líderes conscientes y efectivos, capaces de influir positivamente y generar resultados sostenibles.
+                        </p>
+                        <ul class="service-features">
+                            <li>Liderazgo situacional y adaptativo</li>
+                            <li>Autoconocimiento y fortalezas personales</li>
+                            <li>Psicología positiva aplicada al liderazgo</li>
+                            <li>Coaching integrado para consolidar cambios</li>
+                            <li>Formato teórico-práctico con seguimiento</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-primary">Solicitar información</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="sobre-mi">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image animate-on-scroll">
+                    <img src="./images/personal/Luis-Romera.jpg" alt="Luis Romera - Psicólogo y Consultor Organizacional">
+                </div>
+                <div class="about-content animate-on-scroll">
+                    <h2 class="about-title">Luis Romera Navarro</h2>
+                    <p class="about-text">
+                        <strong>Psicólogo y Consultor Organizacional</strong> con 24 años de experiencia integrando estrategia, personas y resultados en el mundo empresarial.
+                    </p>
+                    <p class="about-text">
+                        Mi trayectoria se ha desarrollado principalmente en <strong>Laboratorios BOIRON</strong>, donde he crecido desde la visita comercial en terreno hasta roles de dirección, Sales Force Effectiveness y co-creador de la Escuela de Ventas (Boiron Academy).
+                    </p>
+                    <p class="about-text">
+                        Paralelamente, desde 2020 trabajo como <strong>Psicólogo Coach en la Clínica MindUp</strong>, acompañando procesos individuales de cambio y desarrollo. Esta experiencia me permite abordar los retos organizacionales con una mirada integradora: estratégica, emocional y profundamente humana.
+                    </p>
+                    <div class="about-credentials">
+                        <div class="credential">Psicólogo Colegiado (Madrid)</div>
+                        <div class="credential">Experto en Psicología Positiva</div>
+                        <div class="credential">Experto en Coaching</div>
+                        <div class="credential">Sales Force Effectiveness Manager</div>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary">Conoce mi metodología</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">Testimonios Reales</div>
+                <h2 class="section-title">Lo que dicen mis clientes</h2>
+                <p class="section-description">
+                    Resultados reales de profesionales que han transformado su liderazgo y sus organizaciones.
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial animate-on-scroll">
+                    <p class="testimonial-quote">
+                        "Desde que comencé a trabajar con Luis he crecido exponencialmente en lo profesional. Descubrí mis habilidades, superé mis miedos y entendí que tenía potencial en la conducción de equipos. Hoy ocupo un rol de liderazgo con mayores responsabilidades."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">G.A.</div>
+                        <div class="testimonial-info">
+                            <h4>Gerente Regional</h4>
+                            <p>Empresa Farmacéutica - Argentina</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial animate-on-scroll">
+                    <p class="testimonial-quote">
+                        "Luis me brindó la oportunidad de obtener un claro beneficio para la gestión de mis asuntos profesionales desde el punto de vista de la comprensión y conciencia de cómo dirigía a mis colaboradores. Su entrega y compromiso profesional es excepcional."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">Dr.M</div>
+                        <div class="testimonial-info">
+                            <h4>CEO</h4>
+                            <p>Centro Sanitario Privado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial animate-on-scroll">
+                    <p class="testimonial-quote">
+                        "Su enfoque profesional y empático me ayudó a establecer límites saludables en el trabajo, mejorando tanto mi bienestar como mi rendimiento laboral. Me brindó herramientas prácticas y un apoyo continuo. ¡Un coach excepcional!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A.R.</div>
+                        <div class="testimonial-info">
+                            <h4>Directiva</h4>
+                            <p>Empresa Servicios</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title" style="color: white;">Resultados que marcan la diferencia</h2>
+                <p class="section-description" style="color: rgba(255,255,255,0.9);">
+                    Impacto real y medible en las organizaciones que confían en mí
+                </p>
+            </div>
+            <div class="results-grid">
+                <div class="result-item animate-on-scroll">
+                    <span class="result-number">86%</span>
+                    <span class="result-label">de empresas recuperan la inversión completa o más en coaching (PWC-ICF)</span>
+                </div>
+                <div class="result-item animate-on-scroll">
+                    <span class="result-number">5-7x</span>
+                    <span class="result-label">retorno de inversión promedio en coaching ejecutivo (estudios sectoriales)</span>
+                </div>
+                <div class="result-item animate-on-scroll">
+                    <span class="result-number">30%</span>
+                    <span class="result-label">mejora típica en eficiencia comercial con metodologías SFE</span>
+                </div>
+                <div class="result-item animate-on-scroll">
+                    <span class="result-number">24</span>
+                    <span class="result-label">años desarrollando soluciones que integran personas y resultados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">Preguntas Frecuentes</div>
+                <h2 class="section-title">Resolvemos tus dudas</h2>
+                <p class="section-description">
+                    Las respuestas a las preguntas más comunes de empresarios y directivos como tú.
+                </p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="value-card animate-on-scroll" style="margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿Qué te diferencia de otras consultoras del mercado?</h3>
+                    <p style="color: var(--text-light);">Mi enfoque combina la base científica de la psicología con soluciones 100% personalizadas. Cada intervención se diseña desde cero tras un diagnóstico profundo de tu empresa. No aplico fórmulas estándar: creo tu solución única.</p>
+                </div>
+                <div class="value-card animate-on-scroll" style="margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿Cuánto tiempo necesito para ver resultados?</h3>
+                    <p style="color: var(--text-light);">Las mejoras iniciales son visibles en 1-3 meses. Los resultados más significativos se consolidan entre 3-6 meses. Pero lo más importante: creo cambios que perduran porque trabajo la mentalidad, no solo las técnicas.</p>
+                </div>
+                <div class="value-card animate-on-scroll" style="margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿Trabajas con pymes o solo con grandes empresas?</h3>
+                    <p style="color: var(--text-light);">Me especializo en pymes y empresas medianas que buscan profesionalizar su función comercial. Entiendo vuestros retos específicos: recursos limitados, necesidad de ROI claro y equipos multifuncionales.</p>
+                </div>
+                <div class="value-card animate-on-scroll" style="margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿Puedes trabajar a distancia o solo presencial?</h3>
+                    <p style="color: var(--text-light);">Ofrezco ambas modalidades. Las sesiones virtuales están diseñadas para ser igualmente efectivas, utilizando herramientas especializadas. Adapto la metodología a vuestras preferencias y necesidades operativas.</p>
+                </div>
+                <div class="value-card animate-on-scroll" style="margin-bottom: 1rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¿Qué incluye tu metodología de acompañamiento?</h3>
+                    <p style="color: var(--text-light);">Combino consultoría estratégica, formación práctica y coaching ejecutivo en un proceso integrado. Incluye diagnóstico inicial, plan personalizado, implementación con seguimiento y transferencia de conocimiento para garantizar autonomía futura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="contacto">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2 class="cta-title">¿Listo para transformar tu organización?</h2>
+                <p class="cta-description">
+                    Empiezo con un diagnóstico gratuito para entender tu situación actual y diseñar la mejor estrategia para tus objetivos.
+                </p>
+                <div class="cta-buttons">
+                    <a href="tel:+34609430403" class="btn btn-primary">Llamar ahora: +34 609 430 403</a>
+                    <a href="#" class="btn btn-secondary" onclick="document.getElementById('contactForm').style.display='block'">Solicitar diagnóstico gratuito</a>
+                </div>
+            </div>
+            
+            <!-- Contact Form (Initially Hidden) -->
+            <div id="contactForm" class="contact-form" style="display: none; margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--text-dark);">Solicitar Diagnóstico Gratuito</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label" for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="servicio">¿En qué puedo ayudarte?</label>
+                        <select id="servicio" name="servicio" class="form-input">
+                            <option value="">Selecciona una opción</option>
+                            <option value="coaching">Coaching Ejecutivo</option>
+                            <option value="eficacia">Eficacia Comercial</option>
+                            <option value="formacion">Formación para Managers</option>
+                            <option value="integral">Solución integral</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="mensaje">Cuéntame tu situación</label>
+                        <textarea id="mensaje" name="mensaje" class="form-input form-textarea" placeholder="Describe brevemente tu situación actual y qué te gustaría mejorar..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Solicitar Diagnóstico Gratuito</button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h4>Luis Romera</h4>
-                    <p>Consultoría Organizacional especializada en marketing digital y ventas. Potencio el rendimiento
-                        de tu empresa a través de metodologías efectivas.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Luis Romera</h3>
+                    <p>Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales desde la integración de estrategia, desarrollo humano y resultados medibles.</p>
+                    <p style="margin-top: 1rem;"><strong>Psicología + Resultados = Transformación Real</strong></p>
                 </div>
-                <div class="footer-column">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="servicios.html">Servicios</a></li>
-                        <li><a href="sobremi.html">Sobre mí</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#servicios">Coaching Ejecutivo</a></li>
+                        <li><a href="#servicios">Eficacia Comercial (SFE)</a></li>
+                        <li><a href="#servicios">Formación para Managers</a></li>
+                        <li><a href="#servicios">Definición de KPIs</a></li>
+                        <li><a href="#servicios">Técnicas de Ventas</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h4>Servicios</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Coaching Ejecutivo</a></li>
-                        <li><a href="#">Asesoría Organizacional</a></li>
-                        <li><a href="#">Formación para Managers</a></li>
-                        <li><a href="#">Definición de KPIs</a></li>
-                        <li><a href="#">Técnicas de Ventas</a></li>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>📱 +34 609 430 403</li>
+                        <li>✉️ luisromeranavarro@gmail.com</li>
+                        <li>📍 Madrid, España</li>
+                        <li>🕒 Lunes - Viernes: 9:00 - 18:00</li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h4>Contacto</h4>
-                    <ul class="footer-links">
-                        <li>📱 +34 XXX XXX XXX</li>
-                        <li>✉️ info@luisromera.com</li>
-                        <li>🏢 Madrid, España</li>
+                <div class="footer-section">
+                    <h3>Especialidades</h3>
+                    <ul>
+                        <li>Pymes en crecimiento</li>
+                        <li>Directivos y mandos intermedios</li>
+                        <li>Equipos comerciales</li>
+                        <li>Transformación cultural</li>
+                        <li>Liderazgo positivo</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Luis Romera Consultoría. Todos los derechos reservados.</p>
+                <p>&copy; 2025 Luis Romera Navarro. Todos los derechos reservados. | Consultoría Organizacional con base psicológica</p>
             </div>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>

@@ -3,342 +3,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | Luis Romera Consultoría</title>
+    <title>Servicios | Luis Romera - Consultoría Organizacional con Base Psicológica</title>
+    <meta name="description" content="Servicios de consultoría organizacional: Coaching Ejecutivo, Eficacia Comercial, Formación para Managers, KPIs y Técnicas de Ventas. Soluciones 100% personalizadas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader"></div>
-    </div>
-
     <!-- Header -->
-    <header>
+    <header class="header" id="header">
         <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <a href="index.html">Luis Romera</a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="sobremi.html">Sobre mí</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+            <nav class="nav">
+                <a href="index.html" class="logo">Luis Romera</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="servicios.html" class="nav-link active">Servicios</a></li>
+                    <li><a href="sobre-mi.html" class="nav-link">Sobre mí</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="contacto.html" class="btn btn-primary">Consulta Gratuita</a></li>
                 </ul>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <h1>Mis Servicios</h1>
-            <p>Consultoría especializada para potenciar tu organización</p>
+            <div class="page-hero-content animate-on-scroll">
+                <h1 class="page-hero-title">Mis Servicios</h1>
+                <p class="page-hero-subtitle">
+                    Soluciones integrales que transforman equipos comerciales desde la comprensión profunda de las personas, la cultura organizacional y los objetivos de negocio.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Coaching Ejecutivo Section -->
-    <section class="section">
+    <!-- Coaching Ejecutivo -->
+    <section class="section service-detail" id="coaching-ejecutivo">
         <div class="container">
-            <div class="service-detail">
-                <div class="service-content animate-on-scroll">
-                    <h2>Coaching Ejecutivo</h2>
-                    <p>El coaching ejecutivo es un proceso personalizado de acompañamiento para directivos y líderes de empresa que buscan potenciar sus habilidades y alcanzar un mayor rendimiento profesional y personal.</p>
-                    
-                    <h3>¿Qué beneficios aporta?</h3>
-                    <ul class="service-benefits">
-                        <li>Mejora del liderazgo y capacidad de toma de decisiones</li>
-                        <li>Desarrollo de habilidades de comunicación efectiva</li>
-                        <li>Gestión del estrés y mejora del equilibrio trabajo-vida</li>
-                        <li>Incremento de la motivación y el compromiso</li>
-                        <li>Identificación y superación de barreras personales</li>
+            <div class="service-detail-grid">
+                <div class="service-detail-content animate-on-scroll">
+                    <div class="section-badge">Desarrollo de Líderes</div>
+                    <h2 class="service-detail-title">🧠 Coaching Ejecutivo basado en Psicología y Fortalezas</h2>
+                    <p class="service-detail-intro">
+                        <strong>No se trata solo de lograr resultados... sino de lograr resultados que duren, que te representen y que te hagan crecer como líder y como persona.</strong>
+                    </p>
+                    <p>
+                        Mi metodología de coaching ejecutivo está diseñada específicamente para profesionales y empresas que buscan un desarrollo real, medible y humano. Se basa en tres pilares fundamentales:
+                    </p>
+                    <div class="methodology-grid">
+                        <div class="methodology-item">
+                            <h4>🔬 Fundamento psicológico</h4>
+                            <p>Enfoque riguroso basado en el conocimiento científico del comportamiento humano.</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4>💪 Psicología Positiva</h4>
+                            <p>Trabajo desde tus fortalezas personales para un liderazgo auténtico y energético.</p>
+                        </div>
+                        <div class="methodology-item">
+                            <h4>📊 Resultados medibles</h4>
+                            <p>Orientación a resultados reales, alineados con objetivos estratégicos.</p>
+                        </div>
+                    </div>
+
+                    <h3>🎯 Objetivos que trabajamos</h3>
+                    <ul class="service-objectives">
+                        <li>
+                            <strong>Desarrollo de liderazgo y competencias directivas:</strong> 
+                            Para liderar con más claridad, confianza y coherencia. Equipos más comprometidos y mayor influencia positiva.
+                        </li>
+                        <li>
+                            <strong>Mejora de la comunicación y las relaciones:</strong> 
+                            Para conectar, influir y generar confianza. Reducción de conflictos y mensajes más claros.
+                        </li>
+                        <li>
+                            <strong>Toma de decisiones con visión y foco:</strong> 
+                            Para decidir sin parálisis, con estrategia y sentido. Menos errores, más velocidad.
+                        </li>
+                        <li>
+                            <strong>Inteligencia emocional y autoconocimiento:</strong> 
+                            Para gestionar mejor las emociones, el estrés y el impacto que generas.
+                        </li>
+                        <li>
+                            <strong>Gestión del cambio y adaptación:</strong> 
+                            Para transiciones de rol, contextos de incertidumbre o crecimiento acelerado.
+                        </li>
                     </ul>
-                    
-                    <h3>Metodología</h3>
-                    <p>Mi enfoque se basa en sesiones individuales (generalmente entre 6 y 8) de aproximadamente 90 minutos, donde trabajamos de manera sistemática sobre objetivos concretos previamente establecidos. El proceso incluye:</p>
-                    <ol class="service-methodology">
-                        <li>Evaluación inicial y definición de objetivos</li>
-                        <li>Desarrollo de un plan de acción personalizado</li>
-                        <li>Sesiones de trabajo con compromisos entre encuentros</li>
-                        <li>Seguimiento continuo y evaluación de resultados</li>
-                    </ol>
-                    
-                    <a href="contacto.html" class="btn btn-primary">Solicitar más información</a>
-                </div>
-                <div class="service-image animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Coaching Ejecutivo">
+
+                    <div class="service-cta-box">
+                        <h3>💰 Retorno de inversión comprobado</h3>
+                        <p>
+                            Según PriceWaterhouseCoopers y la ICF, el 86% de las empresas que invirtieron en coaching afirmaron haber recuperado el 100% de la inversión o más. Y 1 de cada 4, entre 10 y 49 veces.
+                        </p>
+                        <a href="contacto.html" class="btn btn-primary">Solicitar Diagnóstico Gratuito</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Asesoría Organizacional Section -->
-    <section class="section section-alt">
+    <!-- Eficacia Comercial -->
+    <section class="section service-detail-alt" id="eficacia-comercial">
         <div class="container">
-            <div class="service-detail reverse">
-                <div class="service-content animate-on-scroll">
-                    <h2>Asesoría Organizacional</h2>
-                    <p>Ofrezco servicios de consultoría enfocados en la implementación de metodologías de eficacia comercial que garantizan la aplicación de aprendizajes teóricos en el entorno laboral, maximizando los resultados de tu equipo.</p>
-                    
-                    <h3>Áreas de intervención</h3>
-                    <ul class="service-benefits">
-                        <li>Formación para managers en gestión y acompañamiento de equipos comerciales</li>
-                        <li>Definición de KPIs y métricas de rendimiento</li>
-                        <li>Estructuras de seguimiento de objetivos</li>
-                        <li>Formación en técnicas de ventas para equipos comerciales</li>
-                        <li>Dinámicas de sinergia entre departamentos de Marketing e I+D</li>
-                    </ul>
-                    
-                    <h3>Proceso de trabajo</h3>
-                    <ol class="service-methodology">
-                        <li>Diagnóstico inicial de la situación</li>
-                        <li>Diseño de la estrategia de intervención</li>
-                        <li>Implementación de metodologías y formación</li>
-                        <li>Seguimiento y ajuste de la estrategia</li>
-                        <li>Evaluación de resultados y plan de continuidad</li>
-                    </ol>
-                    
-                    <a href="contacto.html" class="btn btn-primary">Solicitar más información</a>
-                </div>
-                <div class="service-image animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Asesoría Organizacional">
+            <div class="service-detail-grid">
+                <div class="service-detail-content animate-on-scroll">
+                    <div class="section-badge">Sales Force Effectiveness</div>
+                    <h2 class="service-detail-title">📊 Consultoría en Eficacia Comercial</h2>
+                    <p class="service-detail-intro">
+                        <strong>Una red de ventas eficaz no es fruto del azar. Es el resultado de una estrategia bien diseñada, datos bien analizados y equipos bien acompañados.</strong>
+                    </p>
+                    <p>
+                        Trabajo codo a codo con empresas que desean dar un salto cualitativo en su rendimiento comercial a través de una metodología probada que alinea personas, procesos y herramientas.
+                    </p>
+
+                    <h3>🧱 Los 5 pilares de mi metodología</h3>
+                    <div class="pillars-grid">
+                        <div class="pillar-card">
+                            <h4>1️⃣ Fichero de clientes y prospección estratégica</h4>
+                            <p>Construimos un fichero de clientes potenciales de calidad, bien segmentado y enfocado en el perfil ideal. Implementamos estrategias de prospección activa con criterio.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>2️⃣ Actividad comercial planificada</h4>
+                            <p>Diseñamos una planificación basada en el potencial real de cada cliente, definiendo tipo de contacto, frecuencia y canal óptimo.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>3️⃣ Formación + Calidad de la visita</h4>
+                            <p>Trabajamos técnicas de venta actualizadas y la calidad de cada interacción: escucha activa, detección de necesidades y aportación de valor real.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>4️⃣ Coaching comercial en terreno</h4>
+                            <p>Formación de managers como coaches comerciales. Acompañamiento en visitas reales, feedback y refuerzo de buenas prácticas.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <h4>5️⃣ Cuadros de mando y KPIs</h4>
+                            <p>Diseñamos un cuadro de mando adaptado con indicadores claros de actividad y resultado para decisiones basadas en datos.</p>
+                        </div>
+                    </div>
+
+                    <div class="results-box">
+                        <h3>📈 Resultados típicos conseguidos</h3>
+                        <div class="results-grid">
+                            <div class="result-stat">
+                                <span class="result-number">30%</span>
+                                <span class="result-label">Mejora en conversión</span>
+                            </div>
+                            <div class="result-stat">
+                                <span class="result-number">-25%</span>
+                                <span class="result-label">Reducción tiempo improductivo</span>
+                            </div>
+                            <div class="result-stat">
+                                <span class="result-number">+40%</span>
+                                <span class="result-label">Incremento compromiso</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-cta-box">
+                        <p><strong>Cuando alineas método, datos y personas, la venta deja de ser una lucha y se convierte en una consecuencia natural del buen trabajo.</strong></p>
+                        <a href="contacto.html" class="btn btn-primary">Diseñemos tu Plan de Eficacia Comercial</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Formación para Managers Section -->
-    <section class="section">
+    <!-- Formación para Managers -->
+    <section class="section service-detail" id="formacion-managers">
         <div class="container">
-            <div class="service-detail">
-                <div class="service-content animate-on-scroll">
-                    <h2>Formación para Managers</h2>
-                    <p>Programa especializado para desarrollar las habilidades de gestión y liderazgo en los mandos intermedios y directivos, con especial énfasis en la gestión de equipos comerciales.</p>
-                    
-                    <h3>Contenidos principales</h3>
-                    <ul class="service-benefits">
-                        <li>Liderazgo efectivo de equipos comerciales</li>
-                        <li>Técnicas de coaching para managers</li>
-                        <li>Gestión del rendimiento y feedback constructivo</li>
-                        <li>Desarrollo y motivación de equipos comerciales</li>
-                        <li>Implementación de cultura de alto rendimiento</li>
-                    </ul>
-                    
-                    <h3>Formato</h3>
-                    <p>La formación puede adaptarse a las necesidades específicas de tu organización:</p>
-                    <ul class="service-format">
-                        <li>Sesiones presenciales o virtuales</li>
-                        <li>Formación grupal o personalizada</li>
-                        <li>Talleres prácticos con casos reales</li>
-                        <li>Seguimiento post-formación</li>
-                    </ul>
-                    
-                    <a href="contacto.html" class="btn btn-primary">Solicitar programa</a>
-                </div>
-                <div class="service-image animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Formación para Managers">
+            <div class="service-detail-grid">
+                <div class="service-detail-content animate-on-scroll">
+                    <div class="section-badge">Liderazgo Transformador</div>
+                    <h2 class="service-detail-title">🧭 Formación para Managers: Liderar con propósito, personas y resultados</h2>
+                    <p class="service-detail-intro">
+                        <strong>Un manager no solo dirige. Un buen manager inspira, escucha, toma decisiones con claridad y hace crecer a las personas a su alrededor.</strong>
+                    </p>
+                    <p>
+                        Esta formación está diseñada para transformar a los mandos intermedios y responsables de equipo en líderes conscientes, adaptativos y efectivos.
+                    </p>
+
+                    <h3>👥 Contenidos del programa</h3>
+                    <div class="program-modules">
+                        <div class="module-card">
+                            <h4>Módulo 1: Liderazgo como proceso</h4>
+                            <p>Liderazgo dinámico en entornos de alta complejidad. Adaptación según características del líder, equipo y contexto. Liderazgo situacional y estratégico.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Módulo 2: Autoconocimiento y fortalezas</h4>
+                            <p>Identificación de rasgos de personalidad y estilo natural de liderazgo. Cómo usar tus fortalezas como motor de influencia auténtica.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Módulo 3: Liderazgo positivo</h4>
+                            <p>Herramientas de Psicología Positiva para generar confianza, motivación y conexión. Construcción de propósito compartido y cultura de compromiso.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Módulo 4: Conductas concretas de liderazgo</h4>
+                            <p>Comunicación clara, delegación efectiva, feedback constructivo, gestión de prioridades. Comportamiento consciente y alineado.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Módulo 5: Coaching integrado</h4>
+                            <p>Dinámicas individuales y grupales para consolidar el nuevo estilo. Trabajo sobre creencias limitantes y experimentación práctica.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-cta-box">
+                        <h3>✅ Beneficios para los participantes</h3>
+                        <ul>
+                            <li>Mayor seguridad, visión y capacidad de adaptación</li>
+                            <li>Mejores relaciones con equipos: confianza y colaboración</li>
+                            <li>Herramientas concretas para entornos complejos</li>
+                            <li>Estilo de liderazgo más humano y eficaz</li>
+                            <li>Mayor impacto en motivación y rendimiento del equipo</li>
+                        </ul>
+                        <a href="contacto.html" class="btn btn-primary">Solicitar Programa Detallado</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Técnicas de Ventas Section -->
-    <section class="section section-alt">
+    <!-- KPIs y Técnicas de Ventas -->
+    <section class="section service-detail-alt">
         <div class="container">
-            <div class="service-detail reverse">
-                <div class="service-content animate-on-scroll">
-                    <h2>Formación en Técnicas de Ventas</h2>
-                    <p>Programas formativos diseñados para equipos comerciales que buscan mejorar sus resultados mediante el desarrollo de habilidades y estrategias de venta avanzadas.</p>
+            <div class="two-services-grid">
+                <!-- KPIs -->
+                <div class="service-compact animate-on-scroll">
+                    <div class="section-badge">Métricas que Importan</div>
+                    <h2>📊 Definición de KPIs Comerciales</h2>
+                    <p class="service-intro">
+                        <strong>Lo que no se mide, no se puede mejorar. Y lo que se mide bien, impulsa decisiones que generan resultados.</strong>
+                    </p>
                     
-                    <h3>Temáticas abordadas</h3>
-                    <ul class="service-benefits">
-                        <li>Prospección efectiva y cualificación de leads</li>
-                        <li>Técnicas de comunicación persuasiva</li>
-                        <li>Manejo de objeciones y cierre de ventas</li>
-                        <li>Venta consultiva y creación de valor</li>
-                        <li>Fidelización y desarrollo de clientes</li>
-                    </ul>
+                    <h3>🎯 KPIs que implementamos</h3>
+                    <div class="kpi-categories">
+                        <div class="kpi-category">
+                            <h4>KPIs de Actividad</h4>
+                            <ul>
+                                <li>Número de llamadas y contactos</li>
+                                <li>Visitas comerciales</li>
+                                <li>Propuestas enviadas</li>
+                                <li>Nuevos leads en CRM</li>
+                            </ul>
+                        </div>
+                        <div class="kpi-category">
+                            <h4>KPIs de Resultados</h4>
+                            <ul>
+                                <li>Ventas cerradas</li>
+                                <li>Facturación por vendedor</li>
+                                <li>Margen de beneficio</li>
+                                <li>% objetivos alcanzados</li>
+                            </ul>
+                        </div>
+                        <div class="kpi-category">
+                            <h4>KPIs de Eficiencia</h4>
+                            <ul>
+                                <li>% conversión por fase</li>
+                                <li>Ratio propuestas ganadas</li>
+                                <li>Ciclo medio de ventas</li>
+                                <li>Tasa de retención</li>
+                            </ul>
+                        </div>
+                    </div>
                     
-                    <h3>Metodología</h3>
-                    <p>Mi enfoque se basa en la práctica y la aplicación inmediata de los conceptos aprendidos:</p>
-                    <ul class="service-methodology">
-                        <li>Role-playing y simulaciones de venta</li>
-                        <li>Análisis de casos prácticos</li>
-                        <li>Feedback personalizado</li>
-                        <li>Plan de acción individual</li>
-                        <li>Seguimiento y refuerzo</li>
-                    </ul>
-                    
-                    <a href="contacto.html" class="btn btn-primary">Solicitar formación</a>
+                    <div class="service-benefit">
+                        <p><strong>📍 Los datos no sustituyen al criterio. Lo multiplican.</strong></p>
+                        <a href="contacto.html" class="btn btn-primary">Diseñar Sistema de KPIs</a>
+                    </div>
                 </div>
-                <div class="service-image animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Técnicas de Ventas">
+
+                <!-- Técnicas de Ventas -->
+                <div class="service-compact animate-on-scroll">
+                    <div class="section-badge">Ventas Profesionales</div>
+                    <h2>💼 Formación en Técnicas de Ventas</h2>
+                    <p class="service-intro">
+                        <strong>Vender no es solo ofrecer un producto. Es influir, conectar, generar confianza y aportar valor real al cliente.</strong>
+                    </p>
+                    
+                    <h3>📌 Prerrequisitos que trabajamos</h3>
+                    <ul class="prerequisites-list">
+                        <li><strong>Posicionamiento claro:</strong> Diagnóstico y mejora del posicionamiento del producto/servicio</li>
+                        <li><strong>Mentalidad comercial:</strong> Trabajo sobre creencias limitadoras y autoconfianza</li>
+                        <li><strong>Alineación Marketing-Ventas:</strong> Creación de puentes reales entre equipos</li>
+                        <li><strong>Conocimiento profundo:</strong> Dominio del producto y beneficios clave</li>
+                    </ul>
+
+                    <h3>🎯 Metodología de formación</h3>
+                    <div class="training-phases">
+                        <div class="phase">Preparación</div>
+                        <div class="phase">Toma de contacto</div>
+                        <div class="phase">Sondeo</div>
+                        <div class="phase">Argumentación</div>
+                        <div class="phase">Cierre</div>
+                    </div>
+                    
+                    <p>Cada fase se entrena con role-play, casos prácticos y simulaciones adaptadas a tu sector. Incluye formación continua con coaching comercial en terreno.</p>
+                    
+                    <div class="service-benefit">
+                        <p><strong>✅ Una red bien formada vende con confianza, coherencia y resultados.</strong></p>
+                        <a href="contacto.html" class="btn btn-primary">Solicitar Plan de Formación</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- KPIs Section -->
-    <section class="section">
+    <!-- Process Section -->
+    <section class="section process-section">
         <div class="container">
-            <div class="service-detail">
-                <div class="service-content animate-on-scroll">
-                    <h2>Definición de KPIs</h2>
-                    <p>Servicio especializado en el diseño e implementación de indicadores clave de desempeño que permitan medir de manera efectiva el rendimiento de los equipos comerciales y la eficacia de las estrategias implementadas.</p>
-                    
-                    <h3>Ventajas principales</h3>
-                    <ul class="service-benefits">
-                        <li>Claridad en los objetivos para todo el equipo</li>
-                        <li>Medición precisa del desempeño individual y colectivo</li>
-                        <li>Identificación temprana de áreas de mejora</li>
-                        <li>Alineación de los esfuerzos con los objetivos estratégicos</li>
-                        <li>Base objetiva para sistemas de incentivos y reconocimiento</li>
-                    </ul>
-                    
-                    <h3>Proceso de implementación</h3>
-                    <ol class="service-methodology">
-                        <li>Análisis de los objetivos estratégicos de la organización</li>
-                        <li>Identificación de los indicadores clave relevantes</li>
-                        <li>Definición de métricas y estándares</li>
-                        <li>Implementación de sistemas de seguimiento</li>
-                        <li>Formación del equipo en el uso de los KPIs</li>
-                        <li>Evaluación periódica y ajuste de indicadores</li>
-                    </ol>
-                    
-                    <a href="contacto.html" class="btn btn-primary">Solicitar asesoría</a>
-                </div>
-                <div class="service-image animate-on-scroll">
-                    <img src="/api/placeholder/600/400" alt="Definición de KPIs">
-                </div>
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">Mi Metodología</div>
+                <h2 class="section-title">Proceso de trabajo estructurado</h2>
+                <p class="section-description">
+                    Un enfoque sistemático que garantiza resultados medibles y sostenibles
+                </p>
             </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section faq-section">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Preguntas Frecuentes</h2>
-                <p>Respuestas a las dudas más comunes sobre mis servicios</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item animate-on-scroll">
-                    <div class="faq-question">
-                        <h3>¿Cuánto tiempo dura normalmente un proceso de coaching ejecutivo?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Un proceso de coaching ejecutivo completo suele durar entre 3 y 6 meses, con sesiones quincenales o mensuales de 90 minutos aproximadamente. No obstante, la duración puede variar en función de los objetivos específicos y las necesidades del cliente.</p>
-                    </div>
+            <div class="process-timeline">
+                <div class="process-step animate-on-scroll">
+                    <div class="process-number">1</div>
+                    <h3>Diagnóstico Profundo</h3>
+                    <p>Análisis exhaustivo de tu situación actual, cultura organizacional y objetivos. Identificación de áreas de mejora y oportunidades.</p>
                 </div>
-                
-                <div class="faq-item animate-on-scroll">
-                    <div class="faq-question">
-                        <h3>¿Cómo se mide el retorno de inversión (ROI) de la consultoría organizacional?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>El ROI se mide a través de indicadores específicos definidos al inicio del proyecto, que pueden incluir: incremento en ventas, mejora de márgenes, aumento de la productividad, reducción de rotación de personal, mejora del clima laboral, entre otros. Se establecen métricas claras y periodos de evaluación para asegurar resultados tangibles.</p>
-                    </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-number">2</div>
+                    <h3>Diseño Personalizado</h3>
+                    <p>Desarrollo de un plan de acción 100% adaptado a tus necesidades, recursos y momento empresarial.</p>
                 </div>
-                
-                <div class="faq-item animate-on-scroll">
-                    <div class="faq-question">
-                        <h3>¿Ofreces servicios para empresas de cualquier tamaño?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sí, adapto mis servicios a las necesidades y características específicas de cada organización, desde pequeñas empresas hasta grandes corporaciones. La metodología y el alcance se personalizan para obtener los mejores resultados según la estructura, recursos y objetivos de cada cliente.</p>
-                    </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-number">3</div>
+                    <h3>Implementación Acompañada</h3>
+                    <p>Puesta en marcha con seguimiento cercano, formación práctica y coaching para asegurar la adopción.</p>
                 </div>
-                
-                <div class="faq-item animate-on-scroll">
-                    <div class="faq-question">
-                        <h3>¿Las formaciones pueden realizarse de manera online?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Efectivamente, todas mis formaciones y servicios de consultoría pueden realizarse tanto de manera presencial como online, dependiendo de las preferencias y necesidades del cliente. Las sesiones virtuales están diseñadas para ser igualmente interactivas y efectivas, utilizando herramientas digitales especializadas para maximizar el aprendizaje y la participación.</p>
-                    </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-number">4</div>
+                    <h3>Medición y Ajuste</h3>
+                    <p>Monitoreo continuo con KPIs claros. Ajustes ágiles según resultados y feedback.</p>
                 </div>
-                
-                <div class="faq-item animate-on-scroll">
-                    <div class="faq-question">
-                        <h3>¿Qué diferencia tu enfoque de coaching de otros servicios similares?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Mi enfoque se distingue por combinar sólidas bases de psicología del comportamiento con experiencia práctica en entornos empresariales. Me centro no solo en el desarrollo personal del ejecutivo, sino también en su impacto directo en los resultados del negocio. Además, integro técnicas de seguimiento que garantizan la aplicación efectiva de los aprendizajes en el día a día profesional.</p>
-                    </div>
+                <div class="process-step animate-on-scroll">
+                    <div class="process-number">5</div>
+                    <h3>Autonomía y Sostenibilidad</h3>
+                    <p>Transferencia de conocimiento para que tu equipo mantenga y mejore los resultados de forma autónoma.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="section cta-section">
+    <section class="cta">
         <div class="container">
-            <div class="cta-container animate-on-scroll">
-                <h2>¿Listo para llevar tu organización al siguiente nivel?</h2>
-                <p>Contacta conmigo para una consulta inicial sin compromiso y descubre cómo puedo ayudarte a alcanzar tus objetivos.</p>
-                <a href="contacto.html" class="btn btn-primary">Solicitar consulta</a>
+            <div class="cta-content animate-on-scroll">
+                <h2 class="cta-title">¿Qué servicio necesita tu empresa?</h2>
+                <p class="cta-description">
+                    Empiezo con un diagnóstico gratuito para entender tu situación y diseñar la mejor estrategia.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contacto.html" class="btn btn-primary">Solicitar Diagnóstico Gratuito</a>
+                    <a href="tel:+34609430403" class="btn btn-secondary">Llamar: +34 609 430 403</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h4>Luis Romera</h4>
-                    <p>Consultoría Organizacional especializada en marketing digital y ventas. Potencio el rendimiento de tu empresa a través de metodologías efectivas.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Luis Romera</h3>
+                    <p>Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales desde la integración de estrategia, desarrollo humano y resultados medibles.</p>
                 </div>
-                <div class="footer-column">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul class="footer-links">
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#coaching-ejecutivo">Coaching Ejecutivo</a></li>
+                        <li><a href="#eficacia-comercial">Eficacia Comercial</a></li>
+                        <li><a href="#formacion-managers">Formación para Managers</a></li>
+                        <li><a href="#kpis">Definición de KPIs</a></li>
+                        <li><a href="#ventas">Técnicas de Ventas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
                         <li><a href="index.html">Inicio</a></li>
                         <li><a href="servicios.html">Servicios</a></li>
-                        <li><a href="sobremi.html">Sobre mí</a></li>
+                        <li><a href="sobre-mi.html">Sobre mí</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="blog.html">Blog</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h4>Servicios</h4>
-                    <ul class="footer-links">
-                        <li><a href="servicios.html#coaching">Coaching Ejecutivo</a></li>
-                        <li><a href="servicios.html#asesoria">Asesoría Organizacional</a></li>
-                        <li><a href="servicios.html#formacion">Formación para Managers</a></li>
-                        <li><a href="servicios.html#kpis">Definición de KPIs</a></li>
-                        <li><a href="servicios.html#ventas">Técnicas de Ventas</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Contacto</h4>
-                    <ul class="footer-links">
-                        <li>📱 +34 XXX XXX XXX</li>
-                        <li>✉️ info@luisromera.com</li>
-                        <li>🏢 Madrid, España</li>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>📱 +34 609 430 403</li>
+                        <li>✉️ luisromeranavarro@gmail.com</li>
+                        <li>📍 Madrid, España</li>
+                        <li>🕒 Lunes - Viernes: 9:00 - 18:00</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Luis Romera Consultoría. Todos los derechos reservados.</p>
+                <p>&copy; 2025 Luis Romera Navarro. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
