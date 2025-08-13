@@ -7,10 +7,21 @@
 (function () {
     'use strict';
 
+    // VALORES FIJOS PARA TODA LA WEB
+    const FIXED_VALUES = {
+        'experiencia': 24,
+        'roi-min': 5,
+        'roi-max': 7,
+        'roi-empresas': 86,
+        'mejora-comercial': 30,
+        'comerciales-formados': 200,
+        'años-formacion': 5
+    };
+
     const CONFIG = {
-        duration: 2000, // 2 segundos
+        duration: 2000,
         easing: 'easeOutQuart',
-        once: true, // Animar solo una vez
+        once: true,
         prefix: '',
         suffix: '',
         separator: '.'
@@ -72,7 +83,10 @@
      */
     // Modificación en counters.js para contadores en línea
     function animateCounter(element) {
-        const target = parseFloat(element.dataset.target);
+        const fixedKey = element.dataset.fixedValue;
+        const target = fixedKey && FIXED_VALUES[fixedKey]
+            ? FIXED_VALUES[fixedKey]
+            : parseFloat(element.dataset.target);
         const duration = parseInt(element.dataset.duration) || CONFIG.duration;
         const prefix = element.dataset.prefix || CONFIG.prefix;
         const suffix = element.dataset.suffix || CONFIG.suffix;
