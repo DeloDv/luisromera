@@ -851,3 +851,39 @@ body {
         padding: 1rem !important;
     }
 }
+
+/* Timeline mejorado con destacados */
+.timeline-item[data-reveal] {
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+}
+
+/* Destacar las secciones principales */
+.timeline-item:nth-child(4),
+.timeline-item:nth-child(5) {
+    position: relative;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding: 1.5rem 2rem !important;
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 1rem !important;
+    }
+
+    .timeline-item>div {
+        text-align: left !important;
+        padding: 1rem 0 !important;
+    }
+
+    /* Ocultar línea vertical en móvil */
+    .timeline>div:first-child {
+        display: none;
+    }
+}
