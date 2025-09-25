@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Competencias Clave del Líder Transformacional - Luis Romera</title>
+    
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2563eb;
+            --accent-color: #f59e0b;
+            --success-color: #059669;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --background-light: #f8fafc;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            padding-top: 80px;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-color);
+            border-radius: 1px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--background-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb-list a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-list a:hover {
+            color: var(--secondary-color);
+        }
+
+        .breadcrumb-separator {
+            color: var(--text-light);
+        }
+
+        .breadcrumb-current {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Article Header */
+        .article-header {
+            background: var(--gradient-primary);
+            padding: 3rem 0;
+            color: var(--white);
+        }
+
+        .article-category {
+            display: inline-block;
+            background: var(--accent-color);
+            padding: 0.375rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            font-size: 0.9375rem;
+            opacity: 0.9;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .author-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 600;
+        }
+
+        .author-role {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .article-info {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* Article Content */
+        .article-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .article-body {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .article-body h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 2.5rem 0 1rem;
+            line-height: 1.3;
+        }
+
+        .article-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 2rem 0 0.75rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-body ul,
+        .article-body ol {
+            margin: 0 0 1.5rem 1.5rem;
+            padding-left: 1rem;
+        }
+
+        .article-body li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .article-body blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            background: var(--background-light);
+            border-radius: 0.5rem;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            border: 2px solid var(--accent-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .toc-list a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9375rem;
+        }
+
+        .toc-list a:hover {
+            color: var(--secondary-color);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .share-btn {
+            flex: 1;
+            padding: 0.75rem;
+            background: var(--background-light);
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            border-color: var(--secondary-color);
+        }
+
+        /* Article Footer */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            background: var(--background-light);
+            color: var(--text-dark);
+            padding: 0.375rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* CTA Box */
+        .article-cta {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .article-cta h3 {
+            color: white;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-cta p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .article-cta .btn {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .article-cta .btn:hover {
+            background: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* Related Articles */
+        .related-articles {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .related-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: var(--white);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .related-content {
+            padding: 1.25rem;
+        }
+
+        .related-category {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .related-post-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .related-date {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .article-container {
+                grid-template-columns: 1fr;
+            }
+
+            .article-sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .article-header {
+                padding: 2rem 0;
+            }
+
+            .article-title {
+                font-size: 1.75rem;
+            }
+
+            .article-content {
+                padding: 1rem;
+            }
+
+            .article-body {
+                font-size: 1rem;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
+                <a href="index.html" class="logo">Luis Romera</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="servicios.html" class="nav-link">Servicios</a></li>
+                    <li><a href="sobre-mi.html" class="nav-link">Sobre mí</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li><a href="contacto.html" class="btn btn-primary">Consulta Gratuita</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú móvil">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="container">
+            <span class="article-category">Liderazgo</span>
+            <h1 class="article-title">5 Competencias Clave del Líder Transformacional</h1>
+            <div class="article-meta">
+                <div class="author-info">
+                    <div class="author-avatar">LR</div>
+                    <div class="author-details">
+                        <span class="author-name">Luis Romera</span>
+                        <span class="author-role">Psicólogo y Consultor Organizacional</span>
+                    </div>
+                </div>
+                <div class="article-info">
+                    <span>📅 15 enero 2025</span>
+                    <span>⏱️ 5 min lectura</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="container">
+        <div class="article-container">
+            <!-- Main Content -->
+            <article class="article-content">
+                <div class="article-body">
+                    <p><strong>En un mundo empresarial cada vez más volátil e incierto, el liderazgo transformacional 
+                    se ha convertido en un factor crítico de supervivencia y crecimiento organizacional.</strong> 
+                    Pero, ¿qué distingue realmente a un líder transformacional de un gestor tradicional? 
+                    Después de 24 años trabajando con directivos y equipos, he identificado cinco competencias 
+                    fundamentales que marcan la diferencia.</p>
+
+                    <img src="https://via.placeholder.com/800x400/2563eb/ffffff?text=Liderazgo+Transformacional" 
+                         alt="Liderazgo Transformacional" class="article-image">
+
+                    <h2>1. Visión Inspiradora y Comunicación Estratégica</h2>
+                    
+                    <p>El líder transformacional no solo tiene una visión clara del futuro; sabe comunicarla 
+                    de forma que inspire y movilice a su equipo. Esta competencia va más allá de presentar 
+                    objetivos: se trata de crear una narrativa poderosa que conecte emocionalmente con las 
+                    personas.</p>
+
+                    <div class="highlight-box">
+                        <h4>💡 Clave práctica:</h4>
+                        <p>Dedica tiempo a desarrollar tu "historia del cambio". ¿Por qué es importante lo que 
+                        hacemos? ¿Cómo mejoramos la vida de nuestros clientes? ¿Qué legado queremos dejar?</p>
+                    </div>
+
+                    <p>En mi experiencia como Sales Force Effectiveness Manager, he visto cómo los equipos 
+                    que comprenden y se conectan con el propósito organizacional aumentan su compromiso 
+                    en un 40% y mejoran sus resultados de forma sostenida.</p>
+
+                    <h2>2. Inteligencia Emocional Aplicada</h2>
+                    
+                    <p>La capacidad de reconocer, comprender y gestionar las emociones propias y ajenas 
+                    es fundamental. Pero no hablamos de inteligencia emocional teórica, sino aplicada 
+                    al día a día del liderazgo.</p>
+
+                    <ul>
+                        <li><strong>Autoconciencia:</strong> Conocer tus propios triggers emocionales y cómo 
+                        impactan en tu equipo</li>
+                        <li><strong>Autorregulación:</strong> Mantener la calma y claridad en momentos de 
+                        alta presión</li>
+                        <li><strong>Empatía activa:</strong> No solo entender, sino actuar en consecuencia 
+                        para apoyar a tu equipo</li>
+                        <li><strong>Habilidades sociales:</strong> Construir relaciones auténticas que 
+                        trascienden lo profesional</li>
+                    </ul>
+
+                    <blockquote>
+                        "El liderazgo transformacional no es sobre controlar personas, es sobre inspirar 
+                        propósitos y liberar potencial."
+                    </blockquote>
+
+                    <h2>3. Mentalidad de Crecimiento y Aprendizaje Continuo</h2>
+                    
+                    <p>Carol Dweck popularizó el concepto de "growth mindset", pero en el liderazgo 
+                    transformacional esto se traduce en acciones concretas:</p>
+
+                    <ol>
+                        <li>Ver los errores como oportunidades de aprendizaje</li>
+                        <li>Fomentar la experimentación calculada</li>
+                        <li>Invertir tiempo y recursos en el desarrollo del equipo</li>
+                        <li>Modelar la vulnerabilidad y el aprendizaje público</li>
+                    </ol>
+
+                    <p>Como psicólogo especializado en coaching ejecutivo, he observado que los líderes 
+                    que abrazan esta mentalidad no solo mejoran ellos mismos, sino que crean culturas 
+                    organizacionales más innovadoras y resilientes.</p>
+
+                    <h2>4. Capacidad de Empoderar y Desarrollar a Otros</h2>
+                    
+                    <p>El líder transformacional entiende que su éxito se mide por el éxito de su equipo. 
+                    Esta competencia incluye:</p>
+
+                    <div class="highlight-box">
+                        <h4>🎯 Framework de Empoderamiento:</h4>
+                        <ul>
+                            <li><strong>Delegar con propósito:</strong> No solo tareas, sino responsabilidades 
+                            significativas</li>
+                            <li><strong>Coaching continuo:</strong> Dedicar tiempo regular al desarrollo 
+                            individual</li>
+                            <li><strong>Reconocimiento estratégico:</strong> Celebrar logros de forma que 
+                            refuerce comportamientos deseados</li>
+                            <li><strong>Crear espacios seguros:</strong> Donde el error sea parte del proceso 
+                            de aprendizaje</li>
+                        </ul>
+                    </div>
+
+                    <h2>5. Agilidad Adaptativa y Gestión del Cambio</h2>
+                    
+                    <p>En un entorno VUCA (Volátil, Incierto, Complejo y Ambiguo), la capacidad de 
+                    adaptarse rápidamente mientras se mantiene la dirección estratégica es crucial.</p>
+
+                    <p>Esta competencia se manifiesta en:</p>
+                    <ul>
+                        <li>Toma de decisiones ágil con información incompleta</li>
+                        <li>Flexibilidad para cambiar de rumbo cuando los datos lo indican</li>
+                        <li>Resiliencia ante los obstáculos y fracasos</li>
+                        <li>Capacidad de mantener al equipo enfocado durante la incertidumbre</li>
+                    </ul>
+
+                    <h2>Implementando estas Competencias en tu Organización</h2>
+                    
+                    <p>El desarrollo de estas competencias no ocurre de la noche a la mañana. Requiere 
+                    un proceso estructurado de autoconocimiento, práctica deliberada y feedback continuo. 
+                    En mis procesos de coaching ejecutivo, utilizo una metodología basada en:</p>
+
+                    <ol>
+                        <li><strong>Diagnóstico inicial:</strong> Evaluación 360° de competencias actuales</li>
+                        <li><strong>Plan de desarrollo personalizado:</strong> Objetivos específicos y 
+                        medibles</li>
+                        <li><strong>Práctica acompañada:</strong> Sesiones de coaching y feedback en 
+                        tiempo real</li>
+                        <li><strong>Medición de impacto:</strong> KPIs vinculados a resultados de negocio</li>
+                    </ol>
+
+                    <div class="article-cta">
+                        <h3>¿Quieres desarrollar estas competencias en tu organización?</h3>
+                        <p>Descubre cómo un proceso de coaching ejecutivo puede transformar tu liderazgo 
+                        y el de tu equipo.</p>
+                        <a href="contacto.html?servicio=coaching" class="btn">Solicitar Diagnóstico Gratuito</a>
+                    </div>
+
+                    <h2>Conclusión: El Liderazgo como Proceso, No como Destino</h2>
+                    
+                    <p>El liderazgo transformacional no es un título o una posición; es un conjunto de 
+                    competencias que se desarrollan continuamente. Los líderes más efectivos que he 
+                    acompañado en estos años comparten una característica común: entienden que liderar 
+                    es servir, y que su desarrollo personal es inseparable del desarrollo de su equipo.</p>
+
+                    <p>Como dijo Peter Drucker: "El liderazgo es elevar la visión de una persona hacia 
+                    metas más altas, elevar el rendimiento de una persona a un estándar superior, y 
+                    construir una personalidad más allá de sus limitaciones normales."</p>
+
+                    <p>¿Cuál de estas competencias consideras más crítica para tu contexto actual? 
+                    ¿Dónde ves tu mayor oportunidad de crecimiento?</p>
+                </div>
+
+                <!-- Article Footer -->
+                <footer class="article-footer">
+                    <div class="article-tags">
+                        <a href="#" class="tag">#Liderazgo</a>
+                        <a href="#" class="tag">#CoachingEjecutivo</a>
+                        <a href="#" class="tag">#DesarrolloOrganizacional</a>
+                        <a href="#" class="tag">#InteligenciaEmocional</a>
+                        <a href="#" class="tag">#TransformaciónEmpresarial</a>
+                    </div>
+                </footer>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="article-sidebar">
+                <!-- Table of Contents -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Contenido del Artículo</h3>
+                    <ul class="toc-list">
+                        <li><a href="#vision">1. Visión Inspiradora</a></li>
+                        <li><a href="#inteligencia">2. Inteligencia Emocional</a></li>
+                        <li><a href="#crecimiento">3. Mentalidad de Crecimiento</a></li>
+                        <li><a href="#empoderar">4. Empoderar a Otros</a></li>
+                        <li><a href="#agilidad">5. Agilidad Adaptativa</a></li>
+                    </ul>
+                </div>
+
+                <!-- Share Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Compartir Artículo</h3>
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn">LinkedIn</a>
+                        <a href="#" class="share-btn">Twitter</a>
+                        <a href="#" class="share-btn">Email</a>
+                    </div>
+                </div>
+
+                <!-- About Author -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Sobre el Autor</h3>
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <div class="author-avatar" style="width: 80px; height: 80px; margin: 0 auto; font-size: 2rem;">LR</div>
+                    </div>
+                    <p style="font-size: 0.9375rem; color: var(--text-light); line-height: 1.6;">
+                        <strong>Luis Romera</strong> es Psicólogo y Consultor Organizacional con 24 años 
+                        de experiencia transformando equipos comerciales. Especialista en coaching ejecutivo 
+                        y desarrollo de liderazgo.
+                    </p>
+                    <a href="sobre-mi.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                        Ver Perfil Completo
+                    </a>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="sidebar-widget" style="background: var(--gradient-primary); color: var(--white);">
+                    <h3 class="widget-title" style="color: var(--white); border-color: var(--white);">
+                        Newsletter Exclusivo
+                    </h3>
+                    <p style="font-size: 0.9375rem; margin-bottom: 1rem;">
+                        Recibe contenido exclusivo sobre liderazgo y transformación organizacional.
+                    </p>
+                    <a href="contacto.html" class="btn" style="background: var(--white); color: var(--primary-color); width: 100%;">
+                        Suscribirme
+                    </a>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Related Articles -->
+        <section class="related-articles">
+            <h2 class="related-title">Artículos Relacionados</h2>
+            <div class="related-grid">
+                <!-- Related Article 1 -->
+                <a href="#" class="related-card">
+                    <img src="https://via.placeholder.com/400x200/f59e0b/ffffff?text=Coaching" 
+                         alt="ROI del Coaching" class="related-image">
+                    <div class="related-content">
+                        <span class="related-category">Coaching Ejecutivo</span>
+                        <h3 class="related-post-title">Cómo el Coaching Potencia el ROI de tu Organización</h3>
+                        <span class="related-date">8 enero 2025</span>
+                    </div>
+                </a>
+
+                <!-- Related Article 2 -->
+                <a href="#" class="related-card">
+                    <img src="https://via.placeholder.com/400x200/059669/ffffff?text=KPIs" 
+                         alt="KPIs Comerciales" class="related-image">
+                    <div class="related-content">
+                        <span class="related-category">Eficacia Comercial</span>
+                        <h3 class="related-post-title">KPIs que Realmente Importan en Equipos Comerciales</h3>
+                        <span class="related-date">22 diciembre 2024</span>
+                    </div>
+                </a>
+
+                <!-- Related Article 3 -->
+                <a href="#" class="related-card">
+                    <img src="https://via.placeholder.com/400x200/1a365d/ffffff?text=Psicologia" 
+                         alt="Fortalezas en Equipos" class="related-image">
+                    <div class="related-content">
+                        <span class="related-category">Psicología Positiva</span>
+                        <h3 class="related-post-title">Aplicando las Fortalezas en el Desarrollo de Equipos</h3>
+                        <span class="related-date">18 diciembre 2024</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Luis Romera</h3>
+                    <p>Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="servicios.html#coaching">Coaching Ejecutivo</a></li>
+                        <li><a href="servicios.html#eficacia">Eficacia Comercial</a></li>
+                        <li><a href="servicios.html#formacion">Formación para Managers</a></li>
+                        <li><a href="servicios.html#kpis">Definición de KPIs</a></li>
+                        <li><a href="servicios.html#ventas">Técnicas de Ventas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="sobre-mi.html">Sobre mí</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>+34 609 430 403</li>
+                        <li>luisromeranavarro@gmail.com</li>
+                        <li>Madrid, España</li>
+                        <li>Lunes - Viernes: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luis Romera Navarro. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Menú móvil
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll para tabla de contenidos
+        document.querySelectorAll('.toc-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            });
+        });
+
+        // Progress bar de lectura (opcional)
+        window.addEventListener('scroll', function() {
+            const article = document.querySelector('.article-body');
+            if (article) {
+                const scrollTop = window.scrollY;
+                const articleTop = article.offsetTop;
+                const articleHeight = article.offsetHeight;
+                const windowHeight = window.innerHeight;
+                const progress = ((scrollTop - articleTop + windowHeight) / articleHeight) * 100;
+                
+                // Crear barra de progreso si no existe
+                let progressBar = document.getElementById('reading-progress');
+                if (!progressBar) {
+                    progressBar = document.createElement('div');
+                    progressBar.id = 'reading-progress';
+                    progressBar.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        height: 3px;
+                        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                        z-index: 1001;
+                        transition: width 0.2s ease;
+                    `;
+                    document.body.appendChild(progressBar);
+                }
+                progressBar.style.width = Math.min(Math.max(progress, 0), 100) + '%';
+            }
+        });
+    </script>
+</body>
+</html>

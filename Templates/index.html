@@ -34,8 +34,377 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/effects.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/effects.css">
+    
+    <!-- Estilos adicionales para la nueva sección -->
+    <style>
+        /* Estilos para la nueva sección de objetivos */
+        .objectives-section {
+            padding: 6rem 0;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objectives-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .objectives-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .objectives-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: var(--white);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .objectives-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .objectives-title .highlight {
+            color: var(--accent-color);
+            position: relative;
+        }
+
+        .objectives-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 2px;
+        }
+
+        .objectives-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .objectives-cta-text {
+            font-size: 1.125rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .growth-visual {
+            background: var(--gradient-primary);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .growth-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .growth-text {
+            color: var(--white);
+        }
+
+        .growth-headline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .growth-percentage {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .growth-description {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .growth-metrics {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .metric-item {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .growth-chart {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .chart-title {
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .client-profiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .profile-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-color);
+        }
+
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .profile-objectives-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .objectives-list {
+            list-style: none;
+        }
+
+        .objectives-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .objectives-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .improvement-process {
+            background: var(--background-light);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-top: 4rem;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .process-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .process-subtitle {
+            color: var(--text-light);
+            font-size: 1.125rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                var(--accent-color) 0%, 
+                var(--secondary-color) 50%, 
+                #059669 100%);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .objectives-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .growth-content {
+                grid-template-columns: 1fr;
+            }
+
+            .client-profiles {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .growth-headline {
+                font-size: 2rem;
+            }
+
+            .growth-percentage {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -51,6 +420,7 @@
                     <li><a href="index.html" class="nav-link active">Inicio</a></li>
                     <li><a href="servicios.html" class="nav-link">Servicios</a></li>
                     <li><a href="sobre-mi.html" class="nav-link">Sobre mí</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
                     <li><a href="contacto.html" class="nav-link">Contacto</a></li>
                     <li><a href="contacto.html" class="btn btn-primary">Consulta Gratuita</a></li>
                 </ul>
@@ -65,7 +435,7 @@
 
     <!-- Main Content -->
     <main id="main">
-        <!-- Hero Section con Parallax -->
+        <!-- Hero Section con Parallax (MANTENER) -->
         <section class="hero" id="inicio" data-spy>
             <div class="hero__bg" data-parallax data-speed="0.3">
                 <div class="hero__bg-gradient"></div>
@@ -107,81 +477,202 @@
             </div>
         </section>
 
-        <!-- Value Proposition -->
-        <section class="section value-prop" id="propuesta-valor" data-spy>
+        <!-- NUEVA SECCIÓN DE OBJETIVOS -->
+        <section class="objectives-section" id="objetivos" data-spy>
             <div class="container">
-                <div class="section-header" data-reveal>
-                    <div class="section-badge">Mi Enfoque Diferencial</div>
-                    <h2 class="section-title">Lo que me hace único en el mercado</h2>
-                    <p class="section-description">
-                        Mientras otros aplican fórmulas estándar, yo diseño soluciones desde la comprensión profunda de
-                        las personas y la cultura de tu empresa.
+                <!-- Header -->
+                <div class="objectives-header" data-reveal>
+                    <span class="objectives-badge">Tu objetivo es claro</span>
+                    <h2 class="objectives-title">
+                        Quieres <span class="highlight">vender más</span> y hacer crecer tu facturación
+                    </h2>
+                    <p class="objectives-subtitle">
+                        Y sabemos exactamente cómo conseguirlo: profesionalizando tu red comercial, 
+                        mejorando ratios de conversión y alineando marketing con ventas.
+                    </p>
+                    <p class="objectives-cta-text">
+                        Porque al final, todo se reduce a resultados medibles 📈
                     </p>
                 </div>
-                <div class="value-grid">
-                    <div class="value-card" data-reveal data-delay="100">
-                        <h3 class="value-title">Personalización extrema</h3>
-                        <p class="value-description">
-                            Cada intervención se diseña desde cero tras un diagnóstico profundo de tu cultura, momento
-                            empresarial y objetivos específicos. No hay dos proyectos iguales.
-                        </p>
+
+                <!-- Visual de Crecimiento -->
+                <div class="growth-visual" data-reveal data-delay="100">
+                    <div class="growth-content">
+                        <div class="growth-text">
+                            <h3 class="growth-headline">
+                                El crecimiento que buscas es posible
+                            </h3>
+                            <span class="growth-percentage">+35%</span>
+                            <p class="growth-description">
+                                Incremento promedio en facturación cuando se profesionaliza 
+                                la función comercial con metodología y seguimiento adecuado.
+                            </p>
+                            <div class="growth-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">30%</span>
+                                    <span class="metric-label">Mejora en conversión</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">45%</span>
+                                    <span class="metric-label">Más eficiencia comercial</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="growth-chart">
+                            <p class="chart-title">Evolución típica de facturación tras implementación</p>
+                            <!-- SVG Chart -->
+                            <svg viewBox="0 0 400 250" style="width: 100%; height: auto;">
+                                <!-- Grid -->
+                                <g stroke="rgba(255,255,255,0.1)" stroke-width="1">
+                                    <line x1="40" y1="30" x2="40" y2="200"/>
+                                    <line x1="40" y1="200" x2="380" y2="200"/>
+                                    <line x1="40" y1="160" x2="380" y2="160" stroke-dasharray="5,5"/>
+                                    <line x1="40" y1="120" x2="380" y2="120" stroke-dasharray="5,5"/>
+                                    <line x1="40" y1="80" x2="380" y2="80" stroke-dasharray="5,5"/>
+                                </g>
+                                
+                                <!-- Growth line -->
+                                <path d="M 60,180 Q 120,170 160,150 T 240,120 Q 300,100 340,60" 
+                                      stroke="#f59e0b" 
+                                      stroke-width="3" 
+                                      fill="none"
+                                      stroke-linecap="round"/>
+                                
+                                <!-- Area under curve -->
+                                <path d="M 60,180 Q 120,170 160,150 T 240,120 Q 300,100 340,60 L 340,200 L 60,200 Z" 
+                                      fill="url(#gradient)" 
+                                      opacity="0.3"/>
+                                
+                                <!-- Gradient definition -->
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.8" />
+                                        <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.1" />
+                                    </linearGradient>
+                                </defs>
+                                
+                                <!-- Data points -->
+                                <circle cx="60" cy="180" r="5" fill="#f59e0b"/>
+                                <circle cx="160" cy="150" r="5" fill="#f59e0b"/>
+                                <circle cx="240" cy="120" r="5" fill="#f59e0b"/>
+                                <circle cx="340" cy="60" r="5" fill="#f59e0b"/>
+                                
+                                <!-- Labels -->
+                                <text x="60" y="220" fill="white" font-size="12" text-anchor="middle" opacity="0.7">Mes 1</text>
+                                <text x="160" y="220" fill="white" font-size="12" text-anchor="middle" opacity="0.7">Mes 3</text>
+                                <text x="240" y="220" fill="white" font-size="12" text-anchor="middle" opacity="0.7">Mes 6</text>
+                                <text x="340" y="220" fill="white" font-size="12" text-anchor="middle" opacity="0.7">Mes 12</text>
+                                
+                                <!-- Y-axis labels -->
+                                <text x="30" y="205" fill="white" font-size="11" text-anchor="end" opacity="0.7">0</text>
+                                <text x="30" y="165" fill="white" font-size="11" text-anchor="end" opacity="0.7">+15%</text>
+                                <text x="30" y="125" fill="white" font-size="11" text-anchor="end" opacity="0.7">+25%</text>
+                                <text x="30" y="85" fill="white" font-size="11" text-anchor="end" opacity="0.7">+35%</text>
+                            </svg>
+                        </div>
                     </div>
-                    <div class="value-card" data-reveal data-delay="200">
-                        <h3 class="value-title">Base psicológica científica</h3>
-                        <p class="value-description">
-                            Como psicólogo especialista, aplico metodologías validadas científicamente. Trabajo desde
-                            las fortalezas y la psicología positiva para generar cambios duraderos.
-                        </p>
+                </div>
+
+                <!-- Perfiles de Cliente -->
+                <div class="client-profiles">
+                    <!-- Dueños de PYMES -->
+                    <div class="profile-card" data-reveal data-delay="200">
+                        <div class="profile-icon">👔</div>
+                        <h3 class="profile-title">Dueños de PYMES</h3>
+                        <p class="profile-objectives-title">Tus objetivos:</p>
+                        <ul class="objectives-list">
+                            <li>Profesionalizar la red comercial</li>
+                            <li>Crecer con control y estrategia</li>
+                            <li>Implantar KPIs y cuadros de mando</li>
+                            <li>Fidelizar y expandir cartera de clientes</li>
+                        </ul>
                     </div>
-                    <div class="value-card" data-reveal data-delay="300">
-                        <h3 class="value-title">Integración total</h3>
-                        <p class="value-description">
-                            Combino consultoría estratégica, formación práctica y coaching ejecutivo en un solo proceso
-                            coherente. Todo alineado hacia tus objetivos de negocio.
-                        </p>
+
+                    <!-- Directores Comerciales -->
+                    <div class="profile-card" data-reveal data-delay="300">
+                        <div class="profile-icon">📊</div>
+                        <h3 class="profile-title">Directores Comerciales</h3>
+                        <p class="profile-objectives-title">Tus objetivos:</p>
+                        <ul class="objectives-list">
+                            <li>Mejorar ratios de conversión visita/venta</li>
+                            <li>Optimizar el tiempo comercial del equipo</li>
+                            <li>Alinear estrategias de marketing y ventas</li>
+                            <li>Escalar resultados de forma sostenible</li>
+                        </ul>
                     </div>
-                    <div class="value-card" data-reveal data-delay="400">
-                        <h3 class="value-title">Resultados medibles y sostenibles</h3>
-                        <p class="value-description">
-                            Implemento KPIs que conectan actividad con resultados. Pero más importante: creo cambios que
-                            perduran porque transforman mentalidades.
-                        </p>
+
+                    <!-- Managers de Ventas -->
+                    <div class="profile-card" data-reveal data-delay="400">
+                        <div class="profile-icon">🎯</div>
+                        <h3 class="profile-title">Mandos Intermedios</h3>
+                        <p class="profile-objectives-title">Tus objetivos:</p>
+                        <ul class="objectives-list">
+                            <li>Mejorar habilidades comerciales del equipo</li>
+                            <li>Aumentar el ratio de cierres efectivos</li>
+                            <li>Coordinar acciones con marketing</li>
+                            <li>Desarrollar y motivar a tu equipo</li>
+                        </ul>
                     </div>
-                    <div class="value-card" data-reveal data-delay="500">
-                        <h3 class="value-title">Acompañamiento cercano</h3>
-                        <p class="value-description">
-                            No soy una gran consultora impersonal. Trabajo codo a codo contigo, adaptándome a tu ritmo y
-                            asegurando que cada cambio se integre naturalmente.
-                        </p>
+                </div>
+
+                <!-- Proceso de Mejora -->
+                <div class="improvement-process" data-reveal data-delay="500">
+                    <div class="process-header">
+                        <h3 class="process-title">El camino hacia tus objetivos</h3>
+                        <p class="process-subtitle">Un proceso claro y medible para conseguir resultados</p>
                     </div>
-                    <div class="value-card" data-reveal data-delay="600">
-                        <h3 class="value-title">Autonomía garantizada</h3>
-                        <p class="value-description">
-                            Mi objetivo es que no me necesites para siempre. Transfiero conocimiento y desarrollo
-                            capacidades internas para que el crecimiento sea autónomo.
-                        </p>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h4 class="step-title">Diagnóstico</h4>
+                            <p class="step-description">Analizamos tu situación actual y potencial de mejora</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h4 class="step-title">Estrategia</h4>
+                            <p class="step-description">Diseñamos un plan 100% adaptado a tu realidad</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h4 class="step-title">Implementación</h4>
+                            <p class="step-description">Ejecutamos con formación y acompañamiento continuo</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h4 class="step-title">Medición</h4>
+                            <p class="step-description">KPIs claros que demuestran el ROI conseguido</p>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <h4 class="step-title">Escalado</h4>
+                            <p class="step-description">Consolidamos y ampliamos los resultados obtenidos</p>
+                        </div>
                     </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="objectives-cta" data-reveal data-delay="600">
+                    <a href="contacto.html" class="btn btn-accent">
+                        Quiero vender más → Empecemos
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Services -->
-
+        <!-- Services (AHORA TERCERA) -->
         <section class="section" id="servicios" data-spy>
             <div class="container">
                 <div class="section-header" data-reveal>
                     <div class="section-badge">Mis Servicios</div>
-                    <h2 class="section-title">Soluciones integrales para tu crecimiento</h2>
+                    <h2 class="section-title">Cómo conseguimos tus objetivos</h2>
                     <p class="section-description">
                         Metodologías probadas que combinan estrategia comercial, desarrollo de personas y resultados
-                        medibles.
+                        medibles para hacer crecer tu facturación.
                     </p>
                 </div>
 
                 <!-- Grid de 6 servicios -->
-                <div class="services-grid"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-
+                <div class="services-grid">
                     <!-- Coaching Ejecutivo -->
                     <div class="service-card" data-reveal data-delay="100">
                         <div class="service-header">
@@ -305,7 +796,65 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- Value Proposition (AHORA CUARTA - Lo que me diferencia) -->
+        <section class="section value-prop" id="propuesta-valor" data-spy>
+            <div class="container">
+                <div class="section-header" data-reveal>
+                    <div class="section-badge">Mi Enfoque Diferencial</div>
+                    <h2 class="section-title">Por qué elegirme para tu transformación</h2>
+                    <p class="section-description">
+                        Mientras otros aplican fórmulas estándar, yo diseño soluciones desde la comprensión profunda de
+                        las personas y la cultura de tu empresa.
+                    </p>
+                </div>
+                <div class="value-grid">
+                    <div class="value-card" data-reveal data-delay="100">
+                        <h3 class="value-title">Personalización extrema</h3>
+                        <p class="value-description">
+                            Cada intervención se diseña desde cero tras un diagnóstico profundo de tu cultura, momento
+                            empresarial y objetivos específicos. No hay dos proyectos iguales.
+                        </p>
+                    </div>
+                    <div class="value-card" data-reveal data-delay="200">
+                        <h3 class="value-title">Base psicológica científica</h3>
+                        <p class="value-description">
+                            Como psicólogo especialista, aplico metodologías validadas científicamente. Trabajo desde
+                            las fortalezas y la psicología positiva para generar cambios duraderos.
+                        </p>
+                    </div>
+                    <div class="value-card" data-reveal data-delay="300">
+                        <h3 class="value-title">Integración total</h3>
+                        <p class="value-description">
+                            Combino consultoría estratégica, formación práctica y coaching ejecutivo en un solo proceso
+                            coherente. Todo alineado hacia tus objetivos de negocio.
+                        </p>
+                    </div>
+                    <div class="value-card" data-reveal data-delay="400">
+                        <h3 class="value-title">Resultados medibles y sostenibles</h3>
+                        <p class="value-description">
+                            Implemento KPIs que conectan actividad con resultados. Pero más importante: creo cambios que
+                            perduran porque transforman mentalidades.
+                        </p>
+                    </div>
+                    <div class="value-card" data-reveal data-delay="500">
+                        <h3 class="value-title">Acompañamiento cercano</h3>
+                        <p class="value-description">
+                            No soy una gran consultora impersonal. Trabajo codo a codo contigo, adaptándome a tu ritmo y
+                            asegurando que cada cambio se integre naturalmente.
+                        </p>
+                    </div>
+                    <div class="value-card" data-reveal data-delay="600">
+                        <h3 class="value-title">Autonomía garantizada</h3>
+                        <p class="value-description">
+                            Mi objetivo es que no me necesites para siempre. Transfiero conocimiento y desarrollo
+                            capacidades internas para que el crecimiento sea autónomo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section (AHORA QUINTA) -->
         <section class="section about" id="sobre-mi" data-spy>
             <div class="container">
                 <div class="about-grid">
@@ -404,7 +953,7 @@
             </div>
         </section>
 
-        <!-- Results con Contadores FIJOS -->
+        <!-- Results con Contadores -->
         <section class="results" id="resultados" data-spy>
             <div class="container">
                 <div class="section-header" data-reveal>
@@ -541,62 +1090,19 @@
             </div>
         </section>
 
-        <!-- CTA -->
+        <!-- CTA Final -->
         <section class="cta" id="contacto" data-spy>
             <div class="container">
                 <div class="cta-content" data-reveal>
-                    <h2 class="cta-title">¿Listo para transformar tu organización?</h2>
+                    <h2 class="cta-title">¿Listo para hacer crecer tu facturación?</h2>
                     <p class="cta-description">
                         Empiezo con un diagnóstico gratuito para entender tu situación actual y diseñar la mejor
-                        estrategia para tus objetivos.
+                        estrategia para multiplicar tus ventas.
                     </p>
                     <div class="cta-buttons">
                         <a href="tel:+34609430403" class="btn btn-primary">Llamar ahora: +34 609 430 403</a>
-                        <a href="#" class="btn btn-secondary"
-                            onclick="document.getElementById('contactForm').style.display='block'; return false;">Solicitar
-                            diagnóstico gratuito</a>
+                        <a href="contacto.html" class="btn btn-secondary">Solicitar diagnóstico gratuito</a>
                     </div>
-                </div>
-
-                <!-- Contact Form (Initially Hidden) -->
-                <div id="contactForm" class="contact-form" style="display: none; margin-top: 3rem;" data-reveal>
-                    <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--text-dark);">Solicitar
-                        Diagnóstico Gratuito</h3>
-                    <form action="/api/contact" method="POST">
-                        <div class="form-group">
-                            <label class="form-label" for="nombre">Nombre *</label>
-                            <input type="text" id="nombre" name="nombre" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email *</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="empresa">Empresa</label>
-                            <input type="text" id="empresa" name="empresa" class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="servicio">¿En qué puedo ayudarte?</label>
-                            <select id="servicio" name="servicio" class="form-input">
-                                <option value="">Selecciona una opción</option>
-                                <option value="coaching">Coaching Ejecutivo</option>
-                                <option value="eficacia">Eficacia Comercial</option>
-                                <option value="formacion">Formación para Managers</option>
-                                <option value="integral">Solución integral</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="mensaje">Cuéntame tu situación</label>
-                            <textarea id="mensaje" name="mensaje" class="form-input form-textarea"
-                                placeholder="Describe brevemente tu situación actual y qué te gustaría mejorar..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Solicitar Diagnóstico
-                            Gratuito</button>
-                    </form>
                 </div>
             </div>
         </section>
@@ -627,6 +1133,7 @@
                         <li><a href="index.html">Inicio</a></li>
                         <li><a href="servicios.html">Servicios</a></li>
                         <li><a href="sobre-mi.html">Sobre mí</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
                     </ul>
                 </div>
@@ -652,12 +1159,53 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/effects.js" defer></script>
-    <script src="assets/js/scrollspy.js" defer></script>
-    <script src="assets/js/accordion.js" defer></script>
-    <script src="assets/js/counters.js" defer></script>
-    <script src="assets/js/backtotop.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/effects.js" defer></script>
+    <script src="../assets/js/scrollspy.js" defer></script>
+    <script src="../assets/js/accordion.js" defer></script>
+    <script src="../assets/js/counters.js" defer></script>
+    <script src="../assets/js/backtotop.js" defer></script>
+    
+    <!-- Script adicional para animar los números de la nueva sección -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación de números al hacer scroll para la sección de objetivos
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animar números de métricas
+                        const numbers = entry.target.querySelectorAll('.metric-value');
+                        numbers.forEach(num => {
+                            const text = num.textContent;
+                            const finalValue = parseInt(text);
+                            let currentValue = 0;
+                            const increment = finalValue / 30;
+                            const timer = setInterval(() => {
+                                currentValue += increment;
+                                if (currentValue >= finalValue) {
+                                    currentValue = finalValue;
+                                    clearInterval(timer);
+                                }
+                                num.textContent = Math.round(currentValue) + '%';
+                            }, 50);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observar la sección de métricas
+            const metricsSection = document.querySelector('.growth-visual');
+            if (metricsSection) {
+                observer.observe(metricsSection);
+            }
+        });
+    </script>
 </body>
 
 </html>
