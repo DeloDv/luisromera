@@ -31,6 +31,28 @@
         .counter-cnt {
             font-size: 1.5rem !important;
         }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .colegiado-info {
+            font-size: 12px;
+            color: #666;
+            margin: 0;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Opcional: Para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .colegiado-info {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -42,7 +64,13 @@
     <header class="header" id="header">
         <div class="container">
             <nav class="nav" role="navigation" aria-label="Navegación principal">
-                <a href="index.html" class="logo">Luis Romera</a>
+                <div class="logo-container">
+                    <a href="index.html" class="logo">
+                        <img src="../assets/images/logos/8.png"
+                            alt="Luis Romera - Psicólogo y Consultor Organizacional">
+                    </a>
+                    <p class="colegiado-info">N.º Colegiado: M-36199</p>
+                </div>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
                     <li><a href="servicios.html" class="nav-link">Servicios</a></li>
@@ -119,7 +147,7 @@
                         <a href="mailto:luisromeranavarro@gmail.com" class="btn btn-primary">Enviar email</a>
                     </div>
 
-                    <div class="contact-card" data-reveal data-delay="300">
+                    <!-- <div class="contact-card" data-reveal data-delay="300">
                         <div class="contact-card-icon">
                             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
@@ -133,7 +161,7 @@
                             Desplazamiento según proyecto
                         </p>
                         <a href="#mapa" class="btn btn-secondary">Ver mapa</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -490,7 +518,9 @@
                         <li><a href="index.html">Inicio</a></li>
                         <li><a href="servicios.html">Servicios</a></li>
                         <li><a href="sobre-mi.html">Sobre mí</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="aviso-legal.html">Aviso Legal</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
