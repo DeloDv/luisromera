@@ -158,7 +158,7 @@
         }
 
         .growth-percentage {
-            font-size: 4rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--accent-color);
             display: block;
@@ -185,7 +185,7 @@
         }
 
         .metric-value {
-            font-size: 2rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--accent-color);
             display: block;
@@ -330,7 +330,7 @@
 
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
             gap: 2rem;
             position: relative;
         }
@@ -424,7 +424,8 @@
             <nav class="nav" role="navigation" aria-label="Navegación principal">
                 <div class="logo-container">
                     <a href="index.html" class="logo">
-                        Mente Ejecutiva
+                        <img src="/assets/images/logos/Sin título-2.png"
+                            alt="Luis Romera - Psicólogo y Consultor Organizacional">
                     </a>
                     <p class="colegiado-info">N.º Colegiado: M-36199</p>
                 </div>
@@ -473,7 +474,7 @@
                     </div>
                     <div class="hero-stats" data-reveal data-delay="500">
                         <div class="hero-stat">
-                            <span class="hero-stat-number counter" data-target="24" data-suffix="">24</span>
+                            <span class="hero-stat-number counter" data-target="20" data-suffix="">20</span>
                             <span class="hero-stat-label">Años de experiencia</span>
                         </div>
                         <div class="hero-stat">
@@ -514,19 +515,21 @@
                             <h3 class="growth-headline">
                                 El crecimiento que buscas es posible
                             </h3>
-                            <span class="growth-percentage">+35%</span>
+                            <span class="growth-percentage">Crecimiento Real y Medible en Facturación</span>
                             <p class="growth-description">
-                                Incremento promedio en facturación cuando se profesionaliza
-                                la función comercial con metodología y seguimiento adecuado.
+                                Cuando el método reemplaza la improvisación y la estrategia se convierte en hábito.
                             </p>
                             <div class="growth-metrics">
                                 <div class="metric-item">
-                                    <span class="metric-value">30%</span>
-                                    <span class="metric-label">Mejora en conversión</span>
+                                    <span class="metric-value">Mejora constante en conversión</span>
+                                    <span class="metric-label">Optimiza cada interacción con tus clientes a través de
+                                        procesos estructurados y enfoque
+                                        comercial.</span>
                                 </div>
                                 <div class="metric-item">
-                                    <span class="metric-value">45%</span>
-                                    <span class="metric-label">Más eficiencia comercial</span>
+                                    <span class="metric-value">Mayor eficiencia comercial</span>
+                                    <span class="metric-label">Equipos más alineados, decisiones más claras y resultados
+                                        sostenibles en el tiempo.</span>
                                 </div>
                             </div>
                         </div>
@@ -688,126 +691,164 @@
                 </div>
 
                 <!-- Grid de 6 servicios -->
+                
                 <div class="services-grid">
                     <!-- Coaching Ejecutivo -->
-                    <div class="service-card" data-reveal data-delay="100">
+                    <article class="service-card" id="coaching" data-reveal data-delay="100">
                         <div class="service-header">
-                            <h3 class="service-title">Coaching Ejecutivo</h3>
+                            <h2 class="service-title">Coaching Ejecutivo</h2>
                             <p class="service-subtitle">Desarrollo de líderes con base psicológica</p>
                         </div>
                         <div class="service-content">
                             <p class="service-description">
-                                Procesos personalizados de acompañamiento para directivos y líderes.
+                                Procesos personalizados de acompañamiento para directivos y líderes que
+                                buscan potenciar sus habilidades y alcanzar un mayor rendimiento profesional
+                                y personal.
                             </p>
                             <ul class="service-features">
-                                <li>Psicología positiva y fortalezas</li>
-                                <li>Mejora del liderazgo</li>
-                                <li>Inteligencia emocional</li>
-                                <li>ROI 5-7x demostrado</li>
+                                <li>Enfoque basado en psicología positiva y fortalezas</li>
+                                <li>Mejora del liderazgo y toma de decisiones</li>
+                                <li>Desarrollo de inteligencia emocional</li>
+                                <li>Gestión del cambio y adaptación</li>
+                                <li>ROI demostrado de 5-7x la inversión</li>
                             </ul>
-                            <a href="contacto.html?servicio=coaching" class="btn btn-primary">Más información</a>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="150" data-suffix="+">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Procesos completados</p>
+                            </div>
+                            <a href="contacto.html?servicio=coaching" class="btn btn-primary">Solicitar información</a>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Eficacia Comercial -->
-                    <div class="service-card" data-reveal data-delay="200">
+                    <article class="service-card" id="eficacia" data-reveal data-delay="200">
                         <div class="service-header">
-                            <h3 class="service-title">Eficacia Comercial</h3>
+                            <h2 class="service-title">Eficacia Comercial</h2>
                             <p class="service-subtitle">Sales Force Effectiveness</p>
                         </div>
                         <div class="service-content">
                             <p class="service-description">
-                                Metodología integral para convertir la acción comercial en resultados.
+                                Metodología integral que alinea personas, procesos y herramientas para
+                                convertir la acción comercial en resultados medibles, sostenibles y escalables.
                             </p>
                             <ul class="service-features">
-                                <li>Optimización de fichero de clientes</li>
-                                <li>Planificación por potencial</li>
-                                <li>Cuadros de mando y KPIs</li>
-                                <li>30% mejora en conversión</li>
+                                <li>Optimización de fichero de clientes y prospección</li>
+                                <li>Planificación comercial por potencial</li>
+                                <li>Formación + coaching comercial en terreno</li>
+                                <li>Cuadros de mando y KPIs comerciales</li>
+                                <li>Mejoras de hasta 30% en conversión</li>
                             </ul>
-                            <a href="contacto.html?servicio=eficacia" class="btn btn-primary">Más información</a>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="30" data-suffix="% mejora">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">En conversión típica</p>
+                            </div>
+                            <a href="contacto.html?servicio=eficacia" class="btn btn-primary">Solicitar información</a>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Formación para Managers -->
-                    <div class="service-card" data-reveal data-delay="300">
+                    <article class="service-card" id="formacion" data-reveal data-delay="300">
                         <div class="service-header">
-                            <h3 class="service-title">Formación para Managers</h3>
+                            <h2 class="service-title">Formación para Managers</h2>
                             <p class="service-subtitle">Liderazgo y desarrollo de equipos</p>
                         </div>
                         <div class="service-content">
                             <p class="service-description">
-                                Transformo mandos intermedios en líderes conscientes y efectivos.
+                                Transformo mandos intermedios en líderes conscientes y efectivos, capaces
+                                de influir positivamente y generar resultados sostenibles.
                             </p>
                             <ul class="service-features">
-                                <li>Liderazgo situacional</li>
-                                <li>Autoconocimiento</li>
-                                <li>Psicología positiva aplicada</li>
-                                <li>5 años de experiencia</li>
+                                <li>Liderazgo situacional y adaptativo</li>
+                                <li>Autoconocimiento y fortalezas personales</li>
+                                <li>Psicología positiva aplicada al liderazgo</li>
+                                <li>Coaching integrado para consolidar cambios</li>
+                                <li>Formato teórico-práctico con seguimiento</li>
                             </ul>
-                            <a href="contacto.html?servicio=formacion" class="btn btn-primary">Más información</a>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="5" data-suffix="+">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Años formando managers</p>
+                            </div>
+                            <a href="contacto.html?servicio=formacion" class="btn btn-primary">Solicitar información</a>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Definición de KPIs -->
-                    <div class="service-card" data-reveal data-delay="400">
+                    <article class="service-card" id="kpis" data-reveal data-delay="400">
                         <div class="service-header">
-                            <h3 class="service-title">Definición de KPIs</h3>
+                            <h2 class="service-title">Definición de KPIs</h2>
                             <p class="service-subtitle">Métricas que impulsan resultados</p>
                         </div>
                         <div class="service-content">
                             <p class="service-description">
-                                Diseño sistemas de indicadores adaptados a tu realidad comercial.
+                                Diseño sistemas de indicadores clave adaptados a tu realidad comercial,
+                                conectando actividad, eficiencia y resultados.
                             </p>
                             <ul class="service-features">
-                                <li>KPIs de actividad y resultados</li>
-                                <li>Cuadros de mando visuales</li>
-                                <li>Formación en interpretación</li>
-                                <li>Mejora continua</li>
+                                <li>KPIs de actividad, resultados y eficiencia</li>
+                                <li>Cuadros de mando visuales y accionables</li>
+                                <li>Formación en interpretación de datos</li>
+                                <li>Alineación con objetivos estratégicos</li>
+                                <li>Sistema de mejora continua</li>
                             </ul>
-                            <a href="contacto.html?servicio=kpis" class="btn btn-primary">Más información</a>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="100" data-suffix="+ KPIs">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Implementados</p>
+                            </div>
+                            <a href="contacto.html?servicio=kpis" class="btn btn-primary">Solicitar información</a>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Técnicas de Ventas -->
-                    <div class="service-card" data-reveal data-delay="500">
+                    <article class="service-card" id="ventas" data-reveal data-delay="500">
                         <div class="service-header">
-                            <h3 class="service-title">Técnicas de Ventas</h3>
+                            <h2 class="service-title">Técnicas de Ventas</h2>
                             <p class="service-subtitle">Formación comercial avanzada</p>
                         </div>
                         <div class="service-content">
                             <p class="service-description">
-                                Formación práctica que transforma tu red comercial.
+                                Formación práctica que transforma tu red comercial en un equipo que
+                                no solo visita, sino que impacta, convence y fideliza.
                             </p>
                             <ul class="service-features">
-                                <li>Metodología adaptada</li>
-                                <li>Role-play y casos prácticos</li>
-                                <li>Coaching en terreno</li>
-                                <li>200+ comerciales formados</li>
+                                <li>Metodología adaptada a tu sector</li>
+                                <li>Role-play y casos prácticos reales</li>
+                                <li>Coaching comercial en terreno</li>
+                                <li>Alineación marketing-ventas</li>
+                                <li>Seguimiento y consolidación de hábitos</li>
                             </ul>
-                            <a href="contacto.html?servicio=ventas" class="btn btn-primary">Más información</a>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="200" data-suffix="+">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Comerciales formados</p>
+                            </div>
+                            <a href="contacto.html?servicio=ventas" class="btn btn-primary">Solicitar información</a>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Solución Integral -->
-                    <div class="service-card" data-reveal data-delay="600">
+                    <article class="service-card" data-reveal data-delay="600">
                         <div class="service-header">
-                            <h3 class="service-title">Solución Integral</h3>
+                            <h2 class="service-title">Solución Integral</h2>
                             <p class="service-subtitle">Transformación completa</p>
                         </div>
                         <div class="service-content">
                             <p class="service-description">
-                                Combinación personalizada de todos mis servicios.
+                                Combinación personalizada de todos mis servicios para una transformación
+                                organizacional completa y sostenible.
                             </p>
                             <ul class="service-features">
-                                <li>Diagnóstico profundo</li>
+                                <li>Diagnóstico organizacional profundo</li>
                                 <li>Plan estratégico a medida</li>
                                 <li>Implementación por fases</li>
-                                <li>100% personalización</li>
+                                <li>Acompañamiento continuo</li>
+                                <li>Transferencia de conocimiento</li>
                             </ul>
-                            <a href="contacto.html?servicio=integral" class="btn btn-primary">Más información</a>
+                            <div style="margin: 1.5rem 0;">
+                                <div class="counter" data-target="100" data-suffix="%">0</div>
+                                <p style="font-size: 0.875rem; color: var(--text-light);">Personalización</p>
+                            </div>
+                            <a href="contacto.html?servicio=integral" class="btn btn-primary">Solicitar diagnóstico</a>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -881,8 +922,9 @@
                     </div>
                     <div class="about-content" data-reveal data-delay="200">
                         <h2 class="about-title">Luis Romera Navarro</h2>
+                        <h3>N.º Colegiado: M-36199</h3>
                         <p class="about-text">
-                            <strong>Psicólogo y Consultor Organizacional</strong> con 24 años de experiencia integrando
+                            <strong>Psicólogo y Consultor Organizacional</strong> con 20 años de experiencia integrando
                             estrategia, personas y resultados en el mundo empresarial.
                         </p>
                         <p class="about-text">
@@ -975,7 +1017,8 @@
                 <div class="section-header" data-reveal>
                     <h2 class="section-title" style="color: white;">Resultados que marcan la diferencia</h2>
                     <p class="section-description" style="color: rgba(255,255,255,0.9);">
-                        Impacto real y medible en las organizaciones que confían en mí
+                        Impacto real y medible en las organizaciones que transforman su gestión
+                        comercial con metodología.
                     </p>
                 </div>
                 <div class="results-grid">
@@ -994,12 +1037,6 @@
                         <span class="result-number"
                             style="font-size: 3rem; font-weight: 700; color: var(--accent-color);">30%</span>
                         <span class="result-label">mejora típica en eficiencia comercial con metodologías SFE</span>
-                    </div>
-                    <div class="result-item" data-reveal data-delay="400">
-                        <span class="result-number"
-                            style="font-size: 3rem; font-weight: 700; color: var(--accent-color);">24</span>
-                        <span class="result-label">años desarrollando soluciones que integran personas y
-                            resultados</span>
                     </div>
                 </div>
             </div>
@@ -1184,7 +1221,7 @@
     <script src="../assets/js/backtotop.js" defer></script>
 
     <!-- Script adicional para animar los números de la nueva sección -->
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Animación de números al hacer scroll para la sección de objetivos
             const observerOptions = {
@@ -1222,7 +1259,7 @@
                 observer.observe(metricsSection);
             }
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
