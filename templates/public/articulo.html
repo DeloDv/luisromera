@@ -1,0 +1,191 @@
+{% extends "public/base.html" %}
+
+{% block meta_title %}{{ post.title }} - Luis Romera{% endblock %}
+{% block meta_description %}{{ post.excerpt if post.excerpt else (post.content_html|striptags|truncate(160)) }}{% endblock %}
+{% block og_image %}{{ post.cover_image if post.cover_image else (request.url_root ~ 'assets/images/og-image.jpg') }}{% endblock %}
+
+{% block content %}
+{# Breadcrumb #}
+<nav class="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb-list">
+            <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li class="breadcrumb-separator">/</li>
+            <li><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="breadcrumb-separator">/</li>
+            <li class="breadcrumb-current">{{ post.title|truncate(50) }}</li>
+        </ul>
+    </div>
+</nav>
+
+{# Article Header #}
+<header class="article-header">
+    <div class="container">
+        {% if post.tag_list %}
+        <span class="article-category">{{ post.tag_list[0] }}</span>
+        {% endif %}
+        
+        <h1 class="article-title">{{ post.title }}</h1>
+        
+        <div class="article-meta">
+            <div class="author-info">
+                <div class="author-avatar">LR</div>
+                <div class="author-details">
+                    <span class="author-name">Luis Romera</span>
+                    <span class="author-role">Psicólogo y Consultor Organizacional</span>
+                </div>
+            </div>
+            <div class="article-info">
+                {% if post.published_at %}
+                <span>{{ post.published_at.strftime('%d de %B, %Y') }}</span>
+                {% endif %}
+                <span>{{ (post.content_html|striptags|length / 1000)|round|int }} min de lectura</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+{# Article Content + Sidebar #}
+<div class="container">
+    <div class="article-container">
+        {# Contenido principal #}
+        <article class="article-content">
+            {% if post.cover_image %}
+            <img src="{{ post.cover_image }}" 
+                 alt="{{ post.title }}" 
+                 class="article-featured-image"
+                 style="width: 100%; height: auto; border-radius: 1rem; margin-bottom: 2rem;">
+            {% endif %}
+            
+            <div class="article-body">
+                {# Contenido HTML del post desde el editor WYSIWYG #}
+                {{ post.content_html|safe }}
+            </div>
+
+            {# Tags del artículo #}
+            {% if post.tag_list %}
+            <div class="article-tags" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+                <strong>Etiquetas:</strong>
+                {% for tag in post.tag_list %}
+                <span class="tag" style="display: inline-block; background: var(--background-light); padding: 0.375rem 0.875rem; border-radius: 1rem; margin: 0.25rem; font-size: 0.875rem;">
+                    {{ tag }}
+                </span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {# Compartir en redes sociales #}
+            <div class="article-share" style="margin-top: 2rem; text-align: center;">
+                <p style="margin-bottom: 1rem; font-weight: 600;">Comparte este artículo:</p>
+                <div class="share-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://twitter.com/intent/tweet?url={{ request.url }}&text={{ post.title }}" 
+                       target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem;">
+                        Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.url }}" 
+                       target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem;">
+                        LinkedIn
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.url }}" 
+                       target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem;">
+                        Facebook
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        {# Sidebar #}
+        <aside class="article-sidebar">
+            {# Sobre el autor #}
+            <div class="sidebar-card" style="background: var(--background-light); padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem;">Sobre el autor</h3>
+                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                    <div style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem;">
+                        LR
+                    </div>
+                    <div>
+                        <strong>Luis Romera</strong>
+                        <p style="font-size: 0.875rem; color: var(--text-light); margin: 0;">Psicólogo colegiado M-36199</p>
+                    </div>
+                </div>
+                <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-light); margin-bottom: 1rem;">
+                    +20 años transformando equipos comerciales desde la integración de estrategia, psicología y resultados.
+                </p>
+                <a href="{{ url_for('sobre_mi') }}" class="btn btn-secondary" style="width: 100%;">
+                    Conocer más
+                </a>
+            </div>
+
+            {# CTA de contacto #}
+            <div class="sidebar-card" style="background: var(--gradient-primary); color: white; padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 0.5rem; color: white;">¿Te ha gustado?</h3>
+                <p style="font-size: 0.875rem; margin-bottom: 1.5rem; opacity: 0.9;">
+                    Hablemos sobre cómo aplicar estos conceptos en tu organización.
+                </p>
+                <a href="{{ url_for('contacto') }}" class="btn btn-accent" style="width: 100%;">
+                    Agendar consulta
+                </a>
+            </div>
+
+            {# Tabla de contenidos (opcional - requeriría JS para generarla) #}
+            <div class="sidebar-card" style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e5e7eb;">
+                <h3 style="margin-bottom: 1rem; font-size: 1rem;">En este artículo</h3>
+                <nav class="toc" style="font-size: 0.875rem;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--text-light); text-decoration: none;">Introducción</a></li>
+                        {# El TOC se generaría con JS leyendo los h2/h3 del artículo #}
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+    </div>
+</div>
+
+{# Artículos relacionados #}
+{% if related %}
+<section class="related-posts" style="background: var(--background-light); padding: 4rem 0;">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 3rem;">También te puede interesar</h2>
+        <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            {% for related_post in related[:3] %}
+            <article class="blog-card">
+                {% if related_post.cover_image %}
+                <img src="{{ related_post.cover_image }}" alt="{{ related_post.title }}" class="blog-image">
+                {% endif %}
+                <div class="blog-content">
+                    {% if related_post.tag_list %}
+                    <span class="blog-category">{{ related_post.tag_list[0] }}</span>
+                    {% endif %}
+                    <h3 class="blog-post-title">
+                        <a href="{{ url_for('articulo', slug=related_post.slug) }}">{{ related_post.title }}</a>
+                    </h3>
+                    <p class="blog-excerpt">{{ related_post.excerpt if related_post.excerpt else (related_post.content_html|striptags|truncate(150)) }}</p>
+                    <a href="{{ url_for('articulo', slug=related_post.slug) }}" class="blog-link">Leer más</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{# CTA final #}
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">¿Quieres aplicar esto en tu empresa?</h2>
+            <p class="cta-description">
+                Conversemos sobre cómo transformar estos conceptos en resultados reales para tu equipo.
+            </p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('contacto') }}" class="btn btn-primary btn-large">
+                    Solicitar diagnóstico gratuito
+                </a>
+                <a href="{{ url_for('servicios') }}" class="btn btn-secondary btn-large">
+                    Ver servicios
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

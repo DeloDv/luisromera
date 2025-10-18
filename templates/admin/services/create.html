@@ -1,0 +1,157 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}{% if service %}Editar{% else %}Nuevo{% endif %} Servicio{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">{% if service %}Editar{% else %}Nuevo{% endif %} Servicio</h1>
+    <p class="page-description">
+        {% if service %}
+        Modifica la información del servicio "{{ service.name }}".
+        {% else %}
+        Agrega un nuevo servicio a tu catálogo.
+        {% endif %}
+    </p>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+        <!-- Columna Principal -->
+        <div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Información del Servicio</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.name.label(class="form-label form-label-required") }}
+                        {{ form.name(class="form-control" + (' is-invalid' if form.name.errors else ''), 
+                                    placeholder="Ej: Coaching Ejecutivo") }}
+                        {% if form.name.errors %}
+                            {% for error in form.name.errors %}
+                            <div class="form-error">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.slug.label(class="form-label form-label-required") }}
+                        {{ form.slug(class="form-control" + (' is-invalid' if form.slug.errors else ''), 
+                                    placeholder="coaching-ejecutivo") }}
+                        <div class="form-help">URL amigable. Ej: coaching-ejecutivo → /servicios#coaching-ejecutivo</div>
+                        {% if form.slug.errors %}
+                            {% for error in form.slug.errors %}
+                            <div class="form-error">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.description_html.label(class="form-label form-label-required") }}
+                        {{ form.description_html(class="form-control tinymce-editor") }}
+                        <div class="form-help">Descripción completa del servicio con todos los detalles.</div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.price_from.label(class="form-label") }}
+                        {{ form.price_from(class="form-control", placeholder="Ej: Desde 800€") }}
+                        <div class="form-help">Información de precios (opcional). Ej: "Desde 800€", "Consultar", etc.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Estado y Orden -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Configuración</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-check mb-3">
+                        {{ form.is_active() }}
+                        {{ form.is_active.label }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.order.label(class="form-label") }}
+                        {{ form.order(class="form-control", type="number", min=0) }}
+                        <div class="form-help">Orden de aparición. Menor número = aparece primero.</div>
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem; flex-direction: column;">
+                        <button type="submit" class="btn btn-primary">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Guardar
+                        </button>
+                        <a href="{{ url_for('admin.services_list') }}" class="btn btn-secondary">
+                            Cancelar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icono/Imagen -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Icono del Servicio</h2>
+                </div>
+                <div class="card-body">
+                    {% if service and service.icon_image %}
+                    <div style="margin-bottom: 1rem;">
+                        <img src="{{ service.icon_image }}" alt="Icono actual" 
+                             style="width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                    {% endif %}
+                    
+                    <div class="form-group">
+                        {{ form.icon_image.label(class="form-label") }}
+                        {{ form.icon_image(class="form-control") }}
+                        <div class="form-help">Imagen o icono representativo (400x400px recomendado).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Inicializar TinyMCE
+    tinymce.init({
+        selector: '.tinymce-editor',
+        height: 500,
+        menubar: false,
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
+            'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'help', 'wordcount'
+        ],
+        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | code',
+        content_style: 'body { font-family: Inter, sans-serif; font-size: 16px; line-height: 1.6; }',
+        language: 'es'
+    });
+
+    // Auto-generar slug
+    const nameInput = document.querySelector('input[name="name"]');
+    const slugInput = document.querySelector('input[name="slug"]');
+    
+    if (nameInput && slugInput && !slugInput.value) {
+        nameInput.addEventListener('input', function() {
+            const slug = this.value
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+            slugInput.value = slug;
+        });
+    }
+</script>
+{% endblock %}

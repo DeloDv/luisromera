@@ -1,0 +1,109 @@
+
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Menú{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">Gestión del Menú</h1>
+    <p class="page-description">Administra los elementos del menú de navegación principal.</p>
+    <div class="page-actions">
+        <a href="{{ url_for('admin.menu_create') }}" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v10M7 10h10"/>
+            </svg>
+            Nuevo Elemento
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 80px;">Orden</th>
+                    <th>Etiqueta</th>
+                    <th>URL / Slug</th>
+                    <th>Visible</th>
+                    <th style="text-align: right;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="menu-sortable">
+                {% for item in menu_items %}
+                <tr data-id="{{ item.id }}">
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="cursor: move; color: var(--text-light);">⋮⋮</span>
+                            <span style="background: var(--light); padding: 0.25rem 0.625rem; border-radius: 6px; font-weight: 500;">
+                                {{ item.order }}
+                            </span>
+                        </div>
+                    </td>
+                    <td style="font-weight: 500;">{{ item.label }}</td>
+                    <td>
+                        <code style="background: var(--light); padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8125rem;">
+                            {{ item.url_or_slug }}
+                        </code>
+                    </td>
+                    <td>
+                        {% if item.is_visible %}
+                        <span class="badge badge-success">Visible</span>
+                        {% else %}
+                        <span class="badge badge-secondary">Oculto</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="table-actions" style="justify-content: flex-end;">
+                            <a href="{{ url_for('admin.menu_edit', menu_id=item.id) }}" 
+                               class="btn btn-sm btn-primary">
+                                Editar
+                            </a>
+                            <form method="POST" action="{{ url_for('admin.menu_delete', menu_id=item.id) }}" 
+                                  style="display: inline;"
+                                  onsubmit="return confirm('¿Eliminar este elemento del menú?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 3rem; color: var(--text-light);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔗</div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay elementos en el menú</div>
+                        <div style="margin-bottom: 1.5rem;">Agrega elementos para crear la navegación de tu sitio.</div>
+                        <a href="{{ url_for('admin.menu_create') }}" class="btn btn-primary">Nuevo Elemento</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div style="background: var(--light); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+    <div style="font-size: 0.875rem; color: var(--text);">
+        <strong>💡 Tip:</strong> Arrastra los elementos para reordenarlos. El orden se guardará automáticamente.
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Implementar drag & drop para reordenar (requeriría una librería como SortableJS)
+    // Por simplicidad, aquí solo está la estructura. Puedes implementarlo con:
+    // <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js">
+    // Y luego inicializar Sortable en #menu-sortable
+    new Sortable(document.getElementById('menu-sortable'), {
+        animation: 150,
+        onEnd: function (evt) {
+            // Aquí puedes manejar el evento de reordenamiento
+            // Por ejemplo, enviar una solicitud AJAX para guardar el nuevo orden
+        }
+    });
+</script>
+{% endblock %}

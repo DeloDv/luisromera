@@ -1,0 +1,151 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Configuración{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">Configuración General</h1>
+    <p class="page-description">Ajusta la configuración global de tu sitio web.</p>
+</div>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="card-title">Información del Sitio</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                {{ form.site_name.label(class="form-label") }}
+                {{ form.site_name(class="form-control", placeholder="Luis Romera") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.colegiado_info.label(class="form-label") }}
+                {{ form.colegiado_info(class="form-control", placeholder="N.º Colegiado: M-36199") }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="card-title">Contacto</h2>
+        </div>
+        <div class="card-body">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div class="form-group">
+                    {{ form.phone.label(class="form-label") }}
+                    {{ form.phone(class="form-control", placeholder="+34 609 430 403") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.contact_email.label(class="form-label") }}
+                    {{ form.contact_email(class="form-control", type="email", placeholder="correo@ejemplo.com") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.address.label(class="form-label") }}
+                    {{ form.address(class="form-control", placeholder="Madrid, España") }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.schedule.label(class="form-label") }}
+                    {{ form.schedule(class="form-control", placeholder="Lunes - Viernes: 9:00 - 18:00") }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="card-title">Hero Section (Inicio)</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                {{ form.hero_badge.label(class="form-label") }}
+                {{ form.hero_badge(class="form-control", placeholder="✓ Especialista en Crecimiento Comercial") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.hero_title.label(class="form-label") }}
+                {{ form.hero_title(class="form-control", rows=2,
+                placeholder='Multiplica tus <span class="highlight">ventas</span> sin quemar a tu equipo') }}
+                <div class="form-help">Puedes usar HTML, como &lt;span class="highlight"&gt; para destacar.</div>
+            </div>
+
+            <div class="form-group">
+                {{ form.hero_description.label(class="form-label") }}
+                {{ form.hero_description(class="form-control", rows=3,
+                placeholder="Consultoría organizacional que integra psicología...") }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="card-title">Sección de Objetivos</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                {{ form.objectives_title.label(class="form-label") }}
+                {{ form.objectives_title(class="form-control", rows=2,
+                placeholder='¿Quieres <span class="highlight">aumentar tu facturación</span>...') }}
+            </div>
+
+            <div class="form-group">
+                {{ form.objectives_subtitle.label(class="form-label") }}
+                {{ form.objectives_subtitle(class="form-control", rows=3) }}
+            </div>
+
+            <div class="form-group">
+                {{ form.objectives_cta.label(class="form-label") }}
+                {{ form.objectives_cta(class="form-control",
+                placeholder="→ Acompañamiento personalizado...") }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="card-title">Footer</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                {{ form.footer_description.label(class="form-label") }}
+                {{ form.footer_description(class="form-control", rows=3,
+                placeholder="Psicólogo y Consultor Organizacional...") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.footer_disclaimer.label(class="form-label") }}
+                {{ form.footer_disclaimer(class="form-control", rows=2,
+                placeholder="*Los datos de ROI corresponden a estudios...") }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Botones y CTAs</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                {{ form.cta_button_text.label(class="form-label") }}
+                {{ form.cta_button_text(class="form-control", placeholder="Consulta Gratuita") }}
+                <div class="form-help">Texto del botón CTA principal en el menú.</div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 13l4 4L19 7" />
+                    </svg>
+                    Guardar Configuración
+                </button>
+                <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

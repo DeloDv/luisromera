@@ -1,0 +1,260 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+{# About Hero Section #}
+<section class="section about" id="presentacion" data-spy style="padding-top: 9rem;">
+    <div class="hero__bg" data-parallax data-speed="0.2"
+         style="position: absolute; top: 0; left: 0; right: 0; height: 100%; z-index: -1; opacity: 0.05;">
+        <div class="hero__bg-gradient"></div>
+    </div>
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image" data-reveal>
+                <img src="{{ url_for('static', filename='images/personal/Luis-Romera.jpg') }}"
+                     alt="Luis Romera - Psicólogo y Consultor Organizacional" 
+                     loading="lazy" width="500" height="600">
+            </div>
+            <div class="about-content" data-reveal data-delay="200">
+                <h1 class="about-title">{{ page.title if page else 'Luis Romera Navarro' }}</h1>
+                <h3>{{ settings.colegiado_info or 'N.º Colegiado: M-36199' }}</h3>
+                
+                {# Contenido dinámico desde Page BD #}
+                {% if page and page.content_html %}
+                    {{ page.content_html|safe }}
+                {% else %}
+                <p class="about-text">
+                    <strong>Psicólogo y Consultor Organizacional</strong> con <span class="counter"
+                        data-target="20" data-suffix=" años">20</span> de experiencia
+                    integrando estrategia, personas y resultados en el mundo empresarial.
+                </p>
+                <p class="about-text">
+                    A lo largo de mi carrera he tenido la oportunidad de vivir la empresa desde dentro,
+                    en casi todas sus dimensiones. He crecido profesionalmente desde la visita comercial
+                    en el terreno, hasta la dirección de equipos de ventas, la formación de talento y el
+                    diseño de estrategias de alto impacto como <strong>Sales Force Effectiveness Manager</strong>.
+                </p>
+                <p class="about-text">
+                    Mi experiencia principal se ha desarrollado en <strong>Laboratorios BOIRON</strong> durante
+                    23 años, donde he evolucionado a través de diferentes roles: Director de Sucursal,
+                    Gerente de Ventas, Sales Force Effectiveness Manager y co-creador de la Escuela de
+                    Ventas (Boiron Academy), un proyecto internacional de formación continua.
+                </p>
+                {% endif %}
+                
+                <div class="about-credentials">
+                    <div class="credential" data-reveal data-delay="300">Psicólogo Colegiado</div>
+                    <div class="credential" data-reveal data-delay="400">Experto en Psicología Positiva</div>
+                    <div class="credential" data-reveal data-delay="500">Experto en Coaching</div>
+                    <div class="credential" data-reveal data-delay="600">Sales Force Effectiveness</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Timeline Section #}
+<section class="section" id="trayectoria" data-spy style="background: var(--background-light);">
+    <div class="container">
+        <div class="section-header" data-reveal>
+            <div class="section-badge">Mi trayectoria</div>
+            <h2 class="section-title">Más de 20 años integrando estrategia, personas y resultados</h2>
+        </div>
+
+        <div class="timeline" style="max-width: 900px; margin: 0 auto; position: relative;">
+            {# Timeline Line #}
+            <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--accent-color);"
+                 data-reveal></div>
+
+            {# 2002-2005: Delegado Comercial #}
+            <div class="timeline-item" data-reveal data-delay="100"
+                 style="display: flex; margin-bottom: 3rem; position: relative;">
+                <div style="flex: 1; text-align: right; padding-right: 2rem;">
+                    <h3 style="color: var(--primary-color);">2002 - 2005</h3>
+                    <h4 style="margin: 0.5rem 0;">Delegado Comercial</h4>
+                    <p style="color: var(--text-light);">Laboratorios BOIRON</p>
+                    <p style="font-size: 0.875rem;">Inicio en el mundo comercial farmacéutico,
+                        desarrollando habilidades de venta consultiva y relación con profesionales de la salud.
+                    </p>
+                </div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; 
+                           background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                </div>
+                <div style="flex: 1;"></div>
+            </div>
+
+            {# 2005-2013: Director de Sucursal #}
+            <div class="timeline-item" data-reveal data-delay="200"
+                 style="display: flex; margin-bottom: 3rem; position: relative;">
+                <div style="flex: 1;"></div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; 
+                           background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                </div>
+                <div style="flex: 1; text-align: left; padding-left: 2rem;">
+                    <h3 style="color: var(--primary-color);">2005 - 2013</h3>
+                    <h4 style="margin: 0.5rem 0;">Director de Sucursal</h4>
+                    <p style="color: var(--text-light);">Laboratorios BOIRON</p>
+                    <p style="font-size: 0.875rem;">Liderazgo de equipos comerciales, gestión de territorio
+                        y desarrollo de estrategias locales. Primeros pasos en la dirección de personas.</p>
+                </div>
+            </div>
+
+            {# 2014-2020: Gerente de Ventas #}
+            <div class="timeline-item" data-reveal data-delay="300"
+                 style="display: flex; margin-bottom: 3rem; position: relative;">
+                <div style="flex: 1; text-align: right; padding-right: 2rem;">
+                    <h3 style="color: var(--primary-color);">2014 - 2020</h3>
+                    <h4 style="margin: 0.5rem 0;">Gerente de Ventas</h4>
+                    <p style="color: var(--text-light);">Laboratorios BOIRON</p>
+                    <p style="font-size: 0.875rem;">Gestión de equipos comerciales a nivel nacional,
+                        desarrollo de estrategias de ventas y coordinación de proyectos de mejora continua.</p>
+                </div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; 
+                           background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                </div>
+                <div style="flex: 1;"></div>
+            </div>
+
+            {# 2020-2024: SFE Manager y Formación #}
+            <div class="timeline-item" data-reveal data-delay="400"
+                 style="display: flex; margin-bottom: 3rem; position: relative;">
+                <div style="flex: 1;"></div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; 
+                           background: var(--accent-color); border-radius: 50%; border: 3px solid var(--white);">
+                </div>
+                <div style="flex: 1; text-align: left; padding-left: 2rem;">
+                    <h3 style="color: var(--primary-color);">2020 - 2024</h3>
+                    <h4 style="margin: 0.5rem 0;">Sales Force Effectiveness Manager</h4>
+                    <p style="color: var(--text-light);">Laboratorios BOIRON</p>
+                    <p style="font-size: 0.875rem;">Co-creación de Boiron Academy (escuela internacional de ventas).
+                        Implementación de metodologías de eficacia comercial, análisis de KPIs y optimización de procesos.</p>
+                </div>
+            </div>
+
+            {# 2024-Presente: Consultoría Independiente #}
+            <div class="timeline-item" data-reveal data-delay="500"
+                 style="display: flex; margin-bottom: 0; position: relative;">
+                <div style="flex: 1; text-align: right; padding-right: 2rem;">
+                    <h3 style="color: var(--primary-color);">2024 - Presente</h3>
+                    <h4 style="margin: 0.5rem 0;">Consultor Organizacional</h4>
+                    <p style="color: var(--text-light);">Práctica Independiente</p>
+                    <p style="font-size: 0.875rem;">Consultoría en transformación de equipos comerciales,
+                        coaching ejecutivo y desarrollo organizacional. Integración de psicología, estrategia y resultados.</p>
+                </div>
+                <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 16px; height: 16px; 
+                           background: var(--success-color); border-radius: 50%; border: 3px solid var(--white); 
+                           box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.2);">
+                </div>
+                <div style="flex: 1;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Formación #}
+<section class="section" id="formacion" data-spy>
+    <div class="container">
+        <div class="section-header" data-reveal>
+            <div class="section-badge">Formación académica</div>
+            <h2 class="section-title">Base sólida en psicología y desarrollo</h2>
+        </div>
+
+        <div class="education-grid">
+            <div class="education-card" data-reveal data-delay="100">
+                <div class="education-icon">🎓</div>
+                <h3>Licenciatura en Psicología</h3>
+                <p class="education-institution">UNED - Universidad Nacional de Educación a Distancia</p>
+                <p class="education-description">Especialización en Psicología de las Organizaciones y del Trabajo</p>
+            </div>
+
+            <div class="education-card" data-reveal data-delay="200">
+                <div class="education-icon">🏆</div>
+                <h3>Experto Universitario en Coaching</h3>
+                <p class="education-institution">Universidad de La Salle</p>
+                <p class="education-description">Certificación en coaching ejecutivo y de equipos</p>
+            </div>
+
+            <div class="education-card" data-reveal data-delay="300">
+                <div class="education-icon">✨</div>
+                <h3>Experto en Psicología Positiva</h3>
+                <p class="education-institution">Universidad Complutense de Madrid</p>
+                <p class="education-description">Aplicada al ámbito organizacional y desarrollo personal</p>
+            </div>
+
+            <div class="education-card" data-reveal data-delay="400">
+                <div class="education-icon">📊</div>
+                <h3>Sales Force Effectiveness</h3>
+                <p class="education-institution">Formación Internacional</p>
+                <p class="education-description">Metodologías avanzadas de eficacia comercial y análisis de KPIs</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Valores #}
+<section class="section values" data-spy style="background: var(--background-light);">
+    <div class="container">
+        <div class="section-header" data-reveal>
+            <div class="section-badge">Mis valores</div>
+            <h2 class="section-title">Cómo trabajo contigo</h2>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card" data-reveal data-delay="100">
+                <div class="value-icon">🎯</div>
+                <h3>Resultados Medibles</h3>
+                <p>No creo en promesas vacías. Establecemos KPIs claros desde el inicio y medimos el progreso continuamente.</p>
+            </div>
+
+            <div class="value-card" data-reveal data-delay="200">
+                <div class="value-icon">💡</div>
+                <h3>Personalización Total</h3>
+                <p>Cada empresa es única. Diseño soluciones específicas para tu contexto, cultura y objetivos particulares.</p>
+            </div>
+
+            <div class="value-card" data-reveal data-delay="300">
+                <div class="value-icon">🤝</div>
+                <h3>Compromiso Real</h3>
+                <p>Trabajo codo con codo contigo. No soy consultor de "despacho", sino un aliado en tu día a día.</p>
+            </div>
+
+            <div class="value-card" data-reveal data-delay="400">
+                <div class="value-icon">📚</div>
+                <h3>Transferencia de Conocimiento</h3>
+                <p>Mi objetivo es que tu equipo sea autónomo. Te enseño metodologías que perduran más allá de mi intervención.</p>
+            </div>
+
+            <div class="value-card" data-reveal data-delay="500">
+                <div class="value-icon">🔬</div>
+                <h3>Base Científica</h3>
+                <p>Fundamento mis intervenciones en psicología positiva, neurociencia y evidencia empírica.</p>
+            </div>
+
+            <div class="value-card" data-reveal data-delay="600">
+                <div class="value-icon">⚡</div>
+                <h3>Acción Inmediata</h3>
+                <p>Combino reflexión estratégica con implementación rápida. Resultados visibles desde las primeras semanas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# CTA #}
+<section class="cta" data-spy>
+    <div class="container">
+        <div class="cta-content" data-reveal>
+            <h2 class="cta-title">¿Quieres conocer más sobre mi metodología?</h2>
+            <p class="cta-description">
+                Hablemos sin compromiso. Te cuento cómo puedo ayudarte a transformar tu equipo comercial.
+            </p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('contacto') }}" class="btn btn-primary btn-large">
+                    Agendar consulta gratuita
+                </a>
+                <a href="{{ url_for('servicios') }}" class="btn btn-secondary btn-large">
+                    Ver mis servicios
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

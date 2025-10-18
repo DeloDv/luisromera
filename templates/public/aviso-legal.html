@@ -1,0 +1,43 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+<div class="container" style="max-width: 900px; padding: 6rem 1.5rem 4rem;">
+    {# Contenido dinámico desde Page BD #}
+    {% if page and page.content_html %}
+        {{ page.content_html|safe }}
+    {% else %}
+    {# Fallback con contenido de tu aviso-legal.html original #}
+    <h1 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px;">AVISO LEGAL</h1>
+    
+    <h2>LEY DE LOS SERVICIOS DE LA SOCIEDAD DE LA INFORMACIÓN (LSSI)</h2>
+    
+    <p>Luis Romera Navarro, responsable del sitio web, en adelante RESPONSABLE, pone a disposición de los usuarios el presente documento...</p>
+    
+    <h2>1. DATOS IDENTIFICATIVOS</h2>
+    
+    <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #3498db; margin: 20px 0;">
+        <p><strong>Nombre de dominio:</strong> mentejecutiva.com</p>
+        <p><strong>Nombre comercial:</strong> MENTE EJECUTIVA</p>
+        <p><strong>Denominación social:</strong> Luis Romera Navarro</p>
+        <p><strong>NIF:</strong> 52807306L</p>
+        <p><strong>Domicilio social:</strong> C/Manuel Altolaguirre, 4 Bloque 2 - 2ªC, 28750 San Agustín de Guadalix (Madrid)</p>
+        <p><strong>Teléfono:</strong> 609430403</p>
+        <p><strong>E-mail:</strong> luisromeranavarro@gmail.com</p>
+    </div>
+    
+    <h3>Actividad reglada</h3>
+    <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #3498db; margin: 20px 0;">
+        <p><strong>Colegio Profesional:</strong> COLEGIO OFICIAL DE LA PSICOLOGÍA DE MADRID</p>
+        <p><strong>N.º Colegiado:</strong> M-36199</p>
+        <p><strong>Título académico oficial:</strong> Psicología/Coaching</p>
+        <p><strong>Estado UE de expedición:</strong> ESPAÑA</p>
+    </div>
+    
+    <h2>2. DERECHOS DE PROPIEDAD INTELECTUAL E INDUSTRIAL</h2>
+    
+    <p>El sitio web, incluyendo a título enunciativo pero no limitativo su programación, edición, compilación y demás elementos necesarios para su funcionamiento, los diseños, logotipos, texto y/o gráficos, son propiedad del RESPONSABLE o, si es el caso, dispone de licencia o autorización expresa por parte de los autores...</p>
+    
+    {# ... resto del contenido del aviso legal ... #}
+    {% endif %}
+</div>
+{% endblock %}

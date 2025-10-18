@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {# SEO Meta Tags - Dinámico desde BD #}
+    <title>{% block meta_title %}{{ page.meta_title if page and page.meta_title else (page.title + ' - Luis Romera' if page else 'Luis Romera | Psicólogo & Consultor Organizacional') }}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{{ page.meta_description if page and page.meta_description else 'Consultoría organizacional con base psicológica. Transformamos equipos comerciales integrando estrategia, personas y resultados.' }}{% endblock %}">
+    
+    {# Open Graph #}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{% block og_title %}{{ page.meta_title if page and page.meta_title else 'Luis Romera | Psicólogo & Consultor Organizacional' }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ page.meta_description if page and page.meta_description else 'Transformamos equipos comerciales integrando estrategia, personas y resultados.' }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ page.og_image if page and page.og_image else (request.url_root ~ 'assets/images/og-image.jpg') }}{% endblock %}">
+    
+    {# Twitter #}
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{% block twitter_title %}{{ page.meta_title if page and page.meta_title else 'Luis Romera | Consultor Organizacional' }}{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}{{ page.meta_description if page and page.meta_description else 'Transformamos equipos comerciales con psicología y resultados medibles.' }}{% endblock %}">
+    
+    {# Canonical #}
+    <link rel="canonical" href="{{ request.url }}">
+    
+    {# Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    {# Styles - Mantén tus rutas originales #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/effects.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {# Header con menú dinámico desde BD #}
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}" class="logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="{{ settings.site_name or 'Luis Romera' }}">
+                </a>
+                <p class="colegiado-info">{{ settings.colegiado_info or 'Col. Oficial Psicología Madrid M-36199' }}</p>
+            </div>
+            
+            <ul class="nav-links">
+                {% for item in menu_items %}
+                <li>
+                    <a href="{{ item.url_or_slug }}" class="nav-link {% if request.path == item.url_or_slug %}active{% endif %}">
+                        {{ item.label }}
+                    </a>
+                </li>
+                {% endfor %}
+                <li>
+                    <a href="{{ url_for('contacto') }}" class="btn btn-primary">Contactar</a>
+                </li>
+            </ul>
+            
+            <button class="mobile-menu-btn" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    {# Mensajes flash (solo visibles si hay) #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div style="position: fixed; top: 80px; right: 20px; z-index: 9999; max-width: 400px;">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" style="background: {% if category == 'success' %}#d1fae5{% elif category == 'danger' %}#fee2e2{% else %}#dbeafe{% endif %}; padding: 1rem; border-radius: 0.5rem; margin-bottom: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    
+    {# Contenido principal - Cada página lo sobreescribe #}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    {# Footer con datos dinámicos #}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>{{ settings.site_name or 'Luis Romera' }}</h3>
+                    <p>{{ settings.footer_description or 'Psicólogo y Consultor Organizacional especializado en transformar equipos comerciales desde la integración de estrategia, desarrollo humano y resultados medibles.' }}</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul>
+                        {% set footer_services = [] %}
+                        {% for service in [] %}  {# Se puede mejorar pasando servicios desde context_processor #}
+                        <li><a href="{{ url_for('servicios') }}#{{ service.slug }}">{{ service.name }}</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('servicios') }}#coaching">Coaching Ejecutivo</a></li>
+                        <li><a href="{{ url_for('servicios') }}#eficacia">Eficacia Comercial (SFE)</a></li>
+                        <li><a href="{{ url_for('servicios') }}#formacion">Formación para Managers</a></li>
+                        <li><a href="{{ url_for('servicios') }}#kpis">Definición de KPIs</a></li>
+                        <li><a href="{{ url_for('servicios') }}#ventas">Técnicas de Ventas</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                        <li><a href="{{ url_for('servicios') }}">Servicios</a></li>
+                        <li><a href="{{ url_for('sobre_mi') }}">Sobre mí</a></li>
+                        <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+                        <li><a href="{{ url_for('aviso_legal') }}">Aviso Legal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>{{ settings.phone or '+34 609 430 403' }}</li>
+                        <li>{{ settings.contact_email or 'luisromeranavarro@gmail.com' }}</li>
+                        <li>{{ settings.address or 'Madrid, España' }}</li>
+                        <li>{{ settings.schedule or 'Lunes - Viernes: 9:00 - 18:00' }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ current_year }} Luis Romera Navarro. Todos los derechos reservados.</p>
+                <p class="footer-disclaimer" style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); margin-top: 1rem;">
+                    {{ settings.footer_disclaimer or '*Los datos de ROI corresponden a estudios sectoriales de coaching ejecutivo (PWC-ICF). Los resultados pueden variar según cada caso específico.' }}
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    {# Scripts - Mantén tus rutas originales #}
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/effects.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/scrollspy.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/accordion.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/counters.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/backtotop.js') }}" defer></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

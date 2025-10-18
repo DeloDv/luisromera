@@ -1,0 +1,124 @@
+{% extends "public/base.html" %}
+
+{% block extra_css %}
+<!-- Estilos específicos de blog si los necesitas -->
+{% endblock %}
+
+{% block content %}
+{# Blog Hero #}
+<section class="blog-hero">
+    <div class="container">
+        <div class="blog-hero-content">
+            <h1 class="blog-hero-title">{{ page.title if page else 'Blog' }}</h1>
+            <p class="blog-hero-description">
+                {{ page.content_html|striptags if page and page.content_html else 'Reflexiones, casos de éxito y
+                conocimiento práctico sobre transformación de equipos comerciales, liderazgo y desarrollo
+                organizacional.' }}
+            </p>
+        </div>
+    </div>
+</section>
+
+{# Filtros de categorías (opcional - puedes implementarlo con tags) #}
+<section class="blog-filters">
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            {# Aquí podrías iterar sobre tags únicos si los implementas #}
+            <button class="filter-btn" data-filter="coaching">Coaching</button>
+            <button class="filter-btn" data-filter="ventas">Ventas</button>
+            <button class="filter-btn" data-filter="liderazgo">Liderazgo</button>
+            <button class="filter-btn" data-filter="casos">Casos de Éxito</button>
+        </div>
+    </div>
+</section>
+
+{# Grid de artículos - DINÁMICO desde BD #}
+<section class="blog-section">
+    <div class="container">
+        <div class="blog-grid">
+            {% for post in posts.items %}
+            {# Cada post del blog #}
+            <article class="blog-card" data-category="{{ post.tag_list[0] if post.tag_list else 'general' }}">
+                {% if post.cover_image %}
+                <img src="{{ post.cover_image }}" alt="{{ post.title }}" class="blog-image" loading="lazy">
+                {% else %}
+                <img src="{{ url_for('static', filename='images/blog-placeholder.jpg') }}" alt="{{ post.title }}"
+                    class="blog-image" loading="lazy">
+                {% endif %}
+
+                <div class="blog-content">
+                    {% if post.tag_list %}
+                    <span class="blog-category">{{ post.tag_list[0] }}</span>
+                    {% endif %}
+
+                    <h2 class="blog-post-title">
+                        <a href="{{ url_for('articulo', slug=post.slug) }}">{{ post.title }}</a>
+                    </h2>
+
+                    <div class="blog-meta">
+                        {% if post.published_at %}
+                        <span class="blog-date">{{ post.published_at.strftime('%d %B %Y') }}</span>
+                        {% endif %}
+                        <span class="blog-read-time">
+                            {{ (post.content_html|striptags|length / 1000)|round|int }} min lectura
+                        </span>
+                    </div>
+
+                    <p class="blog-excerpt">
+                        {{ post.excerpt if post.excerpt else (post.content_html|striptags|truncate(200)) }}
+                    </p>
+
+                    <a href="{{ url_for('articulo', slug=post.slug) }}" class="blog-link">
+                        Leer más
+                    </a>
+                </div>
+            </article>
+            {% else %}
+            {# Mensaje si no hay posts #}
+            <div class="no-posts">
+                <p>Próximamente publicaré nuevos artículos. ¡Vuelve pronto!</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        {# Paginación - DINÁMICA #}
+        {% if posts.pages > 1 %}
+        <div class="pagination">
+            {% if posts.has_prev %}
+            <a href="{{ url_for('blog', page=posts.prev_num) }}" class="page-btn">←</a>
+            {% endif %}
+
+            {% for page_num in range(1, posts.pages + 1) %}
+            {% if page_num == posts.page %}
+            <span class="page-btn active">{{ page_num }}</span>
+            {% else %}
+            <a href="{{ url_for('blog', page=page_num) }}" class="page-btn">{{ page_num }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if posts.has_next %}
+            <a href="{{ url_for('blog', page=posts.next_num) }}" class="page-btn">→</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{# Newsletter CTA (opcional) #}
+<section class="newsletter-cta" style="background: var(--background-light); padding: 4rem 0;">
+    <div class="container">
+        <div class="newsletter-content" style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <h2>¿Quieres recibir contenido exclusivo?</h2>
+            <p style="margin: 1rem 0 2rem; color: var(--text-light);">
+                Suscríbete para recibir insights, casos de éxito y tips prácticos directamente en tu email.
+            </p>
+            <form class="newsletter-form" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <input type="email" placeholder="Tu email"
+                    style="padding: 0.875rem 1.25rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; flex: 1; min-width: 250px;">
+                <button type="submit" class="btn btn-primary">Suscribirme</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

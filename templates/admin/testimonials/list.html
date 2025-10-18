@@ -1,0 +1,125 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Testimonios{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">Testimonios</h1>
+    <p class="page-description">Gestiona las opiniones de tus clientes.</p>
+    <div class="page-actions">
+        <a href="{{ url_for('admin.testimonials_create') }}" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v10M7 10h10"/>
+            </svg>
+            Nuevo Testimonio
+        </a>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="GET" style="display: flex; gap: 1rem; align-items: end;">
+            <div class="form-group" style="margin: 0;">
+                <label for="status" class="form-label">Estado</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="approved" {% if request.args.get('status') == 'approved' %}selected{% endif %}>Aprobados</option>
+                    <option value="pending" {% if request.args.get('status') == 'pending' %}selected{% endif %}>Pendientes</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            {% if request.args.get('status') %}
+            <a href="{{ url_for('admin.testimonials_list') }}" class="btn btn-secondary">Limpiar</a>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<!-- Grid de Testimonios -->
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem;">
+    {% for testimonial in testimonials %}
+    <div class="card">
+        <div class="card-body">
+            <!-- Header del testimonio -->
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    {% if testimonial.client_photo %}
+                    <img src="{{ testimonial.client_photo }}" alt="{{ testimonial.client_name }}" 
+                         style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover;">
+                    {% else %}
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.25rem;">
+                        {{ testimonial.client_name[0] }}
+                    </div>
+                    {% endif %}
+                    <div>
+                        <div style="font-weight: 600;">{{ testimonial.client_name }}</div>
+                        <div style="font-size: 0.8125rem; color: var(--text-light);">
+                            {{ testimonial.client_position }}
+                            {% if testimonial.client_company %}
+                            <br>{{ testimonial.client_company }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% if testimonial.is_approved %}
+                <span class="badge badge-success">Aprobado</span>
+                {% else %}
+                <span class="badge badge-warning">Pendiente</span>
+                {% endif %}
+            </div>
+
+            <!-- Rating -->
+            {% if testimonial.rating %}
+            <div style="margin-bottom: 0.75rem; color: var(--warning);">
+                {% for i in range(testimonial.rating) %}
+                ⭐
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Testimonio -->
+            <p style="color: var(--text); line-height: 1.6; font-size: 0.9375rem; margin-bottom: 1rem;">
+                "{{ testimonial.content|truncate(150) }}"
+            </p>
+
+            <!-- Acciones -->
+            <div style="display: flex; gap: 0.5rem;">
+                <a href="{{ url_for('admin.testimonials_edit', testimonial_id=testimonial.id) }}" 
+                   class="btn btn-sm btn-primary" style="flex: 1;">
+                    Editar
+                </a>
+                {% if not testimonial.is_approved %}
+                <form method="POST" action="{{ url_for('admin.testimonials_approve', testimonial_id=testimonial.id) }}" 
+                      style="display: inline; flex: 1;">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="btn btn-sm btn-success" style="width: 100%;">
+                        Aprobar
+                    </button>
+                </form>
+                {% endif %}
+                <form method="POST" action="{{ url_for('admin.testimonials_delete', testimonial_id=testimonial.id) }}" 
+                      style="display: inline;"
+                      onsubmit="return confirm('¿Eliminar este testimonio?');">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6h12M9 3v12M5 6v9a2 2 0 002 2h4a2 2 0 002-2V6"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-body" style="text-align: center; padding: 3rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">⭐</div>
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay testimonios todavía</div>
+            <div style="margin-bottom: 1.5rem; color: var(--text-light);">Agrega tu primer testimonio de cliente.</div>
+            <a href="{{ url_for('admin.testimonials_create') }}" class="btn btn-primary">Nuevo Testimonio</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

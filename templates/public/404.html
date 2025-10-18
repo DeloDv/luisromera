@@ -1,0 +1,38 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+<section class="error-page" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 4rem 0;">
+    <div class="container">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h1 style="font-size: clamp(4rem, 10vw, 8rem); font-weight: 700; color: var(--accent-color); margin-bottom: 1rem;">
+                404
+            </h1>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.5rem); color: var(--primary-color); margin-bottom: 1.5rem;">
+                Página no encontrada
+            </h2>
+            <p style="color: var(--text-light); font-size: 1.125rem; margin-bottom: 2rem; line-height: 1.6;">
+                Lo sentimos, la página que buscas no existe o ha sido movida.<br>
+                ¿Quizás te interese volver al inicio o explorar nuestros servicios?
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="{{ url_for('index') }}" class="btn btn-primary btn-large">
+                    Volver al inicio
+                </a>
+                <a href="{{ url_for('servicios') }}" class="btn btn-secondary btn-large">
+                    Ver servicios
+                </a>
+            </div>
+            
+            {# Links útiles #}
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+                <p style="color: var(--text-light); margin-bottom: 1rem;">O navega a:</p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; font-size: 0.95rem;">
+                    <a href="{{ url_for('sobre_mi') }}" style="color: var(--secondary-color); text-decoration: none;">Sobre mí</a>
+                    <a href="{{ url_for('blog') }}" style="color: var(--secondary-color); text-decoration: none;">Blog</a>
+                    <a href="{{ url_for('contacto') }}" style="color: var(--secondary-color); text-decoration: none;">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,246 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}{% if post %}Editar{% else %}Nuevo{% endif %} Artículo{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">{% if post %}Editar{% else %}Nuevo{% endif %} Artículo</h1>
+    <p class="page-description">
+        {% if post %}
+        Modifica el contenido del artículo "{{ post.title }}".
+        {% else %}
+        Crea un nuevo artículo para tu blog.
+        {% endif %}
+    </p>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+        <!-- Columna Principal -->
+        <div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Contenido del Artículo</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.title.label(class="form-label form-label-required") }}
+                        {{ form.title(class="form-control" + (' is-invalid' if form.title.errors else ''), 
+                                     placeholder="Ej: 5 Claves del Liderazgo Transformacional") }}
+                        {% if form.title.errors %}
+                            {% for error in form.title.errors %}
+                            <div class="form-error">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.slug.label(class="form-label form-label-required") }}
+                        {{ form.slug(class="form-control" + (' is-invalid' if form.slug.errors else ''), 
+                                    placeholder="5-claves-liderazgo-transformacional") }}
+                        <div class="form-help">URL amigable. Ejemplo: mi-articulo → /blog/mi-articulo</div>
+                        {% if form.slug.errors %}
+                            {% for error in form.slug.errors %}
+                            <div class="form-error">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.excerpt.label(class="form-label") }}
+                        {{ form.excerpt(class="form-control", rows=3, 
+                                       placeholder="Resumen breve del artículo (150-200 caracteres)") }}
+                        <div class="form-help">
+                            Extracto que aparecerá en el listado del blog. 
+                            <span id="excerpt-count">0</span> caracteres
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.content_html.label(class="form-label form-label-required") }}
+                        {{ form.content_html(class="form-control tinymce-editor") }}
+                        <div class="form-help">Contenido completo del artículo. Usa el editor para dar formato.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">SEO y Metadatos</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.meta_description.label(class="form-label") }}
+                        {{ form.meta_description(class="form-control", rows=3, 
+                                                placeholder="Descripción para motores de búsqueda") }}
+                        <div class="form-help">
+                            Ideal: 150-160 caracteres. 
+                            <span id="meta-desc-count">0</span> caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Publicación -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Publicación</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-check mb-3">
+                        {{ form.is_published() }}
+                        {{ form.is_published.label }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.published_at.label(class="form-label") }}
+                        {{ form.published_at(class="form-control", type="datetime-local") }}
+                        <div class="form-help">Fecha de publicación. Déjalo vacío para usar la fecha actual.</div>
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem; flex-direction: column;">
+                        <button type="submit" name="action" value="save" class="btn btn-primary">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Guardar
+                        </button>
+                        
+                        {% if post and post.is_published %}
+                        <a href="{{ url_for('articulo', slug=post.slug) }}" target="_blank" class="btn btn-secondary">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="8" cy="8" r="3"/>
+                                <path d="M1 8s2-4 6-4 6 4 6 4-2 4-6 4-6-4-6-4z"/>
+                            </svg>
+                            Vista Previa
+                        </a>
+                        {% endif %}
+                        
+                        <a href="{{ url_for('admin.posts_list') }}" class="btn btn-secondary">
+                            Cancelar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen Destacada -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Imagen Destacada</h2>
+                </div>
+                <div class="card-body">
+                    {% if post and post.cover_image %}
+                    <div style="margin-bottom: 1rem;">
+                        <img src="{{ post.cover_image }}" alt="Imagen actual" 
+                             style="width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                    {% endif %}
+                    
+                    <div class="form-group">
+                        {{ form.cover_image.label(class="form-label") }}
+                        {{ form.cover_image(class="form-control") }}
+                        <div class="form-help">Imagen principal del artículo (1200x630px recomendado).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Etiquetas -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Categorización</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.tags.label(class="form-label") }}
+                        {{ form.tags(class="form-control", placeholder="coaching, liderazgo, ventas") }}
+                        <div class="form-help">Etiquetas separadas por comas.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info del Post -->
+            {% if post %}
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Información</h2>
+                </div>
+                <div class="card-body">
+                    <div style="font-size: 0.8125rem; margin-bottom: 0.75rem;">
+                        <div style="color: var(--text-light); margin-bottom: 0.25rem;">Creado:</div>
+                        <div style="font-weight: 500;">{{ post.created_at.strftime('%d/%m/%Y %H:%M') }}</div>
+                    </div>
+                    <div style="font-size: 0.8125rem; margin-bottom: 0.75rem;">
+                        <div style="color: var(--text-light); margin-bottom: 0.25rem;">Última modificación:</div>
+                        <div style="font-weight: 500;">{{ post.updated_at.strftime('%d/%m/%Y %H:%M') }}</div>
+                    </div>
+                    {% if post.is_published and post.published_at %}
+                    <div style="font-size: 0.8125rem;">
+                        <div style="color: var(--text-light); margin-bottom: 0.25rem;">Publicado:</div>
+                        <div style="font-weight: 500;">{{ post.published_at.strftime('%d/%m/%Y %H:%M') }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Inicializar TinyMCE
+    tinymce.init({
+        selector: '.tinymce-editor',
+        height: 600,
+        menubar: false,
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
+            'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'help', 'wordcount'
+        ],
+        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | code',
+        content_style: 'body { font-family: Inter, sans-serif; font-size: 16px; line-height: 1.6; }',
+        language: 'es'
+    });
+
+    // Auto-generar slug desde título
+    const titleInput = document.querySelector('input[name="title"]');
+    const slugInput = document.querySelector('input[name="slug"]');
+    
+    if (titleInput && slugInput && !slugInput.value) {
+        titleInput.addEventListener('input', function() {
+            const slug = this.value
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+            slugInput.value = slug;
+        });
+    }
+
+    // Contadores de caracteres
+    function setupCharCounter(inputId, counterId) {
+        const input = document.querySelector(`[name="${inputId}"]`);
+        const counter = document.getElementById(counterId);
+        
+        if (input && counter) {
+            function updateCount() {
+                counter.textContent = input.value.length;
+            }
+            updateCount();
+            input.addEventListener('input', updateCount);
+        }
+    }
+
+    setupCharCounter('excerpt', 'excerpt-count');
+    setupCharCounter('meta_description', 'meta-desc-count');
+</script>
+{% endblock %}

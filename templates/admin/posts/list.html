@@ -1,0 +1,170 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">Artículos del Blog</h1>
+    <p class="page-description">Gestiona todos los artículos de tu blog.</p>
+    <div class="page-actions">
+        <a href="{{ url_for('admin.posts_create') }}" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v10M7 10h10"/>
+            </svg>
+            Nuevo Artículo
+        </a>
+    </div>
+</div>
+
+<!-- Filtros -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="GET" style="display: flex; gap: 1rem; align-items: end; flex-wrap: wrap;">
+            <div class="form-group" style="margin: 0; flex: 1; min-width: 250px;">
+                <label for="search" class="form-label">Buscar</label>
+                <input type="search" id="search" name="search" class="form-control" 
+                       placeholder="Buscar por título o contenido..." 
+                       value="{{ request.args.get('search', '') }}">
+            </div>
+            <div class="form-group" style="margin: 0;">
+                <label for="status" class="form-label">Estado</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="published" {% if request.args.get('status') == 'published' %}selected{% endif %}>Publicados</option>
+                    <option value="draft" {% if request.args.get('status') == 'draft' %}selected{% endif %}>Borradores</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            {% if request.args.get('search') or request.args.get('status') %}
+            <a href="{{ url_for('admin.posts_list') }}" class="btn btn-secondary">Limpiar</a>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<!-- Tabla de Posts -->
+<div class="card">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 80px;">Imagen</th>
+                    <th>Título</th>
+                    <th>Etiquetas</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th style="text-align: right;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts.items %}
+                <tr>
+                    <td>
+                        {% if post.cover_image %}
+                        <img src="{{ post.cover_image }}" alt="{{ post.title }}" 
+                             style="width: 60px; height: 40px; object-fit: cover; border-radius: 6px;">
+                        {% else %}
+                        <div style="width: 60px; height: 40px; background: var(--light); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--text-light);">
+                            📝
+                        </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div style="font-weight: 500;">{{ post.title|truncate(60) }}</div>
+                        {% if post.excerpt %}
+                        <div style="font-size: 0.8125rem; color: var(--text-light); margin-top: 0.25rem;">
+                            {{ post.excerpt|truncate(80) }}
+                        </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if post.tag_list %}
+                            {% for tag in post.tag_list[:2] %}
+                            <span class="badge badge-info">{{ tag }}</span>
+                            {% endfor %}
+                            {% if post.tag_list|length > 2 %}
+                            <span style="font-size: 0.75rem; color: var(--text-light);">+{{ post.tag_list|length - 2 }}</span>
+                            {% endif %}
+                        {% else %}
+                        <span style="color: var(--text-light); font-size: 0.8125rem;">Sin etiquetas</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if post.is_published %}
+                        <span class="badge badge-success">Publicado</span>
+                        {% else %}
+                        <span class="badge badge-warning">Borrador</span>
+                        {% endif %}
+                    </td>
+                    <td style="color: var(--text-light); font-size: 0.875rem;">
+                        {% if post.published_at %}
+                        {{ post.published_at.strftime('%d/%m/%Y') }}
+                        {% else %}
+                        {{ post.created_at.strftime('%d/%m/%Y') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="table-actions" style="justify-content: flex-end;">
+                            {% if post.is_published %}
+                            <a href="{{ url_for('articulo', slug=post.slug) }}" target="_blank" 
+                               class="btn btn-sm btn-secondary" title="Ver artículo">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="7" cy="7" r="3"/>
+                                    <path d="M1 7s2-4 6-4 6 4 6 4-2 4-6 4-6-4-6-4z"/>
+                                </svg>
+                            </a>
+                            {% endif %}
+                            <a href="{{ url_for('admin.posts_edit', post_id=post.id) }}" 
+                               class="btn btn-sm btn-primary">
+                                Editar
+                            </a>
+                            <form method="POST" action="{{ url_for('admin.posts_delete', post_id=post.id) }}" 
+                                  style="display: inline;"
+                                  onsubmit="return confirm('¿Estás seguro de eliminar este artículo?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 3rem; color: var(--text-light);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay artículos todavía</div>
+                        <div style="margin-bottom: 1.5rem;">Crea tu primer artículo para empezar tu blog.</div>
+                        <a href="{{ url_for('admin.posts_create') }}" class="btn btn-primary">Nuevo Artículo</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Paginación -->
+{% if posts.pages > 1 %}
+<div class="pagination">
+    {% if posts.has_prev %}
+    <a href="{{ url_for('admin.posts_list', page=posts.prev_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
+       class="page-link">← Anterior</a>
+    {% endif %}
+    
+    {% for page_num in range(1, posts.pages + 1) %}
+        {% if page_num == posts.page %}
+        <span class="page-link active">{{ page_num }}</span>
+        {% else %}
+        <a href="{{ url_for('admin.posts_list', page=page_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
+           class="page-link">{{ page_num }}</a>
+        {% endif %}
+    {% endfor %}
+    
+    {% if posts.has_next %}
+    <a href="{{ url_for('admin.posts_list', page=posts.next_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
+       class="page-link">Siguiente →</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

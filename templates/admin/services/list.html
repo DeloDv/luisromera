@@ -1,0 +1,117 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Servicios{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">Servicios</h1>
+    <p class="page-description">Gestiona los servicios que ofreces a tus clientes.</p>
+    <div class="page-actions">
+        <a href="{{ url_for('admin.services_create') }}" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v10M7 10h10"/>
+            </svg>
+            Nuevo Servicio
+        </a>
+    </div>
+</div>
+
+<!-- Tabla de Servicios -->
+<div class="card">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Slug</th>
+                    <th>Precio</th>
+                    <th>Orden</th>
+                    <th>Estado</th>
+                    <th style="text-align: right;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                <tr>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            {% if service.icon_image %}
+                            <img src="{{ service.icon_image }}" alt="{{ service.name }}" 
+                                 style="width: 48px; height: 48px; object-fit: cover; border-radius: 8px;">
+                            {% else %}
+                            <div style="width: 48px; height: 48px; background: var(--light); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-light);">
+                                💼
+                            </div>
+                            {% endif %}
+                            <div>
+                                <div style="font-weight: 500;">{{ service.name }}</div>
+                                {% if service.description_html %}
+                                <div style="font-size: 0.8125rem; color: var(--text-light); margin-top: 0.25rem;">
+                                    {{ service.description_html|striptags|truncate(60) }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <code style="background: var(--light); padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8125rem;">
+                            {{ service.slug }}
+                        </code>
+                    </td>
+                    <td style="font-weight: 500;">
+                        {% if service.price_from %}
+                        {{ service.price_from }}
+                        {% else %}
+                        <span style="color: var(--text-light);">—</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span style="background: var(--light); padding: 0.25rem 0.625rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500;">
+                            {{ service.order }}
+                        </span>
+                    </td>
+                    <td>
+                        {% if service.is_active %}
+                        <span class="badge badge-success">Activo</span>
+                        {% else %}
+                        <span class="badge badge-secondary">Inactivo</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="table-actions" style="justify-content: flex-end;">
+                            <a href="{{ url_for('admin.services_edit', service_id=service.id) }}" 
+                               class="btn btn-sm btn-primary">
+                                Editar
+                            </a>
+                            <form method="POST" action="{{ url_for('admin.services_delete', service_id=service.id) }}" 
+                                  style="display: inline;"
+                                  onsubmit="return confirm('¿Estás seguro de eliminar este servicio?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 3rem; color: var(--text-light);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay servicios todavía</div>
+                        <div style="margin-bottom: 1.5rem;">Crea tu primer servicio para mostrar lo que ofreces.</div>
+                        <a href="{{ url_for('admin.services_create') }}" class="btn btn-primary">Nuevo Servicio</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div style="background: var(--light); padding: 1rem; border-radius: 8px; margin-top: 1.5rem;">
+    <div style="font-size: 0.875rem; color: var(--text);">
+        <strong>💡 Tip:</strong> Usa el campo "Orden" para controlar el orden de aparición de los servicios en tu sitio web. Un número menor aparecerá primero.
+    </div>
+</div>
+{% endblock %}

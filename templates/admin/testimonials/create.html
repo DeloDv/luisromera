@@ -1,0 +1,90 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}{% if testimonial %}Editar{% else %}Nuevo{% endif %} Testimonio{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">{% if testimonial %}Editar{% else %}Nuevo{% endif %} Testimonio</h1>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Información del Cliente</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.client_name.label(class="form-label form-label-required") }}
+                        {{ form.client_name(class="form-control", placeholder="Nombre del cliente") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.client_position.label(class="form-label") }}
+                        {{ form.client_position(class="form-control", placeholder="Ej: Director General") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.client_company.label(class="form-label") }}
+                        {{ form.client_company(class="form-control", placeholder="Ej: Tech Solutions S.L.") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.content.label(class="form-label form-label-required") }}
+                        {{ form.content(class="form-control", rows=6, 
+                                       placeholder="El testimonio completo del cliente...") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.rating.label(class="form-label") }}
+                        {{ form.rating(class="form-control") }}
+                        <div class="form-help">Valoración de 1 a 5 estrellas (opcional).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Estado</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-check mb-3">
+                        {{ form.is_approved() }}
+                        {{ form.is_approved.label }}
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem; flex-direction: column;">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="{{ url_for('admin.testimonials_list') }}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Foto del Cliente</h2>
+                </div>
+                <div class="card-body">
+                    {% if testimonial and testimonial.client_photo %}
+                    <div style="margin-bottom: 1rem; text-align: center;">
+                        <img src="{{ testimonial.client_photo }}" alt="Foto actual" 
+                             style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    {% endif %}
+                    
+                    <div class="form-group">
+                        {{ form.client_photo.label(class="form-label") }}
+                        {{ form.client_photo(class="form-control") }}
+                        <div class="form-help">Foto del cliente (opcional, 400x400px recomendado).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

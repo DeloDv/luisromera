@@ -1,0 +1,290 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}{% if page %}Editar{% else %}Nueva{% endif %} Página{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">{% if page %}Editar{% else %}Nueva{% endif %} Página</h1>
+    <p class="page-description">
+        {% if page %}
+        Modifica el contenido de la página "{{ page.title }}".
+        {% else %}
+        Crea una nueva página estática para tu sitio web.
+        {% endif %}
+    </p>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+        <!-- Columna Principal -->
+        <div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Contenido Principal</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.title.label(class="form-label form-label-required") }}
+                        {{ form.title(class="form-control" + (' is-invalid' if form.title.errors else ''),
+                        placeholder="Ej: Sobre mí") }}
+                        {% if form.title.errors %}
+                        {% for error in form.title.errors %}
+                        <div class="form-error">{{ error }}</div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.slug.label(class="form-label form-label-required") }}
+                        {{ form.slug(class="form-control" + (' is-invalid' if form.slug.errors else ''),
+                        placeholder="sobre-mi") }}
+                        <div class="form-help">URL amigable. Ejemplo: sobre-mi → /sobre-mi</div>
+                        {% if form.slug.errors %}
+                        {% for error in form.slug.errors %}
+                        <div class="form-error">{{ error }}</div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.content_html.label(class="form-label") }}
+                        {{ form.content_html(class="form-control tinymce-editor") }}
+                        <div class="form-help">Contenido HTML de la página. Usa el editor para dar formato.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">SEO y Metadatos</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.meta_title.label(class="form-label") }}
+                        {{ form.meta_title(class="form-control", placeholder="Título para motores de búsqueda") }}
+                        <div class="form-help">
+                            Ideal: 50-60 caracteres.
+                            <span id="meta-title-count" style="font-weight: 600;">0</span> caracteres
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.meta_description.label(class="form-label") }}
+                        {{ form.meta_description(class="form-control", rows=3,
+                        placeholder="Descripción breve para resultados de búsqueda") }}
+                        <div class="form-help">
+                            Ideal: 150-160 caracteres.
+                            <span id="meta-desc-count" style="font-weight: 600;">0</span> caracteres
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.og_image.label(class="form-label") }}
+                        {{ form.og_image(class="form-control", placeholder="URL de la imagen (1200x630px recomendado)")
+                        }}
+                        <div class="form-help">Imagen para compartir en redes sociales.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+            <!-- Publicación -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h2 class="card-title">Publicación</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-check mb-3">
+                        {{ form.is_published() }}
+                        {{ form.is_published.label }}
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem; flex-direction: column;">
+                        <button type="submit" name="action" value="save" class="btn btn-primary">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7" />
+                            </svg>
+                            Guardar
+                        </button>
+
+                        {% if page and page.is_published %}
+                        <a href="{{ url_for('public.' + page.slug) }}" target="_blank" class="btn btn-secondary">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="8" cy="8" r="3" />
+                                <path d="M1 8s2-4 6-4 6 4 6 4-2 4-6 4-6-4-6-4z" />
+                            </svg>
+                            Vista Previa
+                        </a>
+                        {% endif %}
+
+                        <a href="{{ url_for('admin.pages_list') }}" class="btn btn-secondary">
+                            Cancelar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info de la Página -->
+            {% if page %}
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Información</h2>
+                </div>
+                <div class="card-body">
+                    <div style="font-size: 0.8125rem; margin-bottom: 0.75rem;">
+                        <div style="color: var(--text-light); margin-bottom: 0.25rem;">Creada:</div>
+                        <div style="font-weight: 500;">{{ page.created_at.strftime('%d/%m/%Y %H:%M') }}</div>
+                    </div>
+                    <div style="font-size: 0.8125rem;">
+                        <div style="color: var(--text-light); margin-bottom: 0.25rem;">Última modificación:</div>
+                        <div style="font-weight: 500;">{{ page.updated_at.strftime('%d/%m/%Y %H:%M') }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Tips SEO -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">💡 Tips SEO</h2>
+                </div>
+                <div class="card-body" style="font-size: 0.8125rem; line-height: 1.6;">
+                    <ul style="margin: 0; padding-left: 1.25rem; color: var(--text);">
+                        <li style="margin-bottom: 0.5rem;">El <strong>título</strong> debe ser descriptivo y único</li>
+                        <li style="margin-bottom: 0.5rem;">La <strong>meta descripción</strong> aparece en Google</li>
+                        <li style="margin-bottom: 0.5rem;">Usa <strong>palabras clave</strong> relevantes</li>
+                        <li>La <strong>imagen OG</strong> se muestra al compartir en redes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Inicializar TinyMCE
+    tinymce.init({
+        selector: '.tinymce-editor',
+        height: 500,
+        menubar: false,
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
+            'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'media', 'table', 'help', 'wordcount'
+        ],
+        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | code',
+        content_style: 'body { font-family: Inter, sans-serif; font-size: 16px; line-height: 1.6; }',
+        language: 'es',
+        // Permitir subir imágenes
+        images_upload_url: '{{ url_for("admin.media_upload") }}',
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        file_picker_callback: function (callback, value, meta) {
+            if (meta.filetype === 'image') {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.onchange = function () {
+                    var file = this.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        callback(reader.result, {
+                            alt: file.name
+                        });
+                    };
+                    reader.readAsDataURL(file);
+                };
+                input.click();
+            }
+        }
+    });
+
+    // Auto-generar slug desde título
+    const titleInput = document.querySelector('input[name="title"]');
+    const slugInput = document.querySelector('input[name="slug"]');
+
+    if (titleInput && slugInput) {
+        // Solo auto-generar si el slug está vacío (nueva página)
+        const isNewPage = !slugInput.value;
+
+        if (isNewPage) {
+            titleInput.addEventListener('input', function () {
+                const slug = this.value
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+                slugInput.value = slug;
+            });
+        }
+    }
+
+    // Contador de caracteres para SEO
+    const metaTitleInput = document.querySelector('input[name="meta_title"]');
+    const metaDescInput = document.querySelector('textarea[name="meta_description"]');
+    const titleCount = document.getElementById('meta-title-count');
+    const descCount = document.getElementById('meta-desc-count');
+
+    function updateCount(input, counter, idealMin, idealMax) {
+        if (input && counter) {
+            const count = input.value.length;
+            counter.textContent = count;
+
+            // Cambiar color según el rango ideal
+            if (count === 0) {
+                counter.style.color = 'var(--text-light)';
+            } else if (count >= idealMin && count <= idealMax) {
+                counter.style.color = 'var(--success)';
+                counter.style.fontWeight = '700';
+            } else {
+                counter.style.color = 'var(--warning)';
+                counter.style.fontWeight = '700';
+            }
+        }
+    }
+
+    if (metaTitleInput && titleCount) {
+        updateCount(metaTitleInput, titleCount, 50, 60);
+        metaTitleInput.addEventListener('input', function () {
+            updateCount(this, titleCount, 50, 60);
+        });
+    }
+
+    if (metaDescInput && descCount) {
+        updateCount(metaDescInput, descCount, 150, 160);
+        metaDescInput.addEventListener('input', function () {
+            updateCount(this, descCount, 150, 160);
+        });
+    }
+
+    // Prevenir salida accidental si hay cambios sin guardar
+    let formChanged = false;
+    const form = document.querySelector('form');
+    const inputs = form.querySelectorAll('input, textarea, select');
+
+    inputs.forEach(input => {
+        input.addEventListener('change', () => {
+            formChanged = true;
+        });
+    });
+
+    window.addEventListener('beforeunload', (e) => {
+        if (formChanged) {
+            e.preventDefault();
+            e.returnValue = '¿Estás seguro de salir? Los cambios no guardados se perderán.';
+        }
+    });
+
+    form.addEventListener('submit', () => {
+        formChanged = false;
+    });
+</script>
+{% endblock %}

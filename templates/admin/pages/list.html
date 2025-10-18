@@ -1,0 +1,155 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Páginas{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">Páginas</h1>
+    <p class="page-description">Administra el contenido de las páginas estáticas de tu sitio web.</p>
+    <div class="page-actions">
+        <a href="{{ url_for('admin.pages_create') }}" class="btn btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v10M7 10h10" />
+            </svg>
+            Nueva Página
+        </a>
+    </div>
+</div>
+
+<!-- Filtros y Búsqueda -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="GET" style="display: flex; gap: 1rem; align-items: end; flex-wrap: wrap;">
+            <div class="form-group" style="margin: 0; flex: 1; min-width: 250px;">
+                <label for="search" class="form-label">Buscar</label>
+                <input type="search" id="search" name="search" class="form-control"
+                    placeholder="Buscar por título o slug..." value="{{ request.args.get('search', '') }}">
+            </div>
+            <div class="form-group" style="margin: 0;">
+                <label for="status" class="form-label">Estado</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="">Todos</option>
+                    <option value="published" {% if request.args.get('status')=='published' %}selected{% endif %}>
+                        Publicadas</option>
+                    <option value="draft" {% if request.args.get('status')=='draft' %}selected{% endif %}>Borradores
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+            {% if request.args.get('search') or request.args.get('status') %}
+            <a href="{{ url_for('admin.pages_list') }}" class="btn btn-secondary">Limpiar</a>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+<!-- Tabla de Páginas -->
+<div class="card">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Slug</th>
+                    <th>Estado</th>
+                    <th>Última Modificación</th>
+                    <th style="text-align: right;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for page in pages.items %}
+                <tr>
+                    <td>
+                        <div style="font-weight: 500;">{{ page.title }}</div>
+                        {% if page.meta_description %}
+                        <div style="font-size: 0.8125rem; color: var(--text-light); margin-top: 0.25rem;">
+                            {{ page.meta_description|truncate(60) }}
+                        </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <code
+                            style="background: var(--light); padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8125rem;">
+                            /{{ page.slug }}
+                        </code>
+                    </td>
+                    <td>
+                        {% if page.is_published %}
+                        <span class="badge badge-success">Publicada</span>
+                        {% else %}
+                        <span class="badge badge-secondary">Borrador</span>
+                        {% endif %}
+                    </td>
+                    <td style="color: var(--text-light); font-size: 0.875rem;">
+                        {{ page.updated_at.strftime('%d/%m/%Y %H:%M') }}
+                    </td>
+                    <td>
+                        <div class="table-actions" style="justify-content: flex-end;">
+                            {% if page.is_published %}
+                            <a href="{{ url_for('public.' + page.slug) }}" target="_blank"
+                                class="btn btn-sm btn-secondary" title="Ver página">
+                                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="7" cy="7" r="3" />
+                                    <path d="M1 7s2-4 6-4 6 4 6 4-2 4-6 4-6-4-6-4z" />
+                                </svg>
+                            </a>
+                            {% endif %}
+                            <a href="{{ url_for('admin.pages_edit', page_id=page.id) }}" class="btn btn-sm btn-primary">
+                                Editar
+                            </a>
+                            <form method="POST" action="{{ url_for('admin.pages_delete', page_id=page.id) }}"
+                                style="display: inline;"
+                                onsubmit="return confirm('¿Estás seguro de eliminar esta página?');">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 3rem; color: var(--text-light);">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay páginas todavía</div>
+                        <div style="margin-bottom: 1.5rem;">Crea tu primera página para empezar.</div>
+                        <a href="{{ url_for('admin.pages_create') }}" class="btn btn-primary">Nueva Página</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Paginación -->
+{% if pages.pages > 1 %}
+<div class="pagination">
+    {% if pages.has_prev %}
+    <a href="{{ url_for('admin.pages_list', page=pages.prev_num, search=request.args.get('search'), status=request.args.get('status')) }}"
+        class="page-link">
+        ← Anterior
+    </a>
+    {% endif %}
+
+    {% for page_num in range(1, pages.pages + 1) %}
+    {% if page_num == pages.page %}
+    <span class="page-link active">{{ page_num }}</span>
+    {% else %}
+    <a href="{{ url_for('admin.pages_list', page=page_num, search=request.args.get('search'), status=request.args.get('status')) }}"
+        class="page-link">
+        {{ page_num }}
+    </a>
+    {% endif %}
+    {% endfor %}
+
+    {% if pages.has_next %}
+    <a href="{{ url_for('admin.pages_list', page=pages.next_num, search=request.args.get('search'), status=request.args.get('status')) }}"
+        class="page-link">
+        Siguiente →
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

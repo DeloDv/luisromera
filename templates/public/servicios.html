@@ -1,0 +1,234 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+{# Hero Section #}
+<section class="hero" id="hero-servicios" data-spy style="padding: 9rem 0 4rem;">
+    <div class="hero__bg" data-parallax data-speed="0.2">
+        <div class="hero__bg-gradient"></div>
+    </div>
+    <div class="container">
+        <div class="hero-content" data-reveal>
+            <h1 class="hero-title">{{ page.title if page else 'Servicios de Consultoría Organizacional' }}</h1>
+            <p class="hero-subtitle" data-reveal data-delay="100">
+                {{ page.content_html|safe if page and page.content_html else 'Soluciones integrales que transforman equipos comerciales desde la comprensión profunda de las personas, la cultura organizacional y los objetivos de negocio.' }}
+            </p>
+        </div>
+    </div>
+</section>
+
+{# Services Grid Principal - DINÁMICO desde BD #}
+<section class="section" id="servicios-principales" data-spy>
+    <div class="container">
+        <div class="section-header" data-reveal>
+            <div class="section-badge">Servicios principales</div>
+            <h2 class="section-title">Transformación integral para tu organización</h2>
+        </div>
+
+        <div class="services-grid">
+            {% for service in services %}
+            {# Cada servicio desde la BD #}
+            <article class="service-card" id="{{ service.slug }}" data-reveal data-delay="{{ loop.index0 * 100 }}">
+                <div class="service-header">
+                    {% if service.icon_image %}
+                    <img src="{{ service.icon_image }}" alt="{{ service.name }}" class="service-icon-img">
+                    {% endif %}
+                    <h2 class="service-title">{{ service.name }}</h2>
+                    {% if service.price_from %}
+                    <p class="service-subtitle">{{ service.price_from }}</p>
+                    {% endif %}
+                </div>
+                <div class="service-content">
+                    {# Contenido HTML del servicio desde el editor WYSIWYG #}
+                    {{ service.description_html|safe }}
+                    
+                    <a href="{{ url_for('contacto') }}?servicio={{ service.slug }}" 
+                       class="btn btn-primary">
+                        Solicitar información
+                    </a>
+                </div>
+            </article>
+            {% else %}
+            {# Fallback si no hay servicios en BD - muestra servicios de ejemplo #}
+            <article class="service-card" id="coaching" data-reveal data-delay="100">
+                <div class="service-header">
+                    <h2 class="service-title">Coaching Ejecutivo</h2>
+                    <p class="service-subtitle">Desarrollo de líderes con base psicológica</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Procesos personalizados de acompañamiento para directivos y líderes que
+                        buscan potenciar sus habilidades y alcanzar un mayor rendimiento profesional y personal.
+                    </p>
+                    <ul class="service-features">
+                        <li>Enfoque basado en psicología positiva y fortalezas</li>
+                        <li>Mejora del liderazgo y toma de decisiones</li>
+                        <li>Desarrollo de inteligencia emocional</li>
+                        <li>Gestión del cambio y adaptación</li>
+                        <li>ROI demostrado de 5-7x la inversión</li>
+                    </ul>
+                    <a href="{{ url_for('contacto') }}?servicio=coaching" class="btn btn-primary">
+                        Solicitar información
+                    </a>
+                </div>
+            </article>
+
+            <article class="service-card" id="eficacia" data-reveal data-delay="200">
+                <div class="service-header">
+                    <h2 class="service-title">Eficacia Comercial (SFE)</h2>
+                    <p class="service-subtitle">Sales Force Effectiveness</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Transformación integral de tu equipo de ventas mediante metodologías probadas
+                        que combinan análisis de datos, optimización de procesos y desarrollo de personas.
+                    </p>
+                    <ul class="service-features">
+                        <li>Diseño y optimización de territorios comerciales</li>
+                        <li>Definición de KPIs y sistemas de medición</li>
+                        <li>Análisis de eficacia y productividad</li>
+                        <li>Implementación de CRM y herramientas digitales</li>
+                        <li>Formación en metodologías de venta consultiva</li>
+                    </ul>
+                    <a href="{{ url_for('contacto') }}?servicio=eficacia" class="btn btn-primary">
+                        Solicitar información
+                    </a>
+                </div>
+            </article>
+
+            <article class="service-card" id="formacion" data-reveal data-delay="300">
+                <div class="service-header">
+                    <h2 class="service-title">Formación para Managers</h2>
+                    <p class="service-subtitle">Desarrollo de competencias directivas</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Programas de formación práctica para managers y líderes de equipo,
+                        enfocados en desarrollar habilidades de gestión de personas y resultados.
+                    </p>
+                    <ul class="service-features">
+                        <li>Liderazgo situacional y gestión de equipos</li>
+                        <li>Técnicas de motivación y feedback efectivo</li>
+                        <li>Gestión del rendimiento comercial</li>
+                        <li>Comunicación y resolución de conflictos</li>
+                        <li>Desarrollo de competencias emocionales</li>
+                    </ul>
+                    <a href="{{ url_for('contacto') }}?servicio=formacion" class="btn btn-primary">
+                        Solicitar información
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Proceso de trabajo #}
+<section class="section process" data-spy style="background: var(--background-light);">
+    <div class="container">
+        <div class="section-header" data-reveal>
+            <div class="section-badge">Cómo trabajo</div>
+            <h2 class="section-title">Metodología probada, resultados garantizados</h2>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-card" data-reveal data-delay="100">
+                <div class="process-number">1</div>
+                <h3>Diagnóstico Inicial</h3>
+                <p>Análisis profundo de tu situación actual: equipo, procesos, cultura y objetivos comerciales.</p>
+            </div>
+
+            <div class="process-card" data-reveal data-delay="200">
+                <div class="process-number">2</div>
+                <h3>Diseño de Solución</h3>
+                <p>Propuesta personalizada con metodología, plazos, KPIs y plan de implementación específico.</p>
+            </div>
+
+            <div class="process-card" data-reveal data-delay="300">
+                <div class="process-number">3</div>
+                <h3>Implementación</h3>
+                <p>Ejecución del plan con sesiones regulares, materiales prácticos y seguimiento continuo.</p>
+            </div>
+
+            <div class="process-card" data-reveal data-delay="400">
+                <div class="process-number">4</div>
+                <h3>Consolidación</h3>
+                <p>Evaluación de resultados, ajustes finales y transferencia de conocimiento para autonomía.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# FAQ #}
+<section class="section faq" data-spy>
+    <div class="container">
+        <div class="section-header" data-reveal>
+            <div class="section-badge">Preguntas frecuentes</div>
+            <h2 class="section-title">Respuestas a tus dudas</h2>
+        </div>
+
+        <div class="faq-accordion">
+            <div class="faq-item" data-reveal>
+                <button class="faq-trigger">
+                    <span>¿Cuánto tiempo dura un proceso de coaching ejecutivo?</span>
+                    <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="faq-panel" hidden>
+                    <div class="faq-content">
+                        <p>Un proceso de coaching ejecutivo típicamente dura entre 3 y 6 meses, con sesiones quincenales o mensuales. La duración exacta se adapta a los objetivos específicos y al ritmo de desarrollo del ejecutivo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-reveal data-delay="100">
+                <button class="faq-trigger">
+                    <span>¿Los servicios son presenciales u online?</span>
+                    <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="faq-panel" hidden>
+                    <div class="faq-content">
+                        <p>Ofrezco ambas modalidades. Las sesiones pueden ser presenciales en Madrid o virtuales para clientes de toda España. La metodología está adaptada para garantizar la misma efectividad en ambos formatos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item" data-reveal data-delay="200">
+                <button class="faq-trigger">
+                    <span>¿Qué ROI puedo esperar de la consultoría?</span>
+                    <svg class="faq-icon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </button>
+                <div class="faq-panel" hidden>
+                    <div class="faq-content">
+                        <p>Según estudios sectoriales, el coaching ejecutivo genera un ROI de 5-7x la inversión. En eficacia comercial, típicamente logramos mejoras del 30% en conversión. Cada proyecto incluye KPIs específicos para medir el retorno.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# CTA #}
+<section class="cta" data-spy>
+    <div class="container">
+        <div class="cta-content" data-reveal>
+            <h2 class="cta-title">¿Listo para transformar tu equipo?</h2>
+            <p class="cta-description">
+                Conversemos sobre tu situación específica. Primera consulta sin compromiso.
+            </p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('contacto') }}" class="btn btn-primary btn-large">
+                    Solicitar diagnóstico gratuito
+                </a>
+                <a href="tel:{{ settings.phone or '+34609430403' }}" class="btn btn-secondary btn-large">
+                    Llamar: {{ settings.phone or '+34 609 430 403' }}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

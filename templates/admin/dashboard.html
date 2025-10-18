@@ -1,0 +1,225 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-description">Bienvenido de nuevo, {{ current_user.username }}. Aquí tienes un resumen de tu sitio
+        web.</p>
+</div>
+
+<!-- Stats Cards -->
+<div
+    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+    <!-- Total Páginas -->
+    <div class="card">
+        <div class="card-body">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                <div>
+                    <div style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.25rem;">Total Páginas
+                    </div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--dark);">{{ stats.total_pages }}</div>
+                </div>
+                <div
+                    style="width: 48px; height: 48px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    📄
+                </div>
+            </div>
+            <div style="font-size: 0.8125rem; color: var(--success);">
+                <span style="font-weight: 600;">{{ stats.published_pages }}</span> publicadas
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Posts -->
+    <div class="card">
+        <div class="card-body">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                <div>
+                    <div style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.25rem;">Artículos del
+                        Blog</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--dark);">{{ stats.total_posts }}</div>
+                </div>
+                <div
+                    style="width: 48px; height: 48px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    📝
+                </div>
+            </div>
+            <div style="font-size: 0.8125rem; color: var(--warning);">
+                <span style="font-weight: 600;">{{ stats.draft_posts }}</span> borradores
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Servicios -->
+    <div class="card">
+        <div class="card-body">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                <div>
+                    <div style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.25rem;">Servicios
+                        Activos</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--dark);">{{ stats.total_services }}</div>
+                </div>
+                <div
+                    style="width: 48px; height: 48px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    💼
+                </div>
+            </div>
+            <div style="font-size: 0.8125rem; color: var(--info);">
+                <a href="{{ url_for('admin.services_list') }}" style="color: var(--info); text-decoration: none;">Ver
+                    todos →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Testimonios -->
+    <div class="card">
+        <div class="card-body">
+            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                <div>
+                    <div style="font-size: 0.875rem; color: var(--text-light); margin-bottom: 0.25rem;">Testimonios
+                    </div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--dark);">{{ stats.total_testimonials }}
+                    </div>
+                </div>
+                <div
+                    style="width: 48px; height: 48px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    ⭐
+                </div>
+            </div>
+            <div style="font-size: 0.8125rem; color: var(--success);">
+                <span style="font-weight: 600;">{{ stats.approved_testimonials }}</span> aprobados
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+    <!-- Posts Recientes -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Artículos Recientes</h2>
+            <a href="{{ url_for('admin.posts_list') }}" class="btn btn-sm btn-secondary">Ver todos</a>
+        </div>
+        <div class="card-body" style="padding: 0;">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in recent_posts %}
+                        <tr>
+                            <td>
+                                <div style="font-weight: 500;">{{ post.title|truncate(50) }}</div>
+                            </td>
+                            <td>
+                                {% if post.is_published %}
+                                <span class="badge badge-success">Publicado</span>
+                                {% else %}
+                                <span class="badge badge-warning">Borrador</span>
+                                {% endif %}
+                            </td>
+                            <td style="color: var(--text-light); font-size: 0.875rem;">
+                                {{ post.created_at.strftime('%d/%m/%Y') }}
+                            </td>
+                            <td>
+                                <div class="table-actions">
+                                    <a href="{{ url_for('admin.posts_edit', post_id=post.id) }}"
+                                        class="btn btn-sm btn-secondary">
+                                        Editar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: var(--text-light);">
+                                No hay artículos recientes
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acciones Rápidas -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Acciones Rápidas</h2>
+        </div>
+        <div class="card-body">
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <a href="{{ url_for('admin.posts_create') }}" class="btn btn-primary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v10M7 10h10" />
+                    </svg>
+                    Nuevo Artículo
+                </a>
+                <a href="{{ url_for('admin.pages_create') }}" class="btn btn-secondary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v10M7 10h10" />
+                    </svg>
+                    Nueva Página
+                </a>
+                <a href="{{ url_for('admin.services_create') }}" class="btn btn-secondary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v10M7 10h10" />
+                    </svg>
+                    Nuevo Servicio
+                </a>
+                <a href="{{ url_for('admin.media_library') }}" class="btn btn-secondary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="14" height="14" rx="2" />
+                        <path d="M3 13l4-4 3 3 5-5" />
+                    </svg>
+                    Subir Imagen
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Enlaces al Sitio Web -->
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Enlaces Directos al Sitio Web</h2>
+    </div>
+    <div class="card-body">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <a href="{{ url_for('index') }}" target="_blank"
+                style="padding: 1rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); transition: all 0.2s ease;"
+                onmouseover="this.style.background='var(--light)'" onmouseout="this.style.background='transparent'">
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">🏠 Página de Inicio</div>
+                <div style="font-size: 0.8125rem; color: var(--text-light);">Ver la homepage</div>
+            </a>
+            <a href="{{ url_for('servicios') }}" target="_blank"
+                style="padding: 1rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); transition: all 0.2s ease;"
+                onmouseover="this.style.background='var(--light)'" onmouseout="this.style.background='transparent'">
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">💼 Servicios</div>
+                <div style="font-size: 0.8125rem; color: var(--text-light);">Ver página de servicios</div>
+            </a>
+            <a href="{{ url_for('blog') }}" target="_blank"
+                style="padding: 1rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); transition: all 0.2s ease;"
+                onmouseover="this.style.background='var(--light)'" onmouseout="this.style.background='transparent'">
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">📝 Blog</div>
+                <div style="font-size: 0.8125rem; color: var(--text-light);">Ver todos los artículos</div>
+            </a>
+            <a href="{{ url_for('contacto') }}" target="_blank"
+                style="padding: 1rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); transition: all 0.2s ease;"
+                onmouseover="this.style.background='var(--light)'" onmouseout="this.style.background='transparent'">
+                <div style="font-weight: 600; margin-bottom: 0.25rem;">📧 Contacto</div>
+                <div style="font-size: 0.8125rem; color: var(--text-light);">Ver formulario de contacto</div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
