@@ -7,7 +7,7 @@
     <h1 class="page-title">Servicios</h1>
     <p class="page-description">Gestiona los servicios que ofreces a tus clientes.</p>
     <div class="page-actions">
-        <a href="{{ url_for('admin.services_create') }}" class="btn btn-primary">
+        <a href="{{ url_for('services_create') }}" class="btn btn-primary">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v10M7 10h10"/>
             </svg>
@@ -79,11 +79,11 @@
                     </td>
                     <td>
                         <div class="table-actions" style="justify-content: flex-end;">
-                            <a href="{{ url_for('admin.services_edit', service_id=service.id) }}" 
+                            <a href="{{ url_for('services_edit', service_id=service.id) }}" 
                                class="btn btn-sm btn-primary">
                                 Editar
                             </a>
-                            <form method="POST" action="{{ url_for('admin.services_delete', service_id=service.id) }}" 
+                            <form method="POST" action="{{ url_for('services_delete', service_id=service.id) }}" 
                                   style="display: inline;"
                                   onsubmit="return confirm('¿Estás seguro de eliminar este servicio?');">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -100,7 +100,7 @@
                         <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
                         <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay servicios todavía</div>
                         <div style="margin-bottom: 1.5rem;">Crea tu primer servicio para mostrar lo que ofreces.</div>
-                        <a href="{{ url_for('admin.services_create') }}" class="btn btn-primary">Nuevo Servicio</a>
+                        <a href="{{ url_for('services_create') }}" class="btn btn-primary">Nuevo Servicio</a>
                     </td>
                 </tr>
                 {% endfor %}

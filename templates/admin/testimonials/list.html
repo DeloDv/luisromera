@@ -7,7 +7,7 @@
     <h1 class="page-title">Testimonios</h1>
     <p class="page-description">Gestiona las opiniones de tus clientes.</p>
     <div class="page-actions">
-        <a href="{{ url_for('admin.testimonials_create') }}" class="btn btn-primary">
+        <a href="{{ url_for('testimonials_create') }}" class="btn btn-primary">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v10M7 10h10"/>
             </svg>
@@ -30,7 +30,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Filtrar</button>
             {% if request.args.get('status') %}
-            <a href="{{ url_for('admin.testimonials_list') }}" class="btn btn-secondary">Limpiar</a>
+            <a href="{{ url_for('testimonials_list') }}" class="btn btn-secondary">Limpiar</a>
             {% endif %}
         </form>
     </div>
@@ -85,7 +85,7 @@
 
             <!-- Acciones -->
             <div style="display: flex; gap: 0.5rem;">
-                <a href="{{ url_for('admin.testimonials_edit', testimonial_id=testimonial.id) }}" 
+                <a href="{{ url_for('testimonials_edit', testimonial_id=testimonial.id) }}" 
                    class="btn btn-sm btn-primary" style="flex: 1;">
                     Editar
                 </a>
@@ -98,7 +98,7 @@
                     </button>
                 </form>
                 {% endif %}
-                <form method="POST" action="{{ url_for('admin.testimonials_delete', testimonial_id=testimonial.id) }}" 
+                <form method="POST" action="{{ url_for('testimonials_delete', testimonial_id=testimonial.id) }}" 
                       style="display: inline;"
                       onsubmit="return confirm('¿Eliminar este testimonio?');">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -117,7 +117,7 @@
             <div style="font-size: 3rem; margin-bottom: 1rem;">⭐</div>
             <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay testimonios todavía</div>
             <div style="margin-bottom: 1.5rem; color: var(--text-light);">Agrega tu primer testimonio de cliente.</div>
-            <a href="{{ url_for('admin.testimonials_create') }}" class="btn btn-primary">Nuevo Testimonio</a>
+            <a href="{{ url_for('testimonials_create') }}" class="btn btn-primary">Nuevo Testimonio</a>
         </div>
     </div>
     {% endfor %}

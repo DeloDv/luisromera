@@ -2,8 +2,9 @@
 Luis Romera CMS - Aplicación Flask Principal
 """
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_wtf import FlaskForm
+from flask_wtf.csrf import CSRFProtect
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 import os
@@ -14,13 +15,16 @@ app = Flask(__name__, static_folder='assets', static_url_path='/assets')
 
 # Configuración
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+csrf = CSRFProtect(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cms.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = os.path.join(app.static_folder, 'images', 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max
 
 # Inicializar extensiones
-db = SQLAlchemy(app)
+from extensions import db
+db.init_app(app)
+
 login_manager = LoginManager(app)
 login_manager.login_view = 'admin_login'
 
@@ -224,7 +228,7 @@ def pages_create():
 @app.route('/admin/pages/<int:page_id>/edit', methods=['GET', 'POST'])
 @login_required
 def pages_edit(page_id):
-    """Editar página existente"""
+    """Editar página"""
     page = Page.query.get_or_404(page_id)
     form = PageForm(obj=page)
     
@@ -236,6 +240,7 @@ def pages_edit(page_id):
         page.meta_description = form.meta_description.data
         page.og_image = form.og_image.data
         page.is_published = form.is_published.data
+        page.updated_at = datetime.utcnow()
         db.session.commit()
         flash('Página actualizada correctamente', 'success')
         return redirect(url_for('pages_list'))
@@ -254,28 +259,28 @@ def pages_delete(page_id):
 
 
 # ============================================================================
-# ADMIN - POSTS
+# ADMIN - POSTS DEL BLOG
 # ============================================================================
 
 @app.route('/admin/posts')
 @login_required
 def posts_list():
     """Listado de posts"""
-    page_num = request.args.get('page', 1, type=int)
+    page = request.args.get('page', 1, type=int)
     search = request.args.get('search', '')
     status = request.args.get('status', '')
     
     query = Post.query
     
     if search:
-        query = query.filter(Post.title.contains(search) | Post.content_html.contains(search))
+        query = query.filter(Post.title.contains(search) | Post.slug.contains(search))
     if status == 'published':
         query = query.filter_by(is_published=True)
     elif status == 'draft':
         query = query.filter_by(is_published=False)
     
-    posts = query.order_by(Post.created_at.desc()).paginate(
-        page=page_num, per_page=10, error_out=False
+    posts = query.order_by(Post.updated_at.desc()).paginate(
+        page=page, per_page=10, error_out=False
     )
     return render_template('admin/posts/list.html', posts=posts)
 
@@ -294,7 +299,7 @@ def posts_create():
             tags=form.tags.data,
             meta_description=form.meta_description.data,
             is_published=form.is_published.data,
-            published_at=form.published_at.data if form.is_published.data else None
+            published_at=datetime.utcnow() if form.is_published.data else None
         )
         db.session.add(post)
         db.session.commit()
@@ -305,11 +310,12 @@ def posts_create():
 @app.route('/admin/posts/<int:post_id>/edit', methods=['GET', 'POST'])
 @login_required
 def posts_edit(post_id):
-    """Editar post existente"""
+    """Editar post"""
     post = Post.query.get_or_404(post_id)
     form = PostForm(obj=post)
     
     if form.validate_on_submit():
+        was_draft = not post.is_published
         post.title = form.title.data
         post.slug = form.slug.data
         post.excerpt = form.excerpt.data
@@ -318,8 +324,12 @@ def posts_edit(post_id):
         post.tags = form.tags.data
         post.meta_description = form.meta_description.data
         post.is_published = form.is_published.data
-        if form.is_published.data and form.published_at.data:
-            post.published_at = form.published_at.data
+        post.updated_at = datetime.utcnow()
+        
+        # Si era borrador y se publica ahora
+        if was_draft and form.is_published.data:
+            post.published_at = datetime.utcnow()
+        
         db.session.commit()
         flash('Post actualizado correctamente', 'success')
         return redirect(url_for('posts_list'))
@@ -372,7 +382,7 @@ def services_create():
 @app.route('/admin/services/<int:service_id>/edit', methods=['GET', 'POST'])
 @login_required
 def services_edit(service_id):
-    """Editar servicio existente"""
+    """Editar servicio"""
     service = Service.query.get_or_404(service_id)
     form = ServiceForm(obj=service)
     
@@ -384,6 +394,7 @@ def services_edit(service_id):
         service.price_from = form.price_from.data
         service.order = form.order.data
         service.is_active = form.is_active.data
+        service.updated_at = datetime.utcnow()
         db.session.commit()
         flash('Servicio actualizado correctamente', 'success')
         return redirect(url_for('services_list'))
@@ -576,7 +587,8 @@ def media_library():
     """Biblioteca de medios"""
     # Por ahora solo renderiza la plantilla
     # Implementarías la lógica de gestión de archivos aquí
-    return render_template('admin/media/library.html', files=[])
+    form = FlaskForm()
+    return render_template('admin/media/library.html', files=[], form=form)
 
 
 # ============================================================================

@@ -113,7 +113,7 @@
                         </button>
 
                         {% if page and page.is_published %}
-                        <a href="{{ url_for('public.' + page.slug) }}" target="_blank" class="btn btn-secondary">
+                        <a href="{{ url_for(page.slug) }}" target="_blank" class="btn btn-secondary">
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="8" cy="8" r="3" />
                                 <path d="M1 8s2-4 6-4 6 4 6 4-2 4-6 4-6-4-6-4z" />
@@ -122,7 +122,7 @@
                         </a>
                         {% endif %}
 
-                        <a href="{{ url_for('admin.pages_list') }}" class="btn btn-secondary">
+                        <a href="{{ url_for('pages_list') }}" class="btn btn-secondary">
                             Cancelar
                         </a>
                     </div>
@@ -183,7 +183,7 @@
         content_style: 'body { font-family: Inter, sans-serif; font-size: 16px; line-height: 1.6; }',
         language: 'es',
         // Permitir subir imágenes
-        images_upload_url: '{{ url_for("admin.media_upload") }}',
+        images_upload_url: '{{ url_for("admin_login") }}',
         automatic_uploads: true,
         file_picker_types: 'image',
         file_picker_callback: function (callback, value, meta) {

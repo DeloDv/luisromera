@@ -660,7 +660,7 @@
         <!-- Sidebar -->
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="sidebar-header">
-                <a href="{{ url_for('admin.dashboard') }}" class="sidebar-logo">
+                <a href="{{ url_for('admin_dashboard') }}" class="sidebar-logo">
                     <span class="sidebar-logo-icon">⚡</span>
                     <span>Luis Romera CMS</span>
                 </a>
@@ -669,8 +669,8 @@
             <nav class="sidebar-nav">
                 <div class="nav-section">
                     <div class="nav-section-title">Principal</div>
-                    <a href="{{ url_for('admin.dashboard') }}" 
-                       class="nav-link {% if request.endpoint == 'admin.dashboard' %}active{% endif %}">
+                    <a href="{{ url_for('admin_dashboard') }}" 
+                       class="nav-link {% if request.endpoint == 'admin_dashboard' %}active{% endif %}">
                         <span class="nav-icon">📊</span>
                         Dashboard
                     </a>
@@ -684,12 +684,12 @@
 
                 <div class="nav-section">
                     <div class="nav-section-title">Contenido</div>
-                    <a href="{{ url_for('admin.pages_list') }}" 
+                    <a href="{{ url_for('pages_list') }}" 
                        class="nav-link {% if 'pages' in request.endpoint %}active{% endif %}">
                         <span class="nav-icon">📄</span>
                         Páginas
                     </a>
-                    <a href="{{ url_for('admin.posts_list') }}" 
+                    <a href="{{ url_for('posts_list') }}" 
                        class="nav-link {% if 'posts' in request.endpoint %}active{% endif %}">
                         <span class="nav-icon">📝</span>
                         Blog
@@ -697,12 +697,12 @@
                         <span class="nav-badge">{{ unpublished_posts_count }}</span>
                         {% endif %}
                     </a>
-                    <a href="{{ url_for('admin.services_list') }}" 
+                    <a href="{{ url_for('services_list') }}" 
                        class="nav-link {% if 'services' in request.endpoint %}active{% endif %}">
                         <span class="nav-icon">💼</span>
                         Servicios
                     </a>
-                    <a href="{{ url_for('admin.testimonials_list') }}" 
+                    <a href="{{ url_for('testimonials_list') }}" 
                        class="nav-link {% if 'testimonials' in request.endpoint %}active{% endif %}">
                         <span class="nav-icon">⭐</span>
                         Testimonios
@@ -711,17 +711,17 @@
 
                 <div class="nav-section">
                     <div class="nav-section-title">Configuración</div>
-                    <a href="{{ url_for('admin.menu_list') }}" 
+                    <a href="{{ url_for('menu_list') }}" 
                        class="nav-link {% if 'menu' in request.endpoint %}active{% endif %}">
                         <span class="nav-icon">🔗</span>
                         Menú
                     </a>
-                    <a href="{{ url_for('admin.media_library') }}" 
+                    <a href="{{ url_for('media_library') }}" 
                        class="nav-link {% if 'media' in request.endpoint %}active{% endif %}">
                         <span class="nav-icon">🖼️</span>
                         Medios
                     </a>
-                    <a href="{{ url_for('admin.settings_edit') }}" 
+                    <a href="{{ url_for('settings_edit') }}" 
                        class="nav-link {% if 'settings' in request.endpoint %}active{% endif %}">
                         <span class="nav-icon">⚙️</span>
                         Configuración
@@ -730,7 +730,7 @@
 
                 <div class="nav-section">
                     <div class="nav-section-title">Cuenta</div>
-                    <a href="{{ url_for('admin.logout') }}" class="nav-link">
+                    <a href="{{ url_for('admin_logout') }}" class="nav-link">
                         <span class="nav-icon">🚪</span>
                         Cerrar sesión
                     </a>

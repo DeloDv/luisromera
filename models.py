@@ -3,7 +3,7 @@ Modelos de la base de datos
 """
 from datetime import datetime
 from flask_login import UserMixin
-from app import db
+from extensions import db
 
 
 class User(UserMixin, db.Model):

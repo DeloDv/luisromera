@@ -8,7 +8,7 @@
     <h1 class="page-title">Gestión del Menú</h1>
     <p class="page-description">Administra los elementos del menú de navegación principal.</p>
     <div class="page-actions">
-        <a href="{{ url_for('admin.menu_create') }}" class="btn btn-primary">
+        <a href="{{ url_for('menu_create') }}" class="btn btn-primary">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v10M7 10h10"/>
             </svg>
@@ -55,11 +55,11 @@
                     </td>
                     <td>
                         <div class="table-actions" style="justify-content: flex-end;">
-                            <a href="{{ url_for('admin.menu_edit', menu_id=item.id) }}" 
+                            <a href="{{ url_for('menu_edit', menu_id=item.id) }}" 
                                class="btn btn-sm btn-primary">
                                 Editar
                             </a>
-                            <form method="POST" action="{{ url_for('admin.menu_delete', menu_id=item.id) }}" 
+                            <form method="POST" action="{{ url_for('menu_delete', menu_id=item.id) }}" 
                                   style="display: inline;"
                                   onsubmit="return confirm('¿Eliminar este elemento del menú?');">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -76,7 +76,7 @@
                         <div style="font-size: 3rem; margin-bottom: 1rem;">🔗</div>
                         <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay elementos en el menú</div>
                         <div style="margin-bottom: 1.5rem;">Agrega elementos para crear la navegación de tu sitio.</div>
-                        <a href="{{ url_for('admin.menu_create') }}" class="btn btn-primary">Nuevo Elemento</a>
+                        <a href="{{ url_for('menu_create') }}" class="btn btn-primary">Nuevo Elemento</a>
                     </td>
                 </tr>
                 {% endfor %}

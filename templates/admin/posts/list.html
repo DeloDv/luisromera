@@ -7,7 +7,7 @@
     <h1 class="page-title">Artículos del Blog</h1>
     <p class="page-description">Gestiona todos los artículos de tu blog.</p>
     <div class="page-actions">
-        <a href="{{ url_for('admin.posts_create') }}" class="btn btn-primary">
+        <a href="{{ url_for('posts_create') }}" class="btn btn-primary">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v10M7 10h10"/>
             </svg>
@@ -36,7 +36,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Filtrar</button>
             {% if request.args.get('search') or request.args.get('status') %}
-            <a href="{{ url_for('admin.posts_list') }}" class="btn btn-secondary">Limpiar</a>
+            <a href="{{ url_for('posts_list') }}" class="btn btn-secondary">Limpiar</a>
             {% endif %}
         </form>
     </div>
@@ -114,11 +114,11 @@
                                 </svg>
                             </a>
                             {% endif %}
-                            <a href="{{ url_for('admin.posts_edit', post_id=post.id) }}" 
+                            <a href="{{ url_for('posts_edit', post_id=post.id) }}" 
                                class="btn btn-sm btn-primary">
                                 Editar
                             </a>
-                            <form method="POST" action="{{ url_for('admin.posts_delete', post_id=post.id) }}" 
+                            <form method="POST" action="{{ url_for('posts_delete', post_id=post.id) }}" 
                                   style="display: inline;"
                                   onsubmit="return confirm('¿Estás seguro de eliminar este artículo?');">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -135,7 +135,7 @@
                         <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
                         <div style="font-weight: 600; margin-bottom: 0.5rem;">No hay artículos todavía</div>
                         <div style="margin-bottom: 1.5rem;">Crea tu primer artículo para empezar tu blog.</div>
-                        <a href="{{ url_for('admin.posts_create') }}" class="btn btn-primary">Nuevo Artículo</a>
+                        <a href="{{ url_for('posts_create') }}" class="btn btn-primary">Nuevo Artículo</a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -148,7 +148,7 @@
 {% if posts.pages > 1 %}
 <div class="pagination">
     {% if posts.has_prev %}
-    <a href="{{ url_for('admin.posts_list', page=posts.prev_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
+    <a href="{{ url_for('posts_list', page=posts.prev_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
        class="page-link">← Anterior</a>
     {% endif %}
     
@@ -156,13 +156,13 @@
         {% if page_num == posts.page %}
         <span class="page-link active">{{ page_num }}</span>
         {% else %}
-        <a href="{{ url_for('admin.posts_list', page=page_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
+        <a href="{{ url_for('posts_list', page=page_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
            class="page-link">{{ page_num }}</a>
         {% endif %}
     {% endfor %}
     
     {% if posts.has_next %}
-    <a href="{{ url_for('admin.posts_list', page=posts.next_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
+    <a href="{{ url_for('posts_list', page=posts.next_num, search=request.args.get('search'), status=request.args.get('status')) }}" 
        class="page-link">Siguiente →</a>
     {% endif %}
 </div>
