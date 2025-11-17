@@ -33,6 +33,33 @@ async function apiRequest(url, options = {}) {
     }
 }
 
+// Auth API
+const AuthAPI = {
+    async login(email, password) {
+        const formData = new URLSearchParams();
+        formData.append('username', email);
+        formData.append('password', password);
+
+        return apiRequest(API_ENDPOINTS.LOGIN, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData
+        });
+    },
+
+    async getCurrentUser() {
+        return apiRequest(API_ENDPOINTS.ME, {
+            headers: getAuthHeaders()
+        });
+    },
+
+    async getMe() {
+        return this.getCurrentUser();
+    }
+};
+
 // Articles API
 const ArticlesAPI = {
     async getAll(adminMode = true) {
@@ -106,29 +133,6 @@ const ContactsAPI = {
     async delete(id) {
         return apiRequest(`${API_ENDPOINTS.CONTACTS}/${id}`, {
             method: 'DELETE',
-            headers: getAuthHeaders()
-        });
-    }
-};
-
-// Auth API
-const AuthAPI = {
-    async login(email, password) {
-        const formData = new URLSearchParams();
-        formData.append('username', email);
-        formData.append('password', password);
-
-        return apiRequest(API_ENDPOINTS.LOGIN, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: formData
-        });
-    },
-
-    async getCurrentUser() {
-        return apiRequest(API_ENDPOINTS.ME, {
             headers: getAuthHeaders()
         });
     }
