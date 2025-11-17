@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - Panel de Administración</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Luis Romera</h2>
+                <p>Panel Admin</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="articles.html" class="nav-item">
+                    <span class="icon">📝</span>
+                    <span>Artículos</span>
+                </a>
+                <a href="contacts.html" class="nav-item active">
+                    <span class="icon">✉️</span>
+                    <span>Contactos</span>
+                </a>
+                <a href="#" class="nav-item" onclick="logout()">
+                    <span class="icon">🚪</span>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Mensajes de Contacto</h1>
+                <div class="filter-buttons">
+                    <button class="btn btn-secondary" onclick="loadContacts(false)" id="btnAll">
+                        Todos
+                    </button>
+                    <button class="btn btn-secondary" onclick="loadContacts(true)" id="btnUnread">
+                        Sin Leer
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div id="contactsList" class="contacts-list">
+                    <div class="loading">Cargando mensajes...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para ver contacto -->
+    <div id="contactModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mensaje de Contacto</h2>
+                <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="contact-detail">
+                    <div class="detail-row">
+                        <strong>Nombre:</strong>
+                        <span id="contactName"></span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Email:</strong>
+                        <a id="contactEmail" href=""></a>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Teléfono:</strong>
+                        <span id="contactPhone"></span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Asunto:</strong>
+                        <span id="contactSubject"></span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Fecha:</strong>
+                        <span id="contactDate"></span>
+                    </div>
+                    <div class="detail-message">
+                        <strong>Mensaje:</strong>
+                        <p id="contactMessage"></p>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeContactModal()">
+                        Cerrar
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="markAsReplied()" id="btnReplied">
+                        Marcar como Respondido
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="deleteContact()" id="btnDelete">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/contacts.js"></script>
+</body>
+</html>

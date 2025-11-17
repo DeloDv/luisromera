@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículos - Panel de Administración</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Luis Romera</h2>
+                <p>Panel Admin</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="articles.html" class="nav-item active">
+                    <span class="icon">📝</span>
+                    <span>Artículos</span>
+                </a>
+                <a href="contacts.html" class="nav-item">
+                    <span class="icon">✉️</span>
+                    <span>Contactos</span>
+                </a>
+                <a href="#" class="nav-item" onclick="logout()">
+                    <span class="icon">🚪</span>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Artículos</h1>
+                <button class="btn btn-primary" onclick="showCreateModal()">
+                    + Nuevo Artículo
+                </button>
+            </header>
+
+            <div class="content-body">
+                <div id="articlesList" class="articles-list">
+                    <div class="loading">Cargando artículos...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para crear/editar artículo -->
+    <div id="articleModal" class="modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nuevo Artículo</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+
+            <form id="articleForm" class="modal-body">
+                <input type="hidden" id="articleId">
+
+                <div class="form-group">
+                    <label for="title">Título *</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <textarea id="description" name="description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Contenido *</label>
+                    <textarea id="content" name="content" rows="15" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="featured_image">URL de Imagen Destacada</label>
+                    <input type="url" id="featured_image" name="featured_image">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="meta_title">Meta Título (SEO)</label>
+                        <input type="text" id="meta_title" name="meta_title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meta_keywords">Meta Keywords (SEO)</label>
+                        <input type="text" id="meta_keywords" name="meta_keywords">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="meta_description">Meta Descripción (SEO)</label>
+                    <textarea id="meta_description" name="meta_description" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="published" name="published">
+                        Publicar artículo
+                    </label>
+                </div>
+
+                <div id="formError" class="error-message" style="display: none;"></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Guardar</span>
+                        <span class="btn-loading" style="display: none;">Guardando...</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/articles.js"></script>
+</body>
+</html>
