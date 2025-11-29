@@ -13,7 +13,7 @@
     const btnLoading = submitBtn.querySelector('.btn-loading');
 
     // Configuración
-    const API_ENDPOINT = '/api/contact';
+    const API_ENDPOINT = 'http://localhost:8000/api/contacts';
     const HONEYPOT_FIELD = 'website';
 
     /**
@@ -202,15 +202,13 @@
             return;
         }
         
-        // Preparar datos
+        // Preparar datos (formato adaptado a la API)
         const formData = {
-            nombre: form.elements.nombre.value.trim(),
+            name: form.elements.nombre.value.trim(),
             email: form.elements.email.value.trim(),
-            telefono: form.elements.telefono.value.trim(),
-            asunto: form.elements.asunto.value,
-            mensaje: form.elements.mensaje.value.trim(),
-            consentimiento: form.elements.consentimiento.checked,
-            timestamp: new Date().toISOString()
+            phone: form.elements.telefono.value.trim(),
+            subject: form.elements.asunto.value,
+            message: form.elements.mensaje.value.trim()
         };
         
         // Activar estado de carga
